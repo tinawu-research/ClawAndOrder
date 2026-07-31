@@ -12,7 +12,7 @@ models decide *what* to look up and *how to say it*, never *what the value is*.
 | | |
 |---|---|
 | Agent source | [src/agent/](src/agent/) — see [src/agent/README.md](src/agent/README.md) for internals |
-| Fine-tuning target | `Llama-3.1-Nemotron-Nano-8B-v1`, LoRA rank 32 |
+| Fine-tuning target | `Llama-3.1-Nemotron-Nano-8B-v1`, LoRA rank 32 — selected checkpoint **`ck100`** |
 | Training evidence | [training/](training/) — [MODEL_CARD.md](training/MODEL_CARD.md), [data_prep/DATA_CARD.md](training/data_prep/DATA_CARD.md), [logs/](training/logs/), [results/](training/results/) |
 | Registered endpoint & pinned commit | [submission.json](submission.json) |
 | Data loaded at start-up | RBA 175 decisions (2010-02-03 → 2026-06-17); ASX 18 tickers × 1,774 bars (2015-01-02 → 2021-12-30); AFR 219,538 articles across 85 month files (2015-01-02 → 2021-12-29) |
@@ -28,7 +28,6 @@ source ~/team.env                                   # organizer-supplied endpoin
 python -m venv .venv && source .venv/bin/activate   # first run only
 pip install -r src/agent/requirements.txt           # first run only
 
-export DOMAIN_PREDICT_MODE=llm                      # route synthesis to the fine-tuned Nemotron
 cd src/agent && uvicorn server:app --host 0.0.0.0 --port 8001
 ```
 
@@ -37,9 +36,11 @@ cd src/agent && uvicorn server:app --host 0.0.0.0 --port 8001
   `agent.endpoint` from `submission.json`, so any port works provided the two agree. If you change
   `SERVER_PORT`, change `submission.json` to match. 8001 is also the port the fine-tuned Nemotron
   vLLM uses on the *fine-tuning* node; those are different machines, so there is no clash.
-- `DOMAIN_PREDICT_MODE` defaults to `mock`, which runs the full pipeline but replaces final synthesis
-  with a deterministic template. **It must be `llm` for official evaluation** or the submission does
-  not use the fine-tuned model. The start-up log and the dashboard both warn while it is not.
+- **`DOMAIN_PREDICT_MODE` defaults to `llm`**, which routes final synthesis to the fine-tuned
+  Nemotron — the only mode valid for official evaluation. The variable now needs setting only to go
+  deliberately *back* to `mock`, the bootstrap mode that replaces synthesis with a deterministic
+  template. Because the value is read at import, a server already running in `mock` stays there:
+  check `diagnostics.synthesis_mode` on any `/query` response, and restart if it is not `llm`.
 - `GET /health` returns **503 for the first ~30s** while the corpus loads, then 200. That is
   deliberate: health is a hard gate, and answering 200 early would let the harness start against an
   agent that cannot yet answer.
@@ -224,7 +225,8 @@ Pinned against a verbatim live capture in
 It is fine-tuned for **one job**: read the question plus the verified tool evidence and write the
 `answer` — state every requested component exactly, invent nothing, and where the evidence does not
 support a component, say so rather than fill the gap. It does no planning and no tool calling. Qwen
-is never fine-tuned.
+is never fine-tuned. Checkpoints land every 20 steps; **`ck100` is the shipped arm**, selected on the
+evidence in the evaluation section below.
 
 Shipped configuration, and the two deviations from the handout's reference baseline, both forced by
 measurement rather than preference:
@@ -334,15 +336,26 @@ silently accepts as "no schedule at all" — and run 4 is the learning-rate evid
 
 ### Method organizers should use to assess the final model
 
-One command reproduces the whole comparison:
+Reproduce the whole comparison:
 
 ```bash
 bash training/scripts/serve_ft.sh --with-adapters      # base + ck20..ck100 as separate model ids
 python training/eval/freeze_evidence.py                # capture real tool traces once
+python training/eval/fingerprint.py --arms ck20 ck40 ck60 ck80 ck100   # prove adapters are applied
+
 python training/eval/run_eval.py --arms base ck20 ck40 ck60 ck80 ck100 \
-    --conditions clean noisy insufficient shuffled --prompt-2x2
-# writes training/results/base_vs_ft.md and training/results/sweep_raw.json
+    --conditions clean --out training/results/public15.md
+python training/eval/run_eval.py --arms base ck40 ck100 \
+    --conditions clean noisy insufficient shuffled --prompt-2x2 \
+    --questions training/eval_sets/heldout19.jsonl \
+    --frozen training/eval_sets/frozen_heldout19 \
+    --out training/results/heldout19_full.md
 ```
+
+Written up in [training/results/base_vs_ft.md](training/results/base_vs_ft.md), with detail tables in
+[public15.md](training/results/public15.md) and
+[heldout19_full.md](training/results/heldout19_full.md) and every generation in the `*_raw.json`
+beside each.
 
 To assess the shipped model directly:
 
@@ -350,7 +363,9 @@ To assess the shipped model directly:
    `synthesis_live` and `config.domain_predict_mode`; every `/query` response carries
    `diagnostics.synthesis_mode`, which is `llm` only when synthesis went to `DOMAIN_FT_MODEL`. vLLM
    echoes the served model id per request, so a LoRA arm reporting the base id would mean the adapter
-   was not applied — the generated report records the served id per cell for exactly this reason.
+   was not applied. `fingerprint.py` checks this before any scoring: at temperature 0 every arm
+   differs from base on 5/5 probe questions
+   ([logs/eval/adapter_fingerprint.json](logs/eval/adapter_fingerprint.json)).
 2. **Compare arms on frozen evidence, not live traces.** `freeze_evidence.py` runs the real brain and
    the real tools once under `DOMAIN_PREDICT_MODE=mock`, then every arm is replayed against
    byte-identical evidence. Qwen at temperature 0 through vLLM is not bit-reproducible, so without
@@ -384,8 +399,12 @@ which is the exact overfitting mode of concern:
 3. Tie-break inside the paired CI by the adversarial probe set, then p95 latency, then earlier step.
 4. If the leader's edge over `ck20` sits inside the CI, take `ck20`.
 
-The 15 public questions are reported but never used as a tie-break — they stop being held-out the
-moment they select a checkpoint.
+**Outcome: `ck100`.** Applying the rule honestly was awkward, and the report says so. It assumed our
+own `heldout19` set would be a valid accuracy instrument, and it is not (below); *every* arm fails the
+disqualification clause under insufficient evidence; and the intent that `public15` be reported but
+never used as a tie-break could not be honoured once the alternative set proved biased. `ck100` leads
+every fine-tuned arm on the trustworthy set. `ck40` was the initial pick before the bias was found;
+artifacts for both are retained and switching is a one-line config change.
 
 ### Judge calibration — complete
 
@@ -397,52 +416,115 @@ Before it grades any arm, the judge is gated on two published sets
 | Reference answers must score full marks | **100.0%** — 150.0 / 150.0 across all 15 public questions, none below full marks |
 | Adversarial and equivalence triples | **12 / 12 = 100.0%** — rejects hedged-count, wrong-context, no-number, off-by-one-date, thinking-out-loud and refusal; accepts comma, ISO-date, reference-date, percent-prose, trailing-zero and word-number equivalences |
 
-### Arm results — status at this commit
+### Results
 
-**Not yet populated.** The shipped run (run 5, peak LR 2e-5) was still training at this commit —
-`ck20` and `ck40` written, 100 steps the target — and nothing is yet serving the adapter on the
-fine-tuning node, so no arm can be generated. The `domain-ft` route currently returns HTTP 500
-(`Connection error`), which is why a live `/query` today reports
-`diagnostics.synthesis_mode: "mock-fallback"`.
+Two evaluation sets, and **only one of them is a valid accuracy instrument**:
 
-What does exist: the judge is calibrated and gated (above); frozen evidence is captured for the 15
-public questions ([training/eval_sets/frozen_evidence/](training/eval_sets/frozen_evidence/)) and for
-the held-out and adversarial-probe sets alongside them in
-[training/eval_sets/](training/eval_sets/) — the probe set is the overfitting detector, since a gain
-on held-out questions that the probe set does not share is template matching rather than skill; and
-the sweep is one command away.
-Training health is evidenced — loss 0.29 at grad_norm 15 at the last logged step, validation loss 0.79
-at step 40, against run 4's divergence to loss 9.50 / grad_norm 36,352 at the same point — but that
-evidences the learning-rate decision, not an arm comparison.
+| set | n | questions and reference answers written by | valid for accuracy? |
+|---|---:|---|---|
+| `public15` | 15 | the organizers | **yes** |
+| `heldout19` | 19 | our own generators | **no** |
 
-`run_eval.py` writes [training/results/base_vs_ft.md](training/results/base_vs_ft.md) — headline
-component score per arm × condition, paired deltas with 95% CI, p-value and win/loss/tie, secondary
-metrics, the 2×2 prompt control, and a provenance table of served model ids — plus
-`training/results/sweep_raw.json` containing every generation, so any number in the report can be
-recomputed. **Treat any base-versus-fine-tuned claim as unsupported until that file exists in the
-repository at the pinned commit.**
+`heldout19` holds out the right parameters (reserved tickers, year 2017) and shares no fact set with
+training, but its `expected_fact` strings come from the same verbalizers that wrote the training
+targets — so the fine-tuned model reproduces them near-verbatim while base states the same correct
+value in its own words and is marked down. It shows +47pp, and that number measures phrasing, not
+accuracy. We found this by cross-checking the two sets against each other, and we rest every accuracy
+claim on `public15` alone. `heldout19` is reported only for what it is validly good for: format
+control and robustness across evidence conditions.
+
+**Headline, on the organizers' 15 questions:**
+
+| arm | component | strict | halluc. numbers | words p50 | gen time |
+|---|---:|---:|---:|---:|---:|
+| `base` | **57.1%** | 40.4% | 6.7% | 26 | 24.3s |
+| `ck20` | 41.1% | 39.1% | 26.7% | 13 | 11.0s |
+| `ck40` | 45.6% | 40.2% | 20.0% | 13 | 12.1s |
+| `ck60` | 51.7% | 46.7% | 20.0% | 13 | 11.8s |
+| `ck80` | 50.0% | 50.0% | 13.3% | 13 | 11.4s |
+| **`ck100`** (selected) | 54.7% | **51.3%** | 13.3% | 13 | 11.3s |
+
+| measure | base | `ck100` | paired delta |
+|---|---:|---:|---|
+| Component score | 57.1% | 54.7% | −2.4%, 95% CI [−20.0%, +13.3%] ⚠ |
+| Strict (judge **and** numeric tolerance agree) | 40.4% | **51.3%** | **+10.9%**, 95% CI [+1.3%, +26.4%], 4W/0L/11T |
+| Median answer length | 26 words | **13 words** | matches the reference style |
+| Generation time | 24.3s | **11.3s** | roughly halved |
+| Leaked reasoning / format violations | 0% | 0% | every arm, every condition |
+
+⚠ = interval crosses zero.
+
+**We do not claim an accuracy improvement.** On the organizers' questions no arm beats base on
+component score, every interval crosses zero, and the point estimates are negative. What did improve
+is real but narrower: strict score, which penalises answers that win a verdict while mis-stating or
+mis-formatting the figure, rises +10.9pp with an interval excluding zero and never loses a question;
+and latency roughly halves, which is worth points under the 60-second penalty threshold with three
+concurrent questions in flight. The p-value floor there is 0.125 — with only 4 discordant pairs the
+exact sign-flip test cannot resolve further — and the report quotes both rather than the flattering
+one.
+
+The trend across checkpoints is monotone, ck20 (−16.0%) → ck100 (−2.4%). 100 steps at effective batch
+8 is **1.01 epochs**, at half the reference learning rate. Nothing looks overfit; it looks
+undertrained. This also contradicts the handout's suggestion that step 20 is often the best
+checkpoint — here it is reliably the worst.
+
+**The serious regression** is abstention. Under the `insufficient` condition, where an evidence block
+is removed so the requested fact is genuinely unsupported and the correct behaviour is to say so:
+
+| arm | hallucinated-number rate under `insufficient` |
+|---|---:|
+| `base` | **0.0%** |
+| `ck40` | 73.7% |
+| `ck100` | 73.7% |
+
+Base declines correctly; the fine-tuned arms invent every figure. The cause is corpus balance rather
+than hyperparameters — refusal is 5.1% of 790 rows with ~10 empty-trace negatives, against ~95% of
+rows where complete evidence is present and a confident terse answer is right, so the model learned
+the dominant pattern. The N1/N2 negative design was right in kind and far too small in quantity. The
+fix is a data change the pipeline already supports (`TARGET_MIX` in `datagen/build.py`): raise the
+insufficient-evidence share to ~20% and keep the discrimination guard explicit. Not applied here, for
+time.
+
+**The prompt fairness control earned its keep.** Base scores 9.6pp *higher* on the long pre-fine-tune
+prompt than on the shortened one the fine-tune was trained against, so any short-prompt-only
+comparison overstates the fine-tune. Giving each arm its better prompt narrows the spread to base
+90.3% / ck40 94.7% / ck100 94.7% (on `heldout19`, so subject to the caveat above — though the
+base-arm effect compares base against itself and is unaffected by it).
+
+Full report, including the two regressing `public15` questions with their causes:
+[training/results/base_vs_ft.md](training/results/base_vs_ft.md).
 
 ---
 
 ## Known limitations and failure cases
 
-### Blocking, as of this commit
+### The one that matters most
 
-- **The fine-tuned model is not yet in the serving path.** Training run 5 had not reached step 100, no
-  adapter is served on the fine-tuning node, and `domain-ft` returns HTTP 500. With
-  `DOMAIN_PREDICT_MODE=llm` set, synthesis degrades to `mock-fallback`: a deterministic template that
-  lists the evidence. It is a valid, grounded, well-formed response, but it is *not* fine-tuned
-  synthesis and would not earn the 30% model-quality category. The fix is operational, not code —
-  finish the run, `bash training/scripts/serve_ft.sh --with-adapters`, then confirm
-  `diagnostics.synthesis_mode == "llm"`.
-- **`training/results/base_vs_ft.md` does not exist yet.** See the section above.
-- **`submission.json` still carries template placeholders** — `team_id: mock-team`, an example GitHub
-  URL, a dummy commit SHA, `172.20.x.x` endpoints, and port 5000 rather than the 8001 the agent
-  actually serves. It must be filled in with the real team id, repository URL, pinned commit SHA and
-  node IPs before submission, and its `agent.endpoint` port must match `SERVER_PORT`.
-- **`DOMAIN_PREDICT_MODE` defaults to `mock`.** Left unset, the submission does not use the fine-tuned
-  model at all. The start-up log and the dashboard both warn, but nothing forces it — deliberate, so
-  the bootstrap integration path still works before an adapter exists.
+- **The fine-tune invents figures when the evidence is insufficient.** 0% → 73.7% hallucinated-number
+  rate under the `insufficient` condition, where base declines correctly. The rules require stating
+  the limitation rather than producing a number, an invented answer scores zero, and this is the
+  failure a judge is most likely to notice. Diagnosed to corpus balance (5.1% refusal rows against
+  ~95% complete-evidence rows), with a concrete data-side fix the pipeline already supports. Not
+  applied before the deadline. If a hidden question asks for something the datasets cannot support,
+  expect a confident wrong answer rather than a correct refusal.
+- **Component accuracy did not improve over base**, and we do not claim it did. See the results
+  section: the defensible gains are strict score, latency and format adherence.
+
+### Operational — check before evaluation
+
+- **`DOMAIN_PREDICT_MODE` is read at import**, so a server started in `mock` stays in `mock` even once
+  the adapter is serving. The code default is now `llm`, but a process launched earlier will not pick
+  that up. Verify with `diagnostics.synthesis_mode` on any `/query`, or `synthesis_live` on
+  `/api/status`, and restart if it is not `llm` — a `mock` or `mock-fallback` answer is valid, grounded
+  and well-formed, but it does not use the fine-tuned model and would not earn the 30% model-quality
+  category.
+- **The repository must be pushed and the pinned commit must exist publicly.** `submission.json`
+  declares the team id, repository URL, commit SHA, and both endpoints — a commit that exists only
+  locally makes the architecture review impossible.
+- **`agent.endpoint` declares the cluster-link address** `10.0.1.10:8001`. This node also has a venue
+  LAN address (`10.3.8.133`); if the harness runs outside the two-node cluster network, that is the
+  reachable one and `submission.json` must be changed to match. `GET /health` is a hard gate — an
+  unreachable endpoint means zero hidden-question points.
 
 ### Data and correctness
 
@@ -463,8 +545,18 @@ repository at the pinned commit.**
 
 ### Model behaviour
 
-- **Trained on ~800 sequences**, matched to the 100-step budget rather than to what the task could
-  absorb. At 2e-5 the loss was still improving when the step budget ran out.
+- **Undertrained.** 100 steps at effective batch 8 over 790 rows is 1.01 epochs, at half the reference
+  learning rate, and the checkpoint trend was still improving monotonically at ck100. The corpus is
+  sized to the step budget, not to what the task could absorb.
+- **Brevity can cost a requested component.** On `MHQ061` the fine-tuned arm gave the peak year and
+  dropped the peak month, and on `MHQ040` it dropped the row-count component and mis-stated a date
+  (`2 Feb 2015` where the evidence says 2 Jan). Median answer length fell 26 → 13 words, which matches
+  the reference style and is mostly good, but the sampled-component-subset design did not fully
+  prevent the model learning brevity as a prior strong enough to drop a component that was asked for.
+- **One of our two evaluation sets is a biased instrument.** `heldout19`'s expected facts were written
+  by the same verbalizers that produced the training targets, so it rewards our phrasing rather than
+  correctness and its +47pp is not an accuracy result. It is used only for format control and
+  robustness. A corrected version would author reference answers independently of the generators.
 - **Sentiment has seen only the unambiguous end of its distribution.** Labels are kept only where
   three rubric phrasings agreed (244/390, 63%), and the discarded 37% are exactly the ambiguous
   cases. The kept distribution is also skewed — 120 positive, 100 negative, but only 13 mixed, 6

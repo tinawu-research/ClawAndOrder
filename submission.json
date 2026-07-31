@@ -3,7 +3,7 @@
   "team_id": "team-09",
   "team_name": "ClawAndOrder",
   "github_url": "https://github.com/tinawu-research/ClawAndOrder",
-  "commit_sha": "c91dfd1a2d042e7ee396d7e8abf966c5d4215958",
+  "commit_sha": "2183b8b644c1f2052e6664d0bdd1a050ff350d1a",
   "agent": {
     "endpoint": "http://10.0.1.10:8001",
     "health_path": "/health",

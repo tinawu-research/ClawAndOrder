@@ -16,7 +16,9 @@ from __future__ import annotations
 import pytest
 
 from datastore import STORE
+import tools
 from tools import afr, asx, rba
+from tools.rba import MetricError
 
 TABCORP = ["TAH.AX"]
 
@@ -399,3 +401,65 @@ def test_undated_articles_excluded_from_date_filters(_afr: None) -> None:
     total = afr.count(terms=["the"])["matching_records"]
     by_year = afr.count_by_year(terms=["the"])
     assert sum(by_year["by_year"].values()) <= total
+
+
+# ---------------------------------------------------------------------------
+# Argument scoping
+#
+# A dropped scope argument answers a *wider* question than was asked, and the
+# payload looks internally consistent afterwards, so neither the brain nor the
+# synthesiser can catch it. This was live: asked for the peak month of 2019,
+# `count_by_month(date_from=..., date_to=...)` returned the whole-corpus
+# histogram and the answer came back "May 2019 with 218" — 218 is May 2020, and
+# the true 2019 peak is 102.
+# ---------------------------------------------------------------------------
+def test_scope_argument_is_rejected_not_dropped() -> None:
+    """An unsupported filter must error, naming the ones the metric accepts."""
+    with pytest.raises(MetricError) as excinfo:
+        tools.query_data(
+            "afr",
+            "count_by_month",
+            terms=["unemployment"],
+            date_from="2019-01-01",
+            date_to="2019-12-31",
+        )
+    message = str(excinfo.value)
+    assert "date_from" in message and "date_to" in message
+    # The retry only lands if the error says what to use instead.
+    assert "year" in message
+
+
+@pytest.mark.parametrize(
+    "dataset,metric,bad_arg",
+    [
+        ("afr", "count_by_month", {"date_from": "2019-01-01"}),
+        ("afr", "count_by_year", {"year": 2019}),
+        ("afr", "share", {"date_from": "2019-01-01"}),
+        ("asx", "annual_return", {"date_from": "2019-01-01"}),
+        ("asx", "volatility", {"date_from": "2019-01-01"}),
+        ("rba", "extremes", {"year": 2019}),
+    ],
+)
+def test_every_scope_widening_call_errors(
+    dataset: str, metric: str, bad_arg: dict
+) -> None:
+    """The same hole existed on five other metrics, not just count_by_month."""
+    with pytest.raises(MetricError):
+        tools.query_data(dataset, metric, **bad_arg)
+
+
+def test_presentation_arguments_are_still_ignored() -> None:
+    """A knob that cannot move the scope stays lenient — no wasted retry."""
+    result = tools.query_data("rba", "count_changes", annualised=True)
+    assert result["changes"] == 41
+    assert result["ignored_arguments"] == ["annualised"]
+
+
+@pytest.mark.slow
+def test_year_scoped_month_split_is_the_2019_peak(_afr: None) -> None:
+    """The correct call for the question that produced the wrong answer."""
+    result = afr.count_by_month(terms=["unemployment"], year=2019)
+    assert result["peak_month"] == "2019-05"
+    assert result["peak_month_count"] == 102
+    assert result["total"] == 804
+    assert all(month.startswith("2019") for month in result["by_month"])

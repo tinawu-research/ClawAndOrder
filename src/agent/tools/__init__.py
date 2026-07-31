@@ -41,6 +41,38 @@ def _normalise_dataset(name: str) -> str:
     return _DATASET_ALIASES.get(key, key)
 
 
+#: Arguments that *narrow* what a metric measures: a date window, a period, an
+#: entity, or a match rule. Dropping one of these does not return a smaller
+#: answer to the question asked — it returns the answer to a *wider* question,
+#: with nothing in the payload to say the scope moved.
+#:
+#: That is how "which month of 2019 had the most unemployment articles" came
+#: back as "May 2019, 218": ``count_by_month`` takes ``year`` and not
+#: ``date_from``/``date_to``, so the 2019 window was dropped, the full-corpus
+#: histogram was returned, and its peak (May *2020*, 218) was relabelled 2019.
+#: Silent widening is the one failure the synthesiser cannot detect, because the
+#: evidence it receives looks internally consistent.
+_SCOPE_ARGS = frozenset(
+    {
+        "date_from",
+        "date_to",
+        "compare_from",
+        "compare_to",
+        "year",
+        "month",
+        "day",
+        "ticker",
+        "tickers",
+        "exclude_tickers",
+        "pattern",
+        "terms",
+        "whole_word",
+        "sessions",
+        "calendar_days",
+    }
+)
+
+
 def query_data(dataset: str, metric: str, **kwargs: Any) -> dict[str, Any]:
     """Single entry point for all deterministic dataset access."""
     ds = _normalise_dataset(dataset)
@@ -57,14 +89,31 @@ def query_data(dataset: str, metric: str, **kwargs: Any) -> dict[str, Any]:
         )
     fn = metrics[key]
 
-    # Drop arguments the metric does not accept. The brain routinely passes
-    # spare keys (a stray `year` on a coverage call); silently ignoring them
-    # beats failing the call and burning a step.
     signature = inspect.signature(fn)
     accepted = set(signature.parameters)
     supplied = {k: v for k, v in kwargs.items() if v is not None}
     usable = {k: v for k, v in supplied.items() if k in accepted}
-    ignored = sorted(set(supplied) - set(usable))
+    dropped = set(supplied) - set(usable)
+
+    # A dropped *scope* argument silently answers a wider question, so it is an
+    # error rather than a note. The brain is instructed to read a tool error and
+    # retry with corrected arguments, and one extra step is far cheaper than a
+    # confidently wrong figure. Naming what the metric does accept is what makes
+    # the retry land: `count_by_month` scoped by `year` is the correct call here.
+    scope_dropped = sorted(dropped & _SCOPE_ARGS)
+    if scope_dropped:
+        raise MetricError(
+            f"{ds}/{key} does not accept {', '.join(scope_dropped)}, and these "
+            f"restrict which records are counted — dropping them would answer a "
+            f"wider question than you asked. {key} accepts: "
+            f"{', '.join(sorted(accepted)) or 'no arguments'}. "
+            f"Re-call with a supported filter, or pick a metric that takes the "
+            f"one you need."
+        )
+
+    # Anything left is a presentation knob (`top_n`, `annualised`), which cannot
+    # move the scope. Ignoring those still beats burning a step on a retry.
+    ignored = sorted(dropped)
 
     result = fn(**usable)
     result.setdefault("dataset", ds)
@@ -139,6 +188,13 @@ TOOL_IMPLEMENTATIONS: dict[str, Callable[..., Any]] = {
 # cannot discover it at run time, and a wrong metric name is the difference
 # between full marks and zero — the handout's own worked example scores 0%
 # for calling the right dataset with the wrong metric.
+#
+# The AFR metrics also accept `whole_word`, deliberately NOT exposed here. It
+# only ever weakens `terms` by dropping the \b anchors, which inflates a count
+# without any sign that it did (the reference derivations all assume anchored
+# matching). Deliberate stemming already has a path: pattern= is used verbatim
+# and unanchored. Leave it absent — query_data drops unknown keys, so a brain
+# that passes it anyway is ignored rather than failed.
 
 _QUERY_DATA_DESCRIPTION = """\
 Run an exact, deterministic calculation over one approved dataset. Always use \
@@ -167,6 +223,9 @@ dataset="rba" — cash-rate decisions, 175 records, 2010-02-03 to 2026-06-17
   list_changes            every non-zero change in a window, as dated rows
 
 dataset="asx" — 18 tickers, 1774 daily bars each, 2015-01-02 to 2021-12-30
+  Every metric takes the whole ticker list at once and reports each ticker
+  separately, so pass all the ones the question names in ONE call. Five
+  tickers is one call with five entries, never five calls.
   coverage                tickers, rows per ticker, common date range
   basket_tickers          the ticker universe and the non-Tabcorp basket
   annual_return           first-to-last close return in a calendar year.
@@ -190,7 +249,8 @@ dataset="asx" — 18 tickers, 1774 daily bars each, 2015-01-02 to 2021-12-30
   max_drawdown            worst running-peak-to-trough decline with peak and
                           trough dates; top_n limits the ranking, date_from and
                           date_to restrict it to a period
-  volatility              stdev of daily returns (annualised by default)
+  volatility              stdev of daily returns (annualised by default);
+                          scope with year (NOT date_from/date_to)
   correlation             Pearson correlation between exactly 2 tickers
   close_on                closing price for one ticker on one date. Requires
                           ticker and day.
@@ -199,11 +259,20 @@ dataset="asx" — 18 tickers, 1774 daily bars each, 2015-01-02 to 2021-12-30
 
 dataset="afr" — 219,538 articles, 2015-01-01 to 2021-12-31
   coverage                article count and date span
-  count                   articles matching a pattern, counted ONCE per record
-  count_by_year           counts per year, with the peak year; accepts
-                          date_from and date_to
-  count_by_month          counts per YYYY-MM, with the peak month
-  share                   matches as a percentage of the corpus or of one year
+  count                   articles matching a pattern, counted ONCE per record;
+                          scope with year, month, date_from and/or date_to
+  count_by_year           counts per year, with the peak year; scope with
+                          date_from and date_to (NOT year)
+  count_by_month          counts per YYYY-MM, with the peak month; scope with
+                          year=YYYY. It does NOT take date_from/date_to — to get
+                          one year's monthly split ask for year=2019, because
+                          an unscoped call returns every month of 2015-2021 and
+                          its peak_month will be some other year's.
+  share                   matches as a percentage of the corpus or of one year;
+                          scope with year (NOT date_from/date_to)
+
+A metric rejects a filter it cannot apply rather than ignoring it, so a wrong \
+filter comes back as an error naming the ones it accepts. Read it and re-call.
 
 AFR matching is always case-insensitive, always across HEADLINE + SUBHEAD + \
 INTRO + TEXT combined, and always once per record. Supply the search either as:
@@ -310,7 +379,10 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
                         "type": "array",
                         "items": {"type": "string"},
                         "description": (
-                            "ASX tickers such as CBA.AX. Omit for all 18."
+                            "ASX tickers such as CBA.AX. Omit for all 18. Pass "
+                            "every ticker the question names in ONE call — the "
+                            "result reports each separately, so one call per "
+                            "ticker only burns the step budget."
                         ),
                     },
                     "exclude_tickers": {
@@ -414,6 +486,40 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
 ]
 
 
+def _recover_call(name: str, arguments: dict[str, Any]) -> dict[str, Any] | None:
+    """Map an invented tool name back onto ``query_data``, or return None.
+
+    The brain sometimes flattens the call it was asked for, emitting ``rba(...)``
+    or ``event_window(...)`` instead of ``query_data(dataset=..., metric=...)``.
+    Everything but the name is well formed, so rejecting it spends a step on a
+    call we could simply have run — and the step budget is 8 for the whole
+    question. Observed on MHQ072, where three of eight steps went this way.
+
+    Only unambiguous names are recovered. ``count`` and ``coverage`` exist in
+    more than one dataset, so those still fail unless the arguments name the
+    dataset themselves.
+    """
+    key = str(name).strip().lower()
+    supplied = dict(arguments or {})
+
+    # A dataset name used as the tool name: rba(metric="lookup_rate", ...).
+    ds = _normalise_dataset(key)
+    if ds in DATASETS:
+        return {**supplied, "dataset": supplied.get("dataset") or ds}
+
+    # A metric name used as the tool name: event_window(date_from=..., ...).
+    owners = [d for d, metrics in DATASETS.items() if key in metrics]
+    if not owners:
+        return None
+    if len(owners) == 1:
+        return {**supplied, "dataset": supplied.get("dataset") or owners[0], "metric": key}
+    # Ambiguous, but the arguments may still disambiguate it.
+    stated = _normalise_dataset(supplied.get("dataset") or "")
+    if stated in owners:
+        return {**supplied, "dataset": stated, "metric": key}
+    return None
+
+
 def execute(name: str, arguments: dict[str, Any]) -> tuple[dict[str, Any], bool]:
     """Run a tool call. Returns ``(payload, ok)``; never raises.
 
@@ -422,6 +528,14 @@ def execute(name: str, arguments: dict[str, Any]) -> tuple[dict[str, Any], bool]
     step.
     """
     impl = TOOL_IMPLEMENTATIONS.get(name)
+    recovered_from = None
+    if impl is None:
+        candidate = _recover_call(name, arguments)
+        # A dataset name alone is not enough — rba(date_from=...) with no metric
+        # is still unrunnable, and must fail with the catalogue attached.
+        if candidate and candidate.get("dataset") and candidate.get("metric"):
+            logger.info("recovered invented tool name %r as query_data", name)
+            impl, recovered_from, arguments = query_data, name, candidate
     if impl is None:
         return (
             {
@@ -431,7 +545,12 @@ def execute(name: str, arguments: dict[str, Any]) -> tuple[dict[str, Any], bool]
             False,
         )
     try:
-        return impl(**(arguments or {})), True
+        payload = impl(**(arguments or {}))
+        if recovered_from:
+            # Visible in the trace so a silent recovery cannot hide a prompt
+            # problem: if this key shows up often, fix the description instead.
+            payload["recovered_from_tool_name"] = recovered_from
+        return payload, True
     except MetricError as exc:
         logger.warning("tool %s rejected arguments %s: %s", name, arguments, exc)
         return {"error": str(exc), "tool": name, "arguments": arguments}, False

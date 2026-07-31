@@ -163,6 +163,18 @@ async def answer_question(question: str) -> dict[str, Any]:
             else:
                 payload, ok = await _run_tool(name, arguments)
 
+            # Scope-changing arguments are rejected outright by the tool layer,
+            # so anything still reported here is a harmless presentation knob.
+            # Recorded rather than swallowed: an unread field is how the
+            # scope-widening bug stayed invisible in the first place.
+            if ok and isinstance(payload, dict):
+                spare = payload.get("ignored_arguments")
+                if spare:
+                    state.notes.append(
+                        f"{name}: ignored non-scope argument(s) "
+                        f"{', '.join(spare)}"
+                    )
+
             state.tool_trace.append(
                 {
                     "tool": name,

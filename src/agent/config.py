@@ -81,7 +81,13 @@ DOMAIN_FT_MODEL = _env("DOMAIN_FT_MODEL", "domain-ft")
 #: ``mock`` uses the deterministic template synthesiser so the pipeline can be
 #: integration-tested before the adapter exists. ``llm`` routes synthesis to
 #: DOMAIN_FT_MODEL. MUST be ``llm`` for official evaluation.
-DOMAIN_PREDICT_MODE = _env("DOMAIN_PREDICT_MODE", "mock").lower()
+#:
+#: Defaults to ``llm``. It defaulted to ``mock`` while the adapter was being
+#: built, which is the wrong default now that one exists: forgetting the
+#: environment variable on a restart silently serves template output instead of
+#: the fine-tuned model, and nothing errors. Failing loudly against a missing
+#: adapter is far better than passing quietly without one.
+DOMAIN_PREDICT_MODE = _env("DOMAIN_PREDICT_MODE", "llm").lower()
 
 EMBED_MODEL = _env("EMBED_MODEL", "")
 QDRANT_URL = _env("QDRANT_URL", "")

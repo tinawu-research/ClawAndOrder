@@ -1,0 +1,2620 @@
+[
+  {
+    "arm": "base",
+    "condition": "clean",
+    "long_prompt": false,
+    "summary": {
+      "n_questions": 15,
+      "n_components": 37,
+      "points_max": 150.0,
+      "points_earned": 85.67,
+      "component_score_llm": 0.5711,
+      "component_score_strict": 0.4045,
+      "component_score_after_latency": 0.5711,
+      "disagreement_rate": 0.1081,
+      "hedged_answers": 0,
+      "by_difficulty": {
+        "easy": {
+          "score": 0.7,
+          "n": 4
+        },
+        "hard": {
+          "score": 0.4668,
+          "n": 4
+        },
+        "medium": {
+          "score": 0.5571,
+          "n": 7
+        }
+      },
+      "by_scope": {
+        "cross": {
+          "score": 0.3209,
+          "n": 8
+        },
+        "single": {
+          "score": 0.8571,
+          "n": 7
+        }
+      },
+      "secondary": {
+        "n": 15,
+        "hedge_rate": 0.0,
+        "hallucinated_number_rate": 0.06666666666666667,
+        "leaked_reasoning_rate": 0.0,
+        "format_violation_rate": 0.06666666666666667,
+        "empty_rate": 0.0,
+        "answer_words_p50": 30,
+        "answer_words_max": 119
+      },
+      "generation_seconds": 24.3,
+      "error_rate": 0.0,
+      "served_models": [
+        "nemotron-8b-finance"
+      ]
+    },
+    "per_question": {
+      "MHQ001": 1.0,
+      "MHQ035": 0.0,
+      "MHQ040": 1.0,
+      "MHQ045": 1.0,
+      "MHQ049": 1.0,
+      "MHQ055": 1.0,
+      "MHQ058": 0.8,
+      "MHQ061": 1.0,
+      "MHQ067": 0.2,
+      "MHQ072": 0.0,
+      "MHQ074": 0.0,
+      "MHQ076": 0.0,
+      "MHQ080": 0.9,
+      "MHQ084": 0.0,
+      "MHQ090": 0.667
+    },
+    "per_question_strict": {
+      "MHQ001": 0.0,
+      "MHQ035": 0.0,
+      "MHQ040": 0.0,
+      "MHQ045": 1.0,
+      "MHQ049": 1.0,
+      "MHQ055": 1.0,
+      "MHQ058": 0.8,
+      "MHQ061": 0.5,
+      "MHQ067": 0.2,
+      "MHQ072": 0.0,
+      "MHQ074": 0.0,
+      "MHQ076": 0.0,
+      "MHQ080": 0.9,
+      "MHQ084": 0.0,
+      "MHQ090": 0.667
+    },
+    "secondary_rows": [
+      {
+        "qid": "MHQ001",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 170,
+        "answer_words": 31,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ035",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 97,
+        "answer_words": 17,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ040",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 187,
+        "answer_words": 30,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ045",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 161,
+        "answer_words": 26,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ049",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 155,
+        "answer_words": 24,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ055",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 372,
+        "answer_words": 57,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ058",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "10"
+        ],
+        "answer_chars": 171,
+        "answer_words": 28,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "MHQ061",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 132,
+        "answer_words": 27,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ067",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 290,
+        "answer_words": 44,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ072",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 270,
+        "answer_words": 44,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ074",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 180,
+        "answer_words": 30,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ076",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 188,
+        "answer_words": 27,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ080",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 222,
+        "answer_words": 35,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ084",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": true,
+        "hallucinated_numbers": [],
+        "answer_chars": 327,
+        "answer_words": 48,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ090",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 717,
+        "answer_words": 119,
+        "empty": false,
+        "hallucinated": false
+      }
+    ],
+    "generations": [
+      {
+        "qid": "MHQ001",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The final answer is: There were 41 cash-rate decisions that changed the rate from the first RBA record to the last. Out of these, 20 were increases and 21 were decreases.",
+        "latency_seconds": 2.667,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ035",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "Answer: Across the 2011-2013 easing period, 8 cuts occurred and the target fell from 4.75 to 2.5.",
+        "latency_seconds": 2.152,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ040",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The ASX dataset has dimensions of 18 tickers and 1774 records per ticker, with a common date range of start '2015-01-02' and end '2021-12-30'. The supplied data supports this information.",
+        "latency_seconds": 3.38,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ045",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The best 2018 return among the specified tickers, excluding Tabcorp (TCL.AX), was BHP.AX with a 22.17% return. The worst return was AMP.AX with a -50.04% return.",
+        "latency_seconds": 3.445,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ049",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The ticker with the highest average daily volume over the full sample, excluding Tabcorp (TCL.AX), is AMP.AX with an average daily volume of 11,635,671.71.",
+        "latency_seconds": 2.855,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ055",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The three worst non-Tabcorp full-sample maximum drawdowns are ranked as follows: 1. AMP.AX with a maximum drawdown of -82.45% peaking on 2015-03-20 and troughing on 2021-12-17, 2. AGL.AX with a maximum drawdown of -76.24% peaking on 2017-04-10 and troughing on 2021-11-16, and 3. QAN.AX with a maximum drawdown of -71.08% peaking on 2019-12-19 and troughing on 2020-03-19.",
+        "latency_seconds": 9.194,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ058",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "Answer: The article's financial-market sentiment is positive, and the likely direction for ASX travel shares is up. The RBA cash-rate target in force on that date was 10%.",
+        "latency_seconds": 2.664,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ061",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The year with the highest AFR counts is 2020 with 1452, and the month with the highest AFR counts in that year is May 2020 with 218.",
+        "latency_seconds": 2.663,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ067",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "Answer: The article \"Why investors don't believe the RBA on interest rates\" published on 25 Nov 2021 classifies the financial-market sentiment as negative. The likely direction for the broad ASX, especially rate-sensitive shares, is downward. The RBA cash-rate target on that date was 0.1%.",
+        "latency_seconds": 4.496,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ072",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The supplied data does not support reporting the new target and 5-12 Jun returns for the non-Tabcorp basket, CBA.AX, NAB.AX, ANZ.AX, BHP.AX, and RIO.AX after the 5 Jun 2019 RBA cut. No tool results were gathered, which are necessary to provide the requested information.",
+        "latency_seconds": 5.229,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ074",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "Answer: Across the three 2019 RBA cuts, the non-Tabcorp basket's one-week return after each effective date was 1.25% (June 5, 2019), 1% (July 3, 2019), and 0.75% (October 2, 2019).",
+        "latency_seconds": 4.642,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ076",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "Answer: For 2021, the once-per-record whole-word QBE AFR count is 1546. QBE.AX's first-to-last annual return is 35.57%. It ranks 1st among non-Tabcorp constituents based on annual returns.",
+        "latency_seconds": 3.785,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ080",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "Answer: The article's financial-market sentiment is positive, and the likely direction for ASX energy shares is up. The non-Tabcorp basket return from 30 Nov to 7 Dec 2020 is 2.3747%, which confirms the inferred direction.",
+        "latency_seconds": 3.696,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ084",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "I cannot provide the requested information as there are no verified tool results available for 2019. The RBA cut count, cumulative change, year-end target, AFR rate/RBA-pattern count, and non-Tabcorp ASX basket's simple average annual return cannot be determined without data. The supplied data does not support these requests.",
+        "latency_seconds": 4.578,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ090",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "No, the three supplied datasets do not support a fully observed analysis of how AFR news and ASX prices reacted to the 2022-2023 RBA tightening cycle. The RBA dataset only covers records up to 2026-06-17, but the relevant period for the analysis is from 2022-03-03 to 2023-06-30, which is within the available data. However, the AFR news dataset only covers articles from 2015-01-02 to 2021-12-29, which is before the start of the RBA tightening cycle in 2022. Therefore, there is insufficient data to analyze the reaction of AFR news and ASX prices to the 2022-2023 RBA tightening cycle. The common_overlap indicates that there is no overlap between the AFR news and ASX price datasets during the period of interest.",
+        "latency_seconds": 12.419,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      }
+    ]
+  },
+  {
+    "arm": "ck20",
+    "condition": "clean",
+    "long_prompt": false,
+    "summary": {
+      "n_questions": 15,
+      "n_components": 37,
+      "points_max": 150.0,
+      "points_earned": 61.67,
+      "component_score_llm": 0.4111,
+      "component_score_strict": 0.3911,
+      "component_score_after_latency": 0.4111,
+      "disagreement_rate": 0.027,
+      "hedged_answers": 0,
+      "by_difficulty": {
+        "easy": {
+          "score": 0.5,
+          "n": 4
+        },
+        "hard": {
+          "score": 0.4668,
+          "n": 4
+        },
+        "medium": {
+          "score": 0.3286,
+          "n": 7
+        }
+      },
+      "by_scope": {
+        "cross": {
+          "score": 0.3334,
+          "n": 8
+        },
+        "single": {
+          "score": 0.5,
+          "n": 7
+        }
+      },
+      "secondary": {
+        "n": 15,
+        "hedge_rate": 0.0,
+        "hallucinated_number_rate": 0.26666666666666666,
+        "leaked_reasoning_rate": 0.0,
+        "format_violation_rate": 0.0,
+        "empty_rate": 0.0,
+        "answer_words_p50": 17,
+        "answer_words_max": 37
+      },
+      "generation_seconds": 11.0,
+      "error_rate": 0.0,
+      "served_models": [
+        "ck20"
+      ]
+    },
+    "per_question": {
+      "MHQ001": 1.0,
+      "MHQ035": 0.0,
+      "MHQ040": 0.0,
+      "MHQ045": 1.0,
+      "MHQ049": 0.0,
+      "MHQ055": 1.0,
+      "MHQ058": 1.0,
+      "MHQ061": 0.5,
+      "MHQ067": 0.2,
+      "MHQ072": 0.0,
+      "MHQ074": 0.0,
+      "MHQ076": 0.0,
+      "MHQ080": 0.8,
+      "MHQ084": 0.0,
+      "MHQ090": 0.667
+    },
+    "per_question_strict": {
+      "MHQ001": 1.0,
+      "MHQ035": 0.0,
+      "MHQ040": 0.0,
+      "MHQ045": 1.0,
+      "MHQ049": 0.0,
+      "MHQ055": 1.0,
+      "MHQ058": 1.0,
+      "MHQ061": 0.5,
+      "MHQ067": 0.2,
+      "MHQ072": 0.0,
+      "MHQ074": 0.0,
+      "MHQ076": 0.0,
+      "MHQ080": 0.5,
+      "MHQ084": 0.0,
+      "MHQ090": 0.667
+    },
+    "secondary_rows": [
+      {
+        "qid": "MHQ001",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 82,
+        "answer_words": 15,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ035",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 101,
+        "answer_words": 17,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ040",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 77,
+        "answer_words": 16,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ045",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 51,
+        "answer_words": 9,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ049",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 49,
+        "answer_words": 7,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ055",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 140,
+        "answer_words": 30,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ058",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 135,
+        "answer_words": 22,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ061",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 60,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ067",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 133,
+        "answer_words": 22,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ072",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "1.75",
+          "+1.03",
+          "+2.86",
+          "+3.81",
+          "+1.81",
+          "+2.14",
+          "+1.81"
+        ],
+        "answer_chars": 173,
+        "answer_words": 29,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "MHQ074",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "+0.17"
+        ],
+        "answer_chars": 51,
+        "answer_words": 7,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "MHQ076",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 57,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ080",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 167,
+        "answer_words": 27,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ084",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "4",
+          "2",
+          "2",
+          "+1.17",
+          "4,000"
+        ],
+        "answer_chars": 165,
+        "answer_words": 29,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "MHQ090",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "66.5"
+        ],
+        "answer_chars": 223,
+        "answer_words": 37,
+        "empty": false,
+        "hallucinated": true
+      }
+    ],
+    "generations": [
+      {
+        "qid": "MHQ001",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "41 of the 175 RBA records showed changes. 20 were increases and 21 were decreases.",
+        "latency_seconds": 1.491,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ035",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "8 changes occurred, with 4 decreases and 4 decreases by year. The target fell 2.25 percentage points.",
+        "latency_seconds": 1.761,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ040",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "The ASX dataset covers 18 tickers. It starts 2 Jan 2015 and ends 30 Dec 2021.",
+        "latency_seconds": 1.897,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ045",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "BHP.AX led at +22.17%, AMP.AX was worst at -50.04%.",
+        "latency_seconds": 1.556,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ049",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "AGL.AX averaged 2,429,828 shares per trading day.",
+        "latency_seconds": 1.289,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ055",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "1) AMP.AX -82.45%, 20 Mar 2015 to 17 Dec 2021; 2) AGL.AX -76.24%, 10 Apr 2017 to 16 Nov 2021; 3) QAN.AX -71.08%, 19 Dec 2019 to 19 Mar 2020.",
+        "latency_seconds": 5.351,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ058",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "The RBA cash-rate target in force was 0.10%. The article's sentiment is positive. The likely direction for ASX travel shares is upward.",
+        "latency_seconds": 2.362,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ061",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "2020 had the highest AFR unemployment search count at 1,452.",
+        "latency_seconds": 1.288,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ067",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "The RBA cash-rate target in force was 0.10%. The article's sentiment is negative. The likely direction for the broad ASX is downward.",
+        "latency_seconds": 2.362,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ072",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "The RBA target moved to 1.75%. From 5 Jun 2019 to 12 Jun 2019, the non-Tabcorp basket rose +1.03%. CBA.AX +2.86%, NAB.AX +3.81%, ANZ.AX +1.81%, BHP.AX +2.14%, RIO.AX +1.81%.",
+        "latency_seconds": 5.807,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ074",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "The non-Tabcorp basket fell +0.17%. +0.24%. +0.75%.",
+        "latency_seconds": 1.703,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ076",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "QBE.AX shares rose +35.57%. It ranks 1 of 17 non-Tabcorp.",
+        "latency_seconds": 1.768,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ080",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "The RBA cash-rate target in force was 0.10%. The article's sentiment is positive. The likely direction for ASX energy shares is up. The non-Tabcorp basket rose +2.37%.",
+        "latency_seconds": 3.165,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ084",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "No. The 2019 RBA decision records show 4 changes: 2 increases and 2 decreases. The non-Tabcorp ASX average return was +1.17%. The AFR corpus count for 2019 is 4,000.",
+        "latency_seconds": 3.747,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ090",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "No. The supplied datasets do not support a fully observed analysis of AFR news and ASX prices for the 2022-2023 RBA tightening cycle. The AFR dataset holds only 219,538 articles, leaving 66.5% of the cycle's news uncovered.",
+        "latency_seconds": 4.095,
+        "served_model": "ck20",
+        "long_prompt": false
+      }
+    ]
+  },
+  {
+    "arm": "ck40",
+    "condition": "clean",
+    "long_prompt": false,
+    "summary": {
+      "n_questions": 15,
+      "n_components": 37,
+      "points_max": 150.0,
+      "points_earned": 68.33,
+      "component_score_llm": 0.4555,
+      "component_score_strict": 0.4022,
+      "component_score_after_latency": 0.4555,
+      "disagreement_rate": 0.0541,
+      "hedged_answers": 0,
+      "by_difficulty": {
+        "easy": {
+          "score": 0.5,
+          "n": 4
+        },
+        "hard": {
+          "score": 0.3832,
+          "n": 4
+        },
+        "medium": {
+          "score": 0.4714,
+          "n": 7
+        }
+      },
+      "by_scope": {
+        "cross": {
+          "score": 0.2916,
+          "n": 8
+        },
+        "single": {
+          "score": 0.6429,
+          "n": 7
+        }
+      },
+      "secondary": {
+        "n": 15,
+        "hedge_rate": 0.0,
+        "hallucinated_number_rate": 0.2,
+        "leaked_reasoning_rate": 0.0,
+        "format_violation_rate": 0.0,
+        "empty_rate": 0.0,
+        "answer_words_p50": 22,
+        "answer_words_max": 33
+      },
+      "generation_seconds": 12.1,
+      "error_rate": 0.0,
+      "served_models": [
+        "ck40"
+      ]
+    },
+    "per_question": {
+      "MHQ001": 1.0,
+      "MHQ035": 0.0,
+      "MHQ040": 0.0,
+      "MHQ045": 1.0,
+      "MHQ049": 1.0,
+      "MHQ055": 1.0,
+      "MHQ058": 1.0,
+      "MHQ061": 0.5,
+      "MHQ067": 0.2,
+      "MHQ072": 0.0,
+      "MHQ074": 0.0,
+      "MHQ076": 0.0,
+      "MHQ080": 0.8,
+      "MHQ084": 0.0,
+      "MHQ090": 0.333
+    },
+    "per_question_strict": {
+      "MHQ001": 1.0,
+      "MHQ035": 0.0,
+      "MHQ040": 0.0,
+      "MHQ045": 1.0,
+      "MHQ049": 1.0,
+      "MHQ055": 1.0,
+      "MHQ058": 1.0,
+      "MHQ061": 0.0,
+      "MHQ067": 0.2,
+      "MHQ072": 0.0,
+      "MHQ074": 0.0,
+      "MHQ076": 0.0,
+      "MHQ080": 0.5,
+      "MHQ084": 0.0,
+      "MHQ090": 0.333
+    },
+    "secondary_rows": [
+      {
+        "qid": "MHQ001",
+        "arm": "ck40",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 79,
+        "answer_words": 14,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ035",
+        "arm": "ck40",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 92,
+        "answer_words": 15,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ040",
+        "arm": "ck40",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 153,
+        "answer_words": 30,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ045",
+        "arm": "ck40",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 56,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ049",
+        "arm": "ck40",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 84,
+        "answer_words": 13,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ055",
+        "arm": "ck40",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 140,
+        "answer_words": 30,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ058",
+        "arm": "ck40",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 135,
+        "answer_words": 22,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ061",
+        "arm": "ck40",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 45,
+        "answer_words": 9,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ067",
+        "arm": "ck40",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 133,
+        "answer_words": 22,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ072",
+        "arm": "ck40",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "1.50",
+          "+0.74",
+          "+1.29",
+          "+2.17",
+          "+0.74",
+          "+0.74",
+          "+0.74"
+        ],
+        "answer_chars": 147,
+        "answer_words": 25,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "MHQ074",
+        "arm": "ck40",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "+2.89",
+          "+0.23"
+        ],
+        "answer_chars": 80,
+        "answer_words": 14,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "MHQ076",
+        "arm": "ck40",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 130,
+        "answer_words": 20,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ080",
+        "arm": "ck40",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 171,
+        "answer_words": 27,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ084",
+        "arm": "ck40",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "5",
+          "50.5",
+          "-0.5",
+          "1.25",
+          "1,836",
+          "0.2"
+        ],
+        "answer_chars": 191,
+        "answer_words": 33,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "MHQ090",
+        "arm": "ck40",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 143,
+        "answer_words": 27,
+        "empty": false,
+        "hallucinated": false
+      }
+    ],
+    "generations": [
+      {
+        "qid": "MHQ001",
+        "arm": "ck40",
+        "condition": "clean",
+        "answer": "41 of the 175 decision records changed the rate. 20 increases and 21 decreases.",
+        "latency_seconds": 1.36,
+        "served_model": "ck40",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ035",
+        "arm": "ck40",
+        "condition": "clean",
+        "answer": "8 cuts occurred across the 2011-2013 easing period, reducing the target from 4.75% to 2.50%.",
+        "latency_seconds": 2.034,
+        "served_model": "ck40",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ040",
+        "arm": "ck40",
+        "condition": "clean",
+        "answer": "The ASX dataset covers 18 tickers starting 2 Jan 2015 and ending 30 Dec 2021. The RBA dataset covers 175 decision records from 3 Feb 2010 to 17 Jun 2026.",
+        "latency_seconds": 3.452,
+        "served_model": "ck40",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ045",
+        "arm": "ck40",
+        "condition": "clean",
+        "answer": "BHP.AX was best at +22.17%. AMP.AX was worst at -50.04%.",
+        "latency_seconds": 1.627,
+        "served_model": "ck40",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ049",
+        "arm": "ck40",
+        "condition": "clean",
+        "answer": "AMP.AX has the highest average daily volume at 11,635,671.71 shares per trading day.",
+        "latency_seconds": 1.751,
+        "served_model": "ck40",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ055",
+        "arm": "ck40",
+        "condition": "clean",
+        "answer": "1) AMP.AX -82.45%, 20 Mar 2015 to 17 Dec 2021; 2) AGL.AX -76.24%, 10 Apr 2017 to 16 Nov 2021; 3) QAN.AX -71.08%, 19 Dec 2019 to 19 Mar 2020.",
+        "latency_seconds": 5.354,
+        "served_model": "ck40",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ058",
+        "arm": "ck40",
+        "condition": "clean",
+        "answer": "The RBA cash-rate target in force was 0.10%. The article's sentiment is positive. The likely direction for ASX travel shares is upward.",
+        "latency_seconds": 2.362,
+        "served_model": "ck40",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ061",
+        "arm": "ck40",
+        "condition": "clean",
+        "answer": "The highest AFR counts were 1452 in May 2020.",
+        "latency_seconds": 1.217,
+        "served_model": "ck40",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ067",
+        "arm": "ck40",
+        "condition": "clean",
+        "answer": "The RBA cash-rate target in force was 0.10%. The article's sentiment is negative. The likely direction for the broad ASX is downward.",
+        "latency_seconds": 2.369,
+        "served_model": "ck40",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ072",
+        "arm": "ck40",
+        "condition": "clean",
+        "answer": "The RBA target moved to 1.50%. From 5 Jun 2019, the non-Tabcorp basket returned +0.74%. CBA +1.29%, NAB +2.17%, ANZ +0.74%, BHP +0.74%, RIO +0.74%.",
+        "latency_seconds": 4.682,
+        "served_model": "ck40",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ074",
+        "arm": "ck40",
+        "condition": "clean",
+        "answer": "1) +2.89%, 2) +0.23%, -2.17%. The non-Tabcorp basket fell 2.17% in the last cut.",
+        "latency_seconds": 2.724,
+        "served_model": "ck40",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ076",
+        "arm": "ck40",
+        "condition": "clean",
+        "answer": "There were 1,546 AFR records matching whole-word QBE in 2021. QBE.AX returned +35.57%. It ranked 1 of 17 non-Tabcorp constituents.",
+        "latency_seconds": 3.051,
+        "served_model": "ck40",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ080",
+        "arm": "ck40",
+        "condition": "clean",
+        "answer": "The RBA cash-rate target in force was 0.10%. The article's sentiment is positive. The likely direction for ASX energy shares is upward. The non-Tabcorp basket rose +2.37%.",
+        "latency_seconds": 3.167,
+        "served_model": "ck40",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ084",
+        "arm": "ck40",
+        "condition": "clean",
+        "answer": "The RBA cut 5 times for 50.5 points. The cumulative change was -0.5%. The target was 1.25%. The AFR contains 1,836 items matching the RBA pattern. The non-Tabcorp ASX average return was 0.2%.",
+        "latency_seconds": 4.294,
+        "served_model": "ck40",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ090",
+        "arm": "ck40",
+        "condition": "clean",
+        "answer": "No. The RBA dataset ends 17 Jun 2026, and the ASX data ends 30 Dec 2021, so the three datasets cannot cover the 2022-2023 RBA tightening cycle.",
+        "latency_seconds": 3.243,
+        "served_model": "ck40",
+        "long_prompt": false
+      }
+    ]
+  },
+  {
+    "arm": "ck60",
+    "condition": "clean",
+    "long_prompt": false,
+    "summary": {
+      "n_questions": 15,
+      "n_components": 37,
+      "points_max": 150.0,
+      "points_earned": 77.5,
+      "component_score_llm": 0.5167,
+      "component_score_strict": 0.4667,
+      "component_score_after_latency": 0.5167,
+      "disagreement_rate": 0.0811,
+      "hedged_answers": 0,
+      "by_difficulty": {
+        "easy": {
+          "score": 0.5,
+          "n": 4
+        },
+        "hard": {
+          "score": 0.6542,
+          "n": 4
+        },
+        "medium": {
+          "score": 0.4476,
+          "n": 7
+        }
+      },
+      "by_scope": {
+        "cross": {
+          "score": 0.4688,
+          "n": 8
+        },
+        "single": {
+          "score": 0.5714,
+          "n": 7
+        }
+      },
+      "secondary": {
+        "n": 15,
+        "hedge_rate": 0.0,
+        "hallucinated_number_rate": 0.2,
+        "leaked_reasoning_rate": 0.0,
+        "format_violation_rate": 0.0,
+        "empty_rate": 0.0,
+        "answer_words_p50": 22,
+        "answer_words_max": 34
+      },
+      "generation_seconds": 11.8,
+      "error_rate": 0.0,
+      "served_models": [
+        "ck60"
+      ]
+    },
+    "per_question": {
+      "MHQ001": 1.0,
+      "MHQ035": 0.0,
+      "MHQ040": 0.0,
+      "MHQ045": 1.0,
+      "MHQ049": 1.0,
+      "MHQ055": 1.0,
+      "MHQ058": 1.0,
+      "MHQ061": 0.0,
+      "MHQ067": 0.2,
+      "MHQ072": 0.333,
+      "MHQ074": 0.75,
+      "MHQ076": 0.0,
+      "MHQ080": 0.8,
+      "MHQ084": 0.0,
+      "MHQ090": 0.667
+    },
+    "per_question_strict": {
+      "MHQ001": 1.0,
+      "MHQ035": 0.0,
+      "MHQ040": 0.0,
+      "MHQ045": 1.0,
+      "MHQ049": 1.0,
+      "MHQ055": 1.0,
+      "MHQ058": 1.0,
+      "MHQ061": 0.0,
+      "MHQ067": 0.2,
+      "MHQ072": 0.333,
+      "MHQ074": 0.0,
+      "MHQ076": 0.0,
+      "MHQ080": 0.8,
+      "MHQ084": 0.0,
+      "MHQ090": 0.667
+    },
+    "secondary_rows": [
+      {
+        "qid": "MHQ001",
+        "arm": "ck60",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 79,
+        "answer_words": 14,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ035",
+        "arm": "ck60",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "-13"
+        ],
+        "answer_chars": 92,
+        "answer_words": 16,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "MHQ040",
+        "arm": "ck60",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 51,
+        "answer_words": 11,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ045",
+        "arm": "ck60",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 56,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ049",
+        "arm": "ck60",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 84,
+        "answer_words": 13,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ055",
+        "arm": "ck60",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 140,
+        "answer_words": 30,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ058",
+        "arm": "ck60",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 135,
+        "answer_words": 22,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ061",
+        "arm": "ck60",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 34,
+        "answer_words": 5,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ067",
+        "arm": "ck60",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 133,
+        "answer_words": 22,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ072",
+        "arm": "ck60",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "1.25",
+          "1.11",
+          "-0.82",
+          "-1.30",
+          "-1.42",
+          "-1.49",
+          "-1.51"
+        ],
+        "answer_chars": 141,
+        "answer_words": 25,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "MHQ074",
+        "arm": "ck60",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 118,
+        "answer_words": 27,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ076",
+        "arm": "ck60",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 113,
+        "answer_words": 16,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ080",
+        "arm": "ck60",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 197,
+        "answer_words": 34,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ084",
+        "arm": "ck60",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "0",
+          "0",
+          "1.50",
+          "1,836",
+          "5.60"
+        ],
+        "answer_chars": 186,
+        "answer_words": 30,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "MHQ090",
+        "arm": "ck60",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 156,
+        "answer_words": 27,
+        "empty": false,
+        "hallucinated": false
+      }
+    ],
+    "generations": [
+      {
+        "qid": "MHQ001",
+        "arm": "ck60",
+        "condition": "clean",
+        "answer": "41 of the 175 decision records changed the rate. 20 increases and 21 decreases.",
+        "latency_seconds": 1.358,
+        "served_model": "ck60",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ035",
+        "arm": "ck60",
+        "condition": "clean",
+        "answer": "8 cuts occurred across 2011-13. The target fell from 4.75% before the first change to 2.50%.",
+        "latency_seconds": 2.037,
+        "served_model": "ck60",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ040",
+        "arm": "ck60",
+        "condition": "clean",
+        "answer": "Covering 18 tickers from 2 Jan 2015 to 30 Dec 2021.",
+        "latency_seconds": 1.491,
+        "served_model": "ck60",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ045",
+        "arm": "ck60",
+        "condition": "clean",
+        "answer": "BHP.AX was best at +22.17%. AMP.AX was worst at -50.04%.",
+        "latency_seconds": 1.628,
+        "served_model": "ck60",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ049",
+        "arm": "ck60",
+        "condition": "clean",
+        "answer": "AMP.AX has the highest average daily volume at 11,635,671.71 shares per trading day.",
+        "latency_seconds": 1.764,
+        "served_model": "ck60",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ055",
+        "arm": "ck60",
+        "condition": "clean",
+        "answer": "1) AMP.AX -82.45%, 20 Mar 2015 to 17 Dec 2021; 2) AGL.AX -76.24%, 10 Apr 2017 to 16 Nov 2021; 3) QAN.AX -71.08%, 19 Dec 2019 to 19 Mar 2020.",
+        "latency_seconds": 5.356,
+        "served_model": "ck60",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ058",
+        "arm": "ck60",
+        "condition": "clean",
+        "answer": "The RBA cash-rate target in force was 0.10%. The article's sentiment is positive. The likely direction for ASX travel shares is upward.",
+        "latency_seconds": 2.365,
+        "served_model": "ck60",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ061",
+        "arm": "ck60",
+        "condition": "clean",
+        "answer": "They total 5,996 matching records.",
+        "latency_seconds": 0.814,
+        "served_model": "ck60",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ067",
+        "arm": "ck60",
+        "condition": "clean",
+        "answer": "The RBA cash-rate target in force was 0.10%. The article's sentiment is negative. The likely direction for the broad ASX is downward.",
+        "latency_seconds": 2.362,
+        "served_model": "ck60",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ072",
+        "arm": "ck60",
+        "condition": "clean",
+        "answer": "The RBA target moved to 1.25%. From 5 Jun 2019 the non-Tabcorp basket lost 1.11%. CBA -0.82%, NAB -1.30%, ANZ -1.42%, BHP -1.49%, RIO -1.51%.",
+        "latency_seconds": 4.616,
+        "served_model": "ck60",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ074",
+        "arm": "ck60",
+        "condition": "clean",
+        "answer": "From 5 Jun 2019 to 12 Jun 2019: +2.88%. From 3 Jul 2019 to 10 Jul 2019: +0.24%. From 2 Oct 2019 to 9 Oct 2019: -2.17%.",
+        "latency_seconds": 4.293,
+        "served_model": "ck60",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ076",
+        "arm": "ck60",
+        "condition": "clean",
+        "answer": "There were 1,546 matching records in 2021. QBE.AX returned +35.57%. It ranked 1st among non-Tabcorp constituents.",
+        "latency_seconds": 2.592,
+        "served_model": "ck60",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ080",
+        "arm": "ck60",
+        "condition": "clean",
+        "answer": "The RBA cash-rate target in force was 0.10%. The article's sentiment is positive. The likely direction for ASX energy shares is upward. From 30 Nov to 7 Dec 2020 the non-Tabcorp basket rose +2.37%.",
+        "latency_seconds": 3.918,
+        "served_model": "ck60",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ084",
+        "arm": "ck60",
+        "condition": "clean",
+        "answer": "The RBA cut count was 0 in 2019. The cumulative change was 0. The target was 1.50%. AFR contains 1,836 rate/RBA-pattern observations. The non-Tabcorp ASX average annual return was 5.60%.",
+        "latency_seconds": 4.081,
+        "served_model": "ck60",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ090",
+        "arm": "ck60",
+        "condition": "clean",
+        "answer": "No. The ASX data ends 30 Dec 2021 and the RBA dataset ends 17 Jun 2026. A three-dataset reaction analysis is therefore unsupported by the supplied evidence.",
+        "latency_seconds": 2.892,
+        "served_model": "ck60",
+        "long_prompt": false
+      }
+    ]
+  },
+  {
+    "arm": "ck80",
+    "condition": "clean",
+    "long_prompt": false,
+    "summary": {
+      "n_questions": 15,
+      "n_components": 37,
+      "points_max": 150.0,
+      "points_earned": 75.0,
+      "component_score_llm": 0.5,
+      "component_score_strict": 0.5,
+      "component_score_after_latency": 0.5,
+      "disagreement_rate": 0.0,
+      "hedged_answers": 0,
+      "by_difficulty": {
+        "easy": {
+          "score": 0.5,
+          "n": 4
+        },
+        "hard": {
+          "score": 0.4668,
+          "n": 4
+        },
+        "medium": {
+          "score": 0.519,
+          "n": 7
+        }
+      },
+      "by_scope": {
+        "cross": {
+          "score": 0.375,
+          "n": 8
+        },
+        "single": {
+          "score": 0.6429,
+          "n": 7
+        }
+      },
+      "secondary": {
+        "n": 15,
+        "hedge_rate": 0.0,
+        "hallucinated_number_rate": 0.13333333333333333,
+        "leaked_reasoning_rate": 0.0,
+        "format_violation_rate": 0.0,
+        "empty_rate": 0.0,
+        "answer_words_p50": 18,
+        "answer_words_max": 36
+      },
+      "generation_seconds": 11.4,
+      "error_rate": 0.0,
+      "served_models": [
+        "ck80"
+      ]
+    },
+    "per_question": {
+      "MHQ001": 1.0,
+      "MHQ035": 0.0,
+      "MHQ040": 0.0,
+      "MHQ045": 1.0,
+      "MHQ049": 1.0,
+      "MHQ055": 1.0,
+      "MHQ058": 1.0,
+      "MHQ061": 0.5,
+      "MHQ067": 0.2,
+      "MHQ072": 0.333,
+      "MHQ074": 0.0,
+      "MHQ076": 0.0,
+      "MHQ080": 0.8,
+      "MHQ084": 0.0,
+      "MHQ090": 0.667
+    },
+    "per_question_strict": {
+      "MHQ001": 1.0,
+      "MHQ035": 0.0,
+      "MHQ040": 0.0,
+      "MHQ045": 1.0,
+      "MHQ049": 1.0,
+      "MHQ055": 1.0,
+      "MHQ058": 1.0,
+      "MHQ061": 0.5,
+      "MHQ067": 0.2,
+      "MHQ072": 0.333,
+      "MHQ074": 0.0,
+      "MHQ076": 0.0,
+      "MHQ080": 0.8,
+      "MHQ084": 0.0,
+      "MHQ090": 0.667
+    },
+    "secondary_rows": [
+      {
+        "qid": "MHQ001",
+        "arm": "ck80",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 79,
+        "answer_words": 14,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ035",
+        "arm": "ck80",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 112,
+        "answer_words": 19,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ040",
+        "arm": "ck80",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 40,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ045",
+        "arm": "ck80",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 56,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ049",
+        "arm": "ck80",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 84,
+        "answer_words": 13,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ055",
+        "arm": "ck80",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 140,
+        "answer_words": 30,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ058",
+        "arm": "ck80",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 135,
+        "answer_words": 22,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ061",
+        "arm": "ck80",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 46,
+        "answer_words": 8,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ067",
+        "arm": "ck80",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 133,
+        "answer_words": 22,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ072",
+        "arm": "ck80",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "1.25",
+          "+0.60",
+          "+0.30",
+          "+0.40",
+          "+0.60",
+          "+0.50"
+        ],
+        "answer_chars": 90,
+        "answer_words": 16,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "MHQ074",
+        "arm": "ck80",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 121,
+        "answer_words": 18,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ076",
+        "arm": "ck80",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 120,
+        "answer_words": 18,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ080",
+        "arm": "ck80",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 199,
+        "answer_words": 34,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ084",
+        "arm": "ck80",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "0.00",
+          "0.00",
+          "1.50",
+          "1,991",
+          "-1.81"
+        ],
+        "answer_chars": 224,
+        "answer_words": 36,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "MHQ090",
+        "arm": "ck80",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 155,
+        "answer_words": 27,
+        "empty": false,
+        "hallucinated": false
+      }
+    ],
+    "generations": [
+      {
+        "qid": "MHQ001",
+        "arm": "ck80",
+        "condition": "clean",
+        "answer": "41 of the 175 decision records changed the rate. 20 increases and 21 decreases.",
+        "latency_seconds": 1.363,
+        "served_model": "ck80",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ035",
+        "arm": "ck80",
+        "condition": "clean",
+        "answer": "8 cuts occurred across the 2011-2013 easing period. The target fell from 4.75% before the first change to 2.50%.",
+        "latency_seconds": 2.312,
+        "served_model": "ck80",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ040",
+        "arm": "ck80",
+        "condition": "clean",
+        "answer": "ASX runs from 2 Jan 2015 to 30 Dec 2021.",
+        "latency_seconds": 1.363,
+        "served_model": "ck80",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ045",
+        "arm": "ck80",
+        "condition": "clean",
+        "answer": "BHP.AX was best at +22.17%. AMP.AX was worst at -50.04%.",
+        "latency_seconds": 1.7,
+        "served_model": "ck80",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ049",
+        "arm": "ck80",
+        "condition": "clean",
+        "answer": "AMP.AX has the highest average daily volume at 11,635,671.71 shares per trading day.",
+        "latency_seconds": 1.764,
+        "served_model": "ck80",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ055",
+        "arm": "ck80",
+        "condition": "clean",
+        "answer": "1) AMP.AX -82.45%, 20 Mar 2015 to 17 Dec 2021; 2) AGL.AX -76.24%, 10 Apr 2017 to 16 Nov 2021; 3) QAN.AX -71.08%, 19 Dec 2019 to 19 Mar 2020.",
+        "latency_seconds": 5.358,
+        "served_model": "ck80",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ058",
+        "arm": "ck80",
+        "condition": "clean",
+        "answer": "The RBA cash-rate target in force was 0.10%. The article's sentiment is positive. The likely direction for ASX travel shares is upward.",
+        "latency_seconds": 2.368,
+        "served_model": "ck80",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ061",
+        "arm": "ck80",
+        "condition": "clean",
+        "answer": "It peaked in 2020 with 1,452 matching records.",
+        "latency_seconds": 1.153,
+        "served_model": "ck80",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ067",
+        "arm": "ck80",
+        "condition": "clean",
+        "answer": "The RBA cash-rate target in force was 0.10%. The article's sentiment is negative. The likely direction for the broad ASX is downward.",
+        "latency_seconds": 2.366,
+        "served_model": "ck80",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ072",
+        "arm": "ck80",
+        "condition": "clean",
+        "answer": "The RBA target moved to 1.25%. CBA +0.60%, NAB +0.30%, ANZ +0.40%, BHP +0.60%, RIO +0.50%.",
+        "latency_seconds": 3.324,
+        "served_model": "ck80",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ074",
+        "arm": "ck80",
+        "condition": "clean",
+        "answer": "1. -0.25% from 2019-06-05 to 2019-06-12\n2. 0.2358% from 2019-07-03 to 2019-07-10\n3. -2.166% from 2019-10-02 to 2019-10-09",
+        "latency_seconds": 5.113,
+        "served_model": "ck80",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ076",
+        "arm": "ck80",
+        "condition": "clean",
+        "answer": "There are 1,546 AFR matching the whole-word pattern. QBE.AX returned +35.57%. It ranks 1 of 17 non-Tabcorp constituents.",
+        "latency_seconds": 2.734,
+        "served_model": "ck80",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ080",
+        "arm": "ck80",
+        "condition": "clean",
+        "answer": "The RBA cash-rate target in force was 0.10%. The article's sentiment is positive. The likely direction for ASX energy shares is upward. \n\nFrom 30 Nov to 7 Dec 2020 the non-Tabcorp basket rose +2.37%.",
+        "latency_seconds": 4.005,
+        "served_model": "ck80",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ084",
+        "arm": "ck80",
+        "condition": "clean",
+        "answer": "The RBA cut count was 0.00 in 2019. It remained unchanged throughout the year. The cumulative change was 0.00%. The target was 1.50%. AFR contains 1,991 matching records. The non-Tabcorp ASX average annual return was -1.81%.",
+        "latency_seconds": 4.615,
+        "served_model": "ck80",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ090",
+        "arm": "ck80",
+        "condition": "clean",
+        "answer": "No. The ASX data ends 30 Dec 2021 and the AFR corpus ends 29 Dec 2021. A three-dataset reaction analysis is therefore unsupported by the supplied evidence.",
+        "latency_seconds": 2.898,
+        "served_model": "ck80",
+        "long_prompt": false
+      }
+    ]
+  },
+  {
+    "arm": "ck100",
+    "condition": "clean",
+    "long_prompt": false,
+    "summary": {
+      "n_questions": 15,
+      "n_components": 37,
+      "points_max": 150.0,
+      "points_earned": 82.0,
+      "component_score_llm": 0.5467,
+      "component_score_strict": 0.5133,
+      "component_score_after_latency": 0.5467,
+      "disagreement_rate": 0.0541,
+      "hedged_answers": 0,
+      "by_difficulty": {
+        "easy": {
+          "score": 0.5,
+          "n": 4
+        },
+        "hard": {
+          "score": 0.5917,
+          "n": 4
+        },
+        "medium": {
+          "score": 0.5476,
+          "n": 7
+        }
+      },
+      "by_scope": {
+        "cross": {
+          "score": 0.4625,
+          "n": 8
+        },
+        "single": {
+          "score": 0.6429,
+          "n": 7
+        }
+      },
+      "secondary": {
+        "n": 15,
+        "hedge_rate": 0.0,
+        "hallucinated_number_rate": 0.13333333333333333,
+        "leaked_reasoning_rate": 0.0,
+        "format_violation_rate": 0.0,
+        "empty_rate": 0.0,
+        "answer_words_p50": 20,
+        "answer_words_max": 39
+      },
+      "generation_seconds": 11.3,
+      "error_rate": 0.0,
+      "served_models": [
+        "ck100"
+      ]
+    },
+    "per_question": {
+      "MHQ001": 1.0,
+      "MHQ035": 0.0,
+      "MHQ040": 0.0,
+      "MHQ045": 1.0,
+      "MHQ049": 1.0,
+      "MHQ055": 1.0,
+      "MHQ058": 1.0,
+      "MHQ061": 0.5,
+      "MHQ067": 0.2,
+      "MHQ072": 0.333,
+      "MHQ074": 0.5,
+      "MHQ076": 0.0,
+      "MHQ080": 1.0,
+      "MHQ084": 0.0,
+      "MHQ090": 0.667
+    },
+    "per_question_strict": {
+      "MHQ001": 1.0,
+      "MHQ035": 0.0,
+      "MHQ040": 0.0,
+      "MHQ045": 1.0,
+      "MHQ049": 1.0,
+      "MHQ055": 1.0,
+      "MHQ058": 1.0,
+      "MHQ061": 0.5,
+      "MHQ067": 0.2,
+      "MHQ072": 0.333,
+      "MHQ074": 0.0,
+      "MHQ076": 0.0,
+      "MHQ080": 1.0,
+      "MHQ084": 0.0,
+      "MHQ090": 0.667
+    },
+    "secondary_rows": [
+      {
+        "qid": "MHQ001",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 79,
+        "answer_words": 14,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ035",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 112,
+        "answer_words": 19,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ040",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 70,
+        "answer_words": 14,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ045",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 56,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ049",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 84,
+        "answer_words": 13,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ055",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 140,
+        "answer_words": 30,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ058",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 135,
+        "answer_words": 22,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ061",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 46,
+        "answer_words": 8,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ067",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 133,
+        "answer_words": 22,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ072",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "1.25",
+          "+2.82",
+          "+3.30",
+          "+1.96",
+          "+3.11",
+          "+2.18"
+        ],
+        "answer_chars": 90,
+        "answer_words": 16,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "MHQ074",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 108,
+        "answer_words": 25,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ076",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 131,
+        "answer_words": 20,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ080",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 237,
+        "answer_words": 39,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "MHQ084",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "-0.25",
+          "-0.25",
+          "1.25",
+          "9,150",
+          "-1.81"
+        ],
+        "answer_chars": 178,
+        "answer_words": 28,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "MHQ090",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 155,
+        "answer_words": 27,
+        "empty": false,
+        "hallucinated": false
+      }
+    ],
+    "generations": [
+      {
+        "qid": "MHQ001",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "41 of the 175 decision records changed the rate. 20 increases and 21 decreases.",
+        "latency_seconds": 1.358,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ035",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "8 cuts occurred across the 2011-2013 easing period. The target fell from 4.75% before the first change to 2.50%.",
+        "latency_seconds": 2.305,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ040",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "The ASX data runs 18 tickers. Covering 2 Feb 2015 through 30 Dec 2021.",
+        "latency_seconds": 1.831,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ045",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "BHP.AX was best at +22.17%. AMP.AX was worst at -50.04%.",
+        "latency_seconds": 1.626,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ049",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "AMP.AX has the highest average daily volume at 11,635,671.71 shares per trading day.",
+        "latency_seconds": 1.759,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ055",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "1) AMP.AX -82.45%, 20 Mar 2015 to 17 Dec 2021; 2) AGL.AX -76.24%, 10 Apr 2017 to 16 Nov 2021; 3) QAN.AX -71.08%, 19 Dec 2019 to 19 Mar 2020.",
+        "latency_seconds": 5.36,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ058",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "The RBA cash-rate target in force was 0.10%. The article's sentiment is positive. The likely direction for ASX travel shares is upward.",
+        "latency_seconds": 2.363,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ061",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "It peaked in 2020 with 1,452 matching records.",
+        "latency_seconds": 1.15,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ067",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "The RBA cash-rate target in force was 0.10%. The article's sentiment is negative. The likely direction for the broad ASX is downward.",
+        "latency_seconds": 2.364,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ072",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "The RBA target moved to 1.25%. CBA +2.82%, NAB +3.30%, ANZ +1.96%, BHP +3.11%, RIO +2.18%.",
+        "latency_seconds": 3.321,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ074",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "From 5 Jun 2019 to 12 Jun 2019: +2.88%. 3 Jul 2019 to 10 Jul 2019: -0.24%. 2 Oct 2019 to 9 Oct 2019: -2.17%.",
+        "latency_seconds": 4.16,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ076",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "There are 1,546 AFR records matching whole-word QBE in 2021. QBE.AX returned +35.57%. It ranked 1st of 17 non-Tabcorp constituents.",
+        "latency_seconds": 3.147,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ080",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "The RBA cash-rate target in force was 0.10%. The article's sentiment is positive. The likely direction for ASX energy shares is upward. \n\nFrom 30 Nov to 7 Dec 2020 the non-Tabcorp basket rose +2.37%. This confirms the positive direction.",
+        "latency_seconds": 4.412,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ084",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "The RBA cut count was -0.25. The cumulative change was -0.25 percentage points. The target was 1.25%. AFR contains 9,150 matching records. The non-Tabcorp ASX average was -1.81%.",
+        "latency_seconds": 3.865,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "MHQ090",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "No. The ASX data ends 30 Dec 2021 and the AFR corpus ends 29 Dec 2021. A three-dataset reaction analysis is therefore unsupported by the supplied evidence.",
+        "latency_seconds": 2.901,
+        "served_model": "ck100",
+        "long_prompt": false
+      }
+    ]
+  }
+]

@@ -108,9 +108,19 @@ def dataset_coverage() -> dict[str, Any]:
                 overlap_start and overlap_end and overlap_start <= overlap_end
             ),
         },
+        # This note is read at the exact moment the brain decides whether to
+        # keep gathering, so it has to say what to do next. The earlier wording
+        # stopped at "say so explicitly", and the brain duly reported the
+        # coverage gap and made no further call — losing the half of the
+        # question that the covering dataset could still answer.
         "note": (
             "Cross-dataset claims are only observable inside common_overlap. "
-            "Outside it, say so explicitly rather than inferring values."
+            "Outside it, say so explicitly rather than inferring values — but "
+            "do NOT stop here. A coverage gap is one finding, not the whole "
+            "answer: now query whichever dataset DOES cover the period for the "
+            "part of the question it can answer (e.g. if the period is after "
+            "the ASX/AFR end date, the RBA side is still fully observable, so "
+            "count and date those decisions)."
         ),
     }
 

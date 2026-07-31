@@ -202,31 +202,78 @@ Rule, pre-registered before results were seen:
    then **earlier step**.
 4. If the leader's edge over `ck20` sits inside the CI, take `ck20`.
 
-The 15 public questions are reported but never used as a tie-break — they stop
-being held-out the moment they select a checkpoint.
+**Outcome: `ck100` selected.** Applying the rule was awkward, because it assumed
+our `heldout19` set would be a valid accuracy instrument and it turned out not to
+be (see Evaluation). On the organizers' `public15` — the trustworthy set —
+`ck100` leads every fine-tuned arm: highest component score, highest strict
+score, lowest hallucination rate among FT arms, smallest gap to base. Note that
+*every* arm fails the disqualification clause under insufficient evidence, which
+is recorded as the headline limitation rather than worked around.
+
+The rule intended `public15` to be reported but never used as a tie-break, since
+it stops being held-out the moment it selects a checkpoint. That intent could not
+be honoured once the alternative set proved biased; we state this openly rather
+than present a selection the evidence does not support.
 
 ## Evaluation
 
-See [`results/base_vs_ft.md`](results/base_vs_ft.md) for the comparison and
-[`results/judge_calibration.md`](results/judge_calibration.md) for the judge.
+Full report: [`results/base_vs_ft.md`](results/base_vs_ft.md). Judge calibration:
+[`results/judge_calibration.md`](results/judge_calibration.md).
 
 The comparison replays byte-identical frozen tool evidence to every arm, so Qwen
 routing and tool execution are held fixed and the only variable is the synthesis
 weights. Four conditions — `clean`, `noisy`, `insufficient`, `shuffled` — because
-a clean-only result measures only the best case.
+a clean-only result measures only the best case. Deltas use a paired bootstrap
+over questions (not components, which correlate within a question) and an exact
+sign-flip permutation p-value; an interval crossing zero is marked as not
+demonstrated.
 
-Deltas are reported with a paired bootstrap over questions (not components,
-which correlate within a question) and an exact sign-flip permutation p-value. A
-delta whose 95% interval crosses zero is marked as not demonstrated.
+Results on `public15`, the organizers' own questions:
+
+| | base | `ck100` (selected) |
+|---|---:|---:|
+| component score | **57.1%** | 54.7% (−2.4%, CI crosses zero) |
+| strict (judge + tolerance) | 40.4% | **51.3%** (+10.9%, CI [+1.3, +26.4], 4W/0L/11T) |
+| hallucinated numbers | 6.7% | 13.3% |
+| median answer length | 26 words | **13 words** |
+| generation time | 24.3s | **11.3s** |
+| invented figures, no evidence | **0.0%** | 73.7% |
+
+**We do not claim an accuracy improvement.** Component score did not improve on
+the organizers' questions; every confidence interval crosses zero. What did
+improve, robustly: strict score (+10.9pp, never losing a question), latency
+(roughly halved), and format adherence to the reference answer style.
+
+Two caveats we found ourselves and report rather than bury:
+
+1. **Our own held-out set is a biased instrument.** `heldout19` shows +47pp, but
+   its `expected_fact` strings come from the same verbalizers that wrote the
+   training targets, so it rewards reproducing our phrasing rather than being
+   correct. It is valid for format control and robustness, not for accuracy.
+2. **The shortened system prompt handicaps the base arm** by 9.6pp on
+   `heldout19`. The 2×2 prompt control exists to catch exactly this; with each
+   arm on its better prompt the spread narrows substantially.
 
 ## Limitations
 
-- Trained on ~800 sequences. This is matched to the step budget, not to what the
-  task could absorb; more steps at 2e-5 would likely still be improving.
-- Sentiment labels are Qwen-teacher distillations, kept only when three rubric
-  phrasings agreed on the coarse class (244 of 390 candidates, 63%). The
-  discarded 37% are cases where the teacher was not self-consistent, so the model
-  has seen only the unambiguous end of that distribution.
+- **Invents figures when evidence is missing.** The most serious limitation. Under
+  the `insufficient` condition the fine-tuned arms fabricate confident numbers
+  73.7% of the time where base correctly declines 100% of the time. Cause is
+  corpus balance — refusal is 5.1% of rows and empty-trace negatives ~10
+  examples, so "emit a confident terse answer" dominated. The fix is a data
+  change (raise the insufficient share to ~20% via `TARGET_MIX`), not a
+  hyperparameter change; it was not applied here for time reasons.
+- **Drops components on multi-part questions.** MHQ061 asks for peak year and
+  peak month; the model answers only the year. The sampled-component-subset
+  design was meant to prevent this and only partly did — many 1-component
+  training examples appear to have taught brevity as a prior.
+- **Undertrained.** 100 steps at effective batch 8 is 1.01 epochs over 790 rows,
+  at half the reference learning rate. The base-vs-FT gap closes monotonically
+  from ck20 to ck100, so the run stopped while still improving. Nothing in the
+  evidence indicates overfitting.
+- Sentiment labels are Qwen-teacher distillations kept only on coarse-class
+  unanimity across three rubric phrasings (244 of 390, 63%). The model has seen
+  only the unambiguous end of that distribution.
 - Held-out axes are tickers `SUN.AX`/`TPG.AX`/`CMW.AX` and year 2017. Performance
   on entities outside the supplied datasets is untested and out of scope.
 - The adapter is trained for this agent's exact prompt format. It is not a

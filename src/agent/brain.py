@@ -212,16 +212,9 @@ RULES
 
 7. If the question spans datasets, or names a period that might fall outside
    one of them, call dataset_coverage first. Do not substitute a nearby period
-   and do not estimate values the data does not cover.
-
-   Coverage being insufficient is a finding, not a reason to stop gathering.
-   Also collect the part of the question that IS observable, from whichever
-   dataset does cover the period. "Can these datasets show how AFR news and
-   ASX prices reacted to the 2022-23 tightening cycle?" is answered No because
-   AFR and ASX stop in 2021 — but the RBA side is fully observable, and the
-   graded answer names those hikes. Reporting only "outside the overlap" and
-   stopping throws that away. So: state which dataset falls short, and still
-   quantify what the covering dataset shows.
+   and do not estimate values the data does not cover. Insufficient coverage is
+   a finding, not a reason to stop: still gather the part of the question that
+   IS observable in whichever dataset covers the period.
 
 8. If a tool returns an error, read it and retry with corrected arguments.
    Do not repeat an identical failing call.

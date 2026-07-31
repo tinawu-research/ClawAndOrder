@@ -1,0 +1,1493 @@
+[
+  {
+    "arm": "base",
+    "condition": "clean",
+    "long_prompt": false,
+    "summary": {
+      "n_questions": 19,
+      "n_components": 31,
+      "points_max": 190.0,
+      "points_earned": 153.33,
+      "component_score_llm": 0.807,
+      "component_score_strict": 0.4737,
+      "component_score_after_latency": 0.807,
+      "disagreement_rate": 0.3548,
+      "hedged_answers": 0,
+      "by_difficulty": {
+        "hard": {
+          "score": 0.7917,
+          "n": 4
+        },
+        "medium": {
+          "score": 0.8111,
+          "n": 15
+        }
+      },
+      "by_scope": {
+        "multi": {
+          "score": 0.7917,
+          "n": 4
+        },
+        "single": {
+          "score": 0.8111,
+          "n": 15
+        }
+      },
+      "secondary": {
+        "n": 19,
+        "hedge_rate": 0.0,
+        "hallucinated_number_rate": 0.10526315789473684,
+        "leaked_reasoning_rate": 0.0,
+        "format_violation_rate": 0.0,
+        "empty_rate": 0.0,
+        "answer_words_p50": 26,
+        "answer_words_max": 45
+      },
+      "generation_seconds": 15.6,
+      "error_rate": 0.0,
+      "served_models": [
+        "nemotron-8b-finance"
+      ]
+    },
+    "per_question": {
+      "HO001": 1.0,
+      "HO002": 0.6666666666666666,
+      "HO003": 1.0,
+      "HO004": 0.0,
+      "HO005": 1.0,
+      "HO006": 0.5,
+      "HO007": 1.0,
+      "HO008": 1.0,
+      "HO009": 1.0,
+      "HO010": 1.0,
+      "HO011": 0.0,
+      "HO012": 0.6666666666666666,
+      "HO013": 1.0,
+      "HO014": 1.0,
+      "HO015": 0.5,
+      "HO016": 1.0,
+      "HO017": 1.0,
+      "HO018": 1.0,
+      "HO019": 1.0
+    },
+    "secondary_rows": [
+      {
+        "qid": "HO001",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 73,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO002",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 209,
+        "answer_words": 34,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO003",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 163,
+        "answer_words": 28,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO004",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "202,300"
+        ],
+        "answer_chars": 69,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "HO005",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 171,
+        "answer_words": 28,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO006",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "5.1",
+          "3.5"
+        ],
+        "answer_chars": 195,
+        "answer_words": 32,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "HO007",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 145,
+        "answer_words": 26,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO008",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 105,
+        "answer_words": 17,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO009",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 138,
+        "answer_words": 23,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO010",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 136,
+        "answer_words": 26,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO011",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 293,
+        "answer_words": 45,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO012",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 222,
+        "answer_words": 33,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO013",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 74,
+        "answer_words": 14,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO014",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 108,
+        "answer_words": 17,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO015",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 100,
+        "answer_words": 18,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO016",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 74,
+        "answer_words": 14,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO017",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 100,
+        "answer_words": 18,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO018",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 145,
+        "answer_words": 26,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO019",
+        "arm": "base",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 152,
+        "answer_words": 29,
+        "empty": false,
+        "hallucinated": false
+      }
+    ],
+    "generations": [
+      {
+        "qid": "HO001",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The once-per-record whole-word superannuation AFR count for 2017 is 1326.",
+        "latency_seconds": 1.711,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO002",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The worst performer for the 2017 report, excluding Tabcorp, is QBE.AX with a return_pct of -10.8379. The basket average return_pct for 2017 is 11.1927. CMW.AX ranked 7th in the annual returns ranking for 2017.",
+        "latency_seconds": 4.689,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO003",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The RBA rate activity for 2017 showed no changes, with a year-end target of 1.5. The best-performing non-Tabcorp ticker in 2017 was QAN.AX with a return of 53.85%.",
+        "latency_seconds": 3.82,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO004",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The once-per-record whole-word housing AFR count for 2017 is 202,300.",
+        "latency_seconds": 1.645,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO005",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The best performer for the 2017 report, excluding Tabcorp, is QAN.AX with a return percentage of 53.85%. The worst performer is QBE.AX with a return percentage of -10.84%.",
+        "latency_seconds": 3.508,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO006",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The RBA rate activity for 2017 showed no changes, with an average of 5.1% monthly returns, and the year-end target remained at 3.5%. The non-Tabcorp ASX basket's average annual return was 11.19%.",
+        "latency_seconds": 4.11,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO007",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The year with the highest count is 2016 with 2308 instances, and the overall total count of the term \"superannuation\" in the AFR corpus is 11513.",
+        "latency_seconds": 2.959,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO008",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The best performer for the 2017 report, excluding Tabcorp, is QAN.AX with a return percentage of 53.8549.",
+        "latency_seconds": 2.425,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO009",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The AFR cash-rate pattern count for 2017 is 951. The best-performing non-Tabcorp ticker in 2017 is QAN.AX with an annual return of 53.85%.",
+        "latency_seconds": 3.29,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO010",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The year with the highest AFR counts is 2016 with 2481 counts. The month with the highest AFR counts in 2016 is October with 345 counts.",
+        "latency_seconds": 2.834,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO011",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The ranked first date is 2017-01-03 and the last date is 2017-12-29. In the 2017 annual report, excluding Tabcorp (TCL.AX), QAN.AX ranked first with a return_pct of 53.8549. The worst performer was QBE.AX with a return_pct of -10.8379. The basket_average_return_pct for the period was 11.1927.",
+        "latency_seconds": 6.574,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO012",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "Answer: For 2017, the RBA rate activity had 0 changes, increases, and decreases. The non-Tabcorp ASX basket's average annual return was 11.1927%. The best-performing non-Tabcorp ticker was QAN.AX with a return of 53.8549%.",
+        "latency_seconds": 4.634,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO013",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The year with the highest count is 2016, with a total of 2308 occurrences.",
+        "latency_seconds": 1.58,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO014",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The worst performer in the 2017 report, excluding Tabcorp (TCL.AX), is QBE.AX with a return_pct of -10.8379.",
+        "latency_seconds": 2.56,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO015",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The year with the highest count is 2016 with 2481 occurrences, and the overall total count is 12979.",
+        "latency_seconds": 1.918,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO016",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The year with the highest count is 2016, with a total of 2481 occurrences.",
+        "latency_seconds": 1.501,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO017",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The year with the highest count is 2016 with 2481 occurrences, and the overall total count is 12979.",
+        "latency_seconds": 1.926,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO018",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The year with the highest count is 2016 with 2308 instances, and the overall total count of the term \"superannuation\" in the AFR corpus is 11513.",
+        "latency_seconds": 2.749,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO019",
+        "arm": "nemotron-8b-finance",
+        "condition": "clean",
+        "answer": "The year with the highest AFR counts is 2016 with 2308 counts, and the month with the highest AFR counts in that year is September 2016 with 330 counts.",
+        "latency_seconds": 2.847,
+        "served_model": "nemotron-8b-finance",
+        "long_prompt": false
+      }
+    ]
+  },
+  {
+    "arm": "ck20",
+    "condition": "clean",
+    "long_prompt": false,
+    "summary": {
+      "n_questions": 19,
+      "n_components": 31,
+      "points_max": 190.0,
+      "points_earned": 146.67,
+      "component_score_llm": 0.7719,
+      "component_score_strict": 0.693,
+      "component_score_after_latency": 0.7719,
+      "disagreement_rate": 0.129,
+      "hedged_answers": 0,
+      "by_difficulty": {
+        "hard": {
+          "score": 1.0,
+          "n": 4
+        },
+        "medium": {
+          "score": 0.7111,
+          "n": 15
+        }
+      },
+      "by_scope": {
+        "multi": {
+          "score": 1.0,
+          "n": 4
+        },
+        "single": {
+          "score": 0.7111,
+          "n": 15
+        }
+      },
+      "secondary": {
+        "n": 19,
+        "hedge_rate": 0.0,
+        "hallucinated_number_rate": 0.05263157894736842,
+        "leaked_reasoning_rate": 0.0,
+        "format_violation_rate": 0.0,
+        "empty_rate": 0.0,
+        "answer_words_p50": 11,
+        "answer_words_max": 21
+      },
+      "generation_seconds": 10.4,
+      "error_rate": 0.0,
+      "served_models": [
+        "ck20"
+      ]
+    },
+    "per_question": {
+      "HO001": 0.0,
+      "HO002": 0.6666666666666666,
+      "HO003": 1.0,
+      "HO004": 1.0,
+      "HO005": 1.0,
+      "HO006": 1.0,
+      "HO007": 1.0,
+      "HO008": 1.0,
+      "HO009": 1.0,
+      "HO010": 0.0,
+      "HO011": 0.0,
+      "HO012": 1.0,
+      "HO013": 1.0,
+      "HO014": 1.0,
+      "HO015": 1.0,
+      "HO016": 1.0,
+      "HO017": 1.0,
+      "HO018": 1.0,
+      "HO019": 0.0
+    },
+    "secondary_rows": [
+      {
+        "qid": "HO001",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "1,427"
+        ],
+        "answer_chars": 71,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "HO002",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 87,
+        "answer_words": 16,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO003",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 56,
+        "answer_words": 11,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO004",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 99,
+        "answer_words": 14,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO005",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 51,
+        "answer_words": 9,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO006",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 81,
+        "answer_words": 14,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO007",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 105,
+        "answer_words": 16,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO008",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 22,
+        "answer_words": 4,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO009",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 98,
+        "answer_words": 17,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO010",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 55,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO011",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 41,
+        "answer_words": 7,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO012",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 104,
+        "answer_words": 18,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO013",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 45,
+        "answer_words": 8,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO014",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 28,
+        "answer_words": 5,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO015",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 127,
+        "answer_words": 21,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO016",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 48,
+        "answer_words": 9,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO017",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 127,
+        "answer_words": 21,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO018",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 105,
+        "answer_words": 16,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO019",
+        "arm": "ck20",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 41,
+        "answer_words": 8,
+        "empty": false,
+        "hallucinated": false
+      }
+    ],
+    "generations": [
+      {
+        "qid": "HO001",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "1,427 AFR records matched the whole-word superannuation corpus in 2017.",
+        "latency_seconds": 1.679,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO002",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "1) worst performer was QBE.AX at -10.84%, 2) average return 11.19%, 3) ranked 17 of 17.",
+        "latency_seconds": 2.993,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO003",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "The RBA held the target at 1.50%. QAN.AX led at +53.85%.",
+        "latency_seconds": 2.04,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO004",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "No. The AFR corpus holds 219,538 articles. The supplied pattern \\bhousing\\b matched 2,023 articles.",
+        "latency_seconds": 2.423,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO005",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "QAN.AX led at +53.85%, QBE.AX was worst at -10.84%.",
+        "latency_seconds": 2.078,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO006",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "The RBA held the target at 1.50%. The non-Tabcorp ASX average return was +11.19%.",
+        "latency_seconds": 2.422,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO007",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "The highest count is 2,308 for 2016. The total AFR records matching whole-word superannuation are 11,513.",
+        "latency_seconds": 2.603,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO008",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "QAN.AX led at +53.85%.",
+        "latency_seconds": 1.138,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO009",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "The AFR cash-rate pattern count for 2017 is 951. The best non-Tabcorp ticker is QAN.AX at +53.85%.",
+        "latency_seconds": 2.915,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO010",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "2016 had the highest AFR housing search count at 2,481.",
+        "latency_seconds": 1.555,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO011",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "CMW.AX returned +10.55%. It was 7th best.",
+        "latency_seconds": 1.578,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO012",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "The RBA held the target at 1.50%. The non-Tabcorp ASX average return was +11.19%. QAN.AX led at +53.85%.",
+        "latency_seconds": 3.036,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO013",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "2016 had the highest count at 2,308 articles.",
+        "latency_seconds": 1.22,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO014",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "QBE.AX was worst at -10.84%.",
+        "latency_seconds": 1.154,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO015",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "The highest count is 2016 at 2,481 articles. The total number of AFR articles matching the whole-word housing filter is 12,979.",
+        "latency_seconds": 2.52,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO016",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "2016 had the highest count at 2,481 AFR records.",
+        "latency_seconds": 1.225,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO017",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "The highest count is 2016 at 2,481 articles. The total number of AFR articles matching the whole-word housing filter is 12,979.",
+        "latency_seconds": 2.463,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO018",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "The highest count is 2,308 for 2016. The total AFR records matching whole-word superannuation are 11,513.",
+        "latency_seconds": 2.292,
+        "served_model": "ck20",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO019",
+        "arm": "ck20",
+        "condition": "clean",
+        "answer": "2016 had the highest AFR counts at 2,308.",
+        "latency_seconds": 1.194,
+        "served_model": "ck20",
+        "long_prompt": false
+      }
+    ]
+  },
+  {
+    "arm": "ck100",
+    "condition": "clean",
+    "long_prompt": false,
+    "summary": {
+      "n_questions": 19,
+      "n_components": 31,
+      "points_max": 190.0,
+      "points_earned": 170.0,
+      "component_score_llm": 0.8947,
+      "component_score_strict": 0.8947,
+      "component_score_after_latency": 0.8947,
+      "disagreement_rate": 0.0323,
+      "hedged_answers": 0,
+      "by_difficulty": {
+        "hard": {
+          "score": 1.0,
+          "n": 4
+        },
+        "medium": {
+          "score": 0.8667,
+          "n": 15
+        }
+      },
+      "by_scope": {
+        "multi": {
+          "score": 1.0,
+          "n": 4
+        },
+        "single": {
+          "score": 0.8667,
+          "n": 15
+        }
+      },
+      "secondary": {
+        "n": 19,
+        "hedge_rate": 0.0,
+        "hallucinated_number_rate": 0.05263157894736842,
+        "leaked_reasoning_rate": 0.0,
+        "format_violation_rate": 0.0,
+        "empty_rate": 0.0,
+        "answer_words_p50": 13,
+        "answer_words_max": 20
+      },
+      "generation_seconds": 10.3,
+      "error_rate": 0.0,
+      "served_models": [
+        "ck100"
+      ]
+    },
+    "per_question": {
+      "HO001": 1.0,
+      "HO002": 1.0,
+      "HO003": 1.0,
+      "HO004": 0.0,
+      "HO005": 1.0,
+      "HO006": 1.0,
+      "HO007": 1.0,
+      "HO008": 1.0,
+      "HO009": 1.0,
+      "HO010": 1.0,
+      "HO011": 1.0,
+      "HO012": 1.0,
+      "HO013": 1.0,
+      "HO014": 1.0,
+      "HO015": 1.0,
+      "HO016": 1.0,
+      "HO017": 1.0,
+      "HO018": 1.0,
+      "HO019": 0.0
+    },
+    "secondary_rows": [
+      {
+        "qid": "HO001",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 71,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO002",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 111,
+        "answer_words": 17,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO003",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 65,
+        "answer_words": 13,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO004",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [
+          "1,963"
+        ],
+        "answer_chars": 64,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": true
+      },
+      {
+        "qid": "HO005",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 56,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO006",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 90,
+        "answer_words": 16,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO007",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 97,
+        "answer_words": 16,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO008",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 27,
+        "answer_words": 5,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO009",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 62,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO010",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 107,
+        "answer_words": 20,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO011",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 41,
+        "answer_words": 7,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO012",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 113,
+        "answer_words": 20,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO013",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 46,
+        "answer_words": 8,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO014",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 48,
+        "answer_words": 10,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO015",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 97,
+        "answer_words": 16,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO016",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 46,
+        "answer_words": 8,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO017",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 97,
+        "answer_words": 16,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO018",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 97,
+        "answer_words": 16,
+        "empty": false,
+        "hallucinated": false
+      },
+      {
+        "qid": "HO019",
+        "arm": "ck100",
+        "condition": "clean",
+        "hedged": false,
+        "leaked_reasoning": false,
+        "format_violation": false,
+        "hallucinated_numbers": [],
+        "answer_chars": 83,
+        "answer_words": 15,
+        "empty": false,
+        "hallucinated": false
+      }
+    ],
+    "generations": [
+      {
+        "qid": "HO001",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "There are 1,326 AFR records matching whole-word superannuation in 2017.",
+        "latency_seconds": 1.765,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO002",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "QBE.AX was worst at -10.84%. The non-Tabcorp basket averaged +11.19%. CMW.AX returned +10.55%, ranking 7 of 17.",
+        "latency_seconds": 3.396,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO003",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "The RBA held the target at 1.50% all year. QAN.AX led at +53.85%.",
+        "latency_seconds": 2.357,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO004",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "There are 1,963 AFR records matching whole-word housing in 2017.",
+        "latency_seconds": 1.614,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO005",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "QAN.AX was best at +53.85%. QBE.AX was worst at -10.84%.",
+        "latency_seconds": 2.139,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO006",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "The RBA held the target at 1.50% all year. The non-Tabcorp ASX average return was +11.19%.",
+        "latency_seconds": 2.633,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO007",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "It peaked in 2016 with 2,308 matching records. The corpus holds 11,513 matching records in total.",
+        "latency_seconds": 2.176,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO008",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "QAN.AX was best at +53.85%.",
+        "latency_seconds": 1.265,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO009",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "AFR contains 951 matching records. QAN.AX was best at +53.85%.",
+        "latency_seconds": 1.925,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO010",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "It peaked in 2016 with 2,481 matching records. The highest count in a single month was 345 in October 2016.",
+        "latency_seconds": 2.597,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO011",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "CMW.AX returned +10.55%, ranking 7 of 17.",
+        "latency_seconds": 1.633,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO012",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "The RBA held the target at 1.50% all year. The non-Tabcorp ASX average return was +11.19%. QAN.AX led at +53.85%.",
+        "latency_seconds": 3.321,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO013",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "It peaked in 2016 with 2,308 matching records.",
+        "latency_seconds": 1.248,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO014",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "QBE.AX was worst at -10.84%. It ranked 17 of 17.",
+        "latency_seconds": 1.68,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO015",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "It peaked in 2016 with 2,481 matching records. The corpus holds 12,979 matching records in total.",
+        "latency_seconds": 2.056,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO016",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "It peaked in 2016 with 2,481 matching records.",
+        "latency_seconds": 1.193,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO017",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "It peaked in 2016 with 2,481 matching records. The corpus holds 12,979 matching records in total.",
+        "latency_seconds": 2.001,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO018",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "It peaked in 2016 with 2,308 matching records. The corpus holds 11,513 matching records in total.",
+        "latency_seconds": 1.997,
+        "served_model": "ck100",
+        "long_prompt": false
+      },
+      {
+        "qid": "HO019",
+        "arm": "ck100",
+        "condition": "clean",
+        "answer": "It peaked in 2016 with 2,308 matching records. The highest count was 2,308 in 2016.",
+        "latency_seconds": 2.07,
+        "served_model": "ck100",
+        "long_prompt": false
+      }
+    ]
+  }
+]

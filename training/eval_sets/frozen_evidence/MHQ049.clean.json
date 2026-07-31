@@ -1,0 +1,30 @@
+{
+  "qid": "MHQ049",
+  "prompt": "Excluding Tabcorp, which ticker has the highest average daily volume over the full sample?",
+  "difficulty": "medium",
+  "datasets": [
+    "ASX"
+  ],
+  "dataset_scope": "single",
+  "tool_trace": [
+    {
+      "tool": "query_data",
+      "args": {
+        "dataset": "asx",
+        "metric": "avg_volume",
+        "exclude_tickers": [
+          "TAH.AX"
+        ]
+      },
+      "result": "{\"metric\": \"avg_volume\", \"tickers_used\": [\"AGL.AX\", \"AMP.AX\", \"ANZ.AX\", \"AZJ.AX\", \"BHP.AX\", \"CBA.AX\", \"CMW.AX\", \"GPT.AX\", \"IAG.AX\", \"NAB.AX\", \"QAN.AX\", \"QBE.AX\", \"RIO.AX\", \"SGP.AX\", \"SUN.AX\", \"TCL.AX\", \"TPG.AX\"], \"ranked\": [{\"ticker\": \"AMP.AX\", \"avg_daily_volume\": 11635671.71, \"trading_days\": 1774, \"rank\": 1}, {\"ticker\": \"QAN.AX\", \"avg_daily_volume\": 9585960.83, \"trading_days\": 1774, \"rank\": 2}, {\"ticker\": \"BHP.AX\", \"avg_daily_volume\": 8986996.14, \"trading_days\": 1774, \"rank\": 3}, {\"ticker\": \"SGP.AX\", \"avg_daily_volume\": 7732021.03, \"trading_days\": 1774, \"rank\": 4}, {\"ticker\": \"AZJ.AX\", \"avg_daily_volume\": 7226183.35, \"trading_days\": 1774, \"rank\": 5}, {\"ticker\": \"ANZ.AX\", \"avg_daily_volume\": 6394244.77, \"trading_days\": 1774, \"rank\": 6}, {\"ticker\": \"NAB.AX\", \"avg_daily_volume\": 6314939.81, \"trading_days\": 1774, \"rank\": 7}, {\"ticker\": \"IAG.AX\", \"avg_daily_volume\": 6213509.96, \"trading_days\": 1774, \"rank\": 8}, {\"ticker\": \"GPT.AX\", \"avg_daily_volume\": 5886983.29, \"trading_days\": 1774, \"rank\": 9}, {\"ticker\": \"TCL.AX\", \"avg_daily_volume\": 5197565.66, \"trading_days\": 1774, \"rank\": 10}, {\"ticker\": \"QBE.AX\", \"avg_daily_volume\": 4846211.1, \"trading_days\": 1774, \"rank\": 11}, {\"ticker\": \"CMW.AX\", \"avg_daily_volume\": 4536898.82, \"trading_days\": 1774, \"rank\": 12}, {\"ticker\": \"CBA.AX\", \"avg_daily_volume\": 3123979.3, \"trading_days\": 1774, \"rank\": 13}, {\"ticker\": \"SUN.AX\", \"avg_daily_volume\": 2889976.91, \"trading_days\": 1774, \"rank\": 14}, {\"ticker\": \"AGL.AX\", \"avg_daily_volume\": 2429828.0, \"trading_days\": 1774, \"rank\": 15}, {\"ticker\": \"RIO.AX\", \"avg_daily_volume\": 1978049.58, \"trading_days\": 1774, \"rank\": 16}, {\"ticker\": \"TPG.AX\", \"avg_daily_volume\": 1762158.26, \"trading_days\": 1774, \"rank\": 17}], \"highest\": {\"ticker\": \"AMP.AX\", \"avg_daily_volume\": 11635671.71, \"trading_days\": 1774, \"rank\": 1}, \"lowest\": {\"ticker\": \"TPG.AX\", \"avg_daily_volume\": 1762158.26, \"trading_days\": 1774, \"rank\": 17}, \"dataset\": \"asx\"}"
+    }
+  ],
+  "capture": {
+    "latency_seconds": 12.98,
+    "planning_seconds": 12.978,
+    "brain_calls": 2,
+    "tool_calls": 1,
+    "tool_failures": 0,
+    "notes": []
+  }
+}

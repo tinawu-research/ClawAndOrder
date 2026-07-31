@@ -1,0 +1,58 @@
+{
+  "qid": "MHQ076",
+  "prompt": "For 2021, report the once-per-record whole-word QBE AFR count and QBE.AX's first-to-last annual return and rank among non-Tabcorp constituents.",
+  "difficulty": "easy",
+  "datasets": [
+    "ASX",
+    "AFR"
+  ],
+  "dataset_scope": "cross",
+  "tool_trace": [
+    {
+      "tool": "query_data",
+      "args": {
+        "dataset": "afr",
+        "metric": "count_by_year",
+        "terms": [
+          "QBE"
+        ],
+        "year": 2021
+      },
+      "result": "{\"metric\": \"count_by_year\", \"pattern\": \"\\\\bQBE\\\\b\", \"by_year\": {\"2015\": 155, \"2016\": 152, \"2017\": 148, \"2018\": 151, \"2019\": 136, \"2020\": 435, \"2021\": 369}, \"total\": 1546, \"peak_year\": 2020, \"peak_year_count\": 435, \"dataset\": \"afr\", \"ignored_arguments\": [\"year\"]}"
+    },
+    {
+      "tool": "query_data",
+      "args": {
+        "dataset": "asx",
+        "metric": "annual_return",
+        "tickers": [
+          "QBE.AX"
+        ],
+        "year": 2021
+      },
+      "result": "{\"metric\": \"annual_return\", \"year\": 2021, \"tickers_used\": [\"QBE.AX\"], \"results\": [{\"ticker\": \"QBE.AX\", \"return_pct\": 35.5657, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\"}], \"basket_average_return_pct\": 35.5657, \"dataset\": \"asx\"}"
+    },
+    {
+      "tool": "query_data",
+      "args": {
+        "dataset": "asx",
+        "metric": "rank_annual_returns",
+        "year": 2021,
+        "exclude_tickers": [
+          "TAH.AX"
+        ]
+      },
+      "result": "{\"metric\": \"rank_annual_returns\", \"year\": 2021, \"tickers_used\": [\"AGL.AX\", \"AMP.AX\", \"ANZ.AX\", \"AZJ.AX\", \"BHP.AX\", \"CBA.AX\", \"CMW.AX\", \"GPT.AX\", \"IAG.AX\", \"NAB.AX\", \"QAN.AX\", \"QBE.AX\", \"RIO.AX\", \"SGP.AX\", \"SUN.AX\", \"TCL.AX\", \"TPG.AX\"], \"ranked\": [{\"ticker\": \"QBE.AX\", \"return_pct\": 35.5657, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 1}, {\"ticker\": \"NAB.AX\", \"return_pct\": 33.8268, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 2}, {\"ticker\": \"GPT.AX\", \"return_pct\": 27.9516, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 3}, {\"ticker\": \"ANZ.AX\", \"return_pct\": 27.0474, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 4}, {\"ticker\": \"CBA.AX\", \"return_pct\": 26.7381, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 5}, {\"ticker\": \"SUN.AX\", \"return_pct\": 21.7857, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 6}, {\"ticker\": \"SGP.AX\", \"return_pct\": 7.9687, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 7}, {\"ticker\": \"CMW.AX\", \"return_pct\": 7.895, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 8}, {\"ticker\": \"BHP.AX\", \"return_pct\": 6.9219, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 9}, {\"ticker\": \"TCL.AX\", \"return_pct\": 4.0786, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 10}, {\"ticker\": \"QAN.AX\", \"return_pct\": 1.4257, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 11}, {\"ticker\": \"AZJ.AX\", \"return_pct\": -2.4028, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 12}, {\"ticker\": \"RIO.AX\", \"return_pct\": -4.512, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 13}, {\"ticker\": \"IAG.AX\", \"return_pct\": -4.9726, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 14}, {\"ticker\": \"TPG.AX\", \"return_pct\": -15.0898, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 15}, {\"ticker\": \"AMP.AX\", \"return_pct\": -35.8974, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 16}, {\"ticker\": \"AGL.AX\", \"return_pct\": -44.3841, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 17}], \"best\": {\"ticker\": \"QBE.AX\", \"return_pct\": 35.5657, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 1}, \"worst\": {\"ticker\": \"AGL.AX\", \"return_pct\": -44.3841, \"first_date\": \"2021-01-04\", \"last_date\": \"2021-12-30\", \"rank\": 17}, \"basket_average_return_pct\": 5.5263, \"dataset\": \"asx\"}"
+    }
+  ],
+  "capture": {
+    "latency_seconds": 25.03,
+    "planning_seconds": 25.032,
+    "brain_calls": 1,
+    "tool_calls": 3,
+    "tool_failures": 0,
+    "notes": [
+      "brain unavailable: brain returned HTTP 400: {\"error\":{\"message\":\"litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 0 output tokens and your prompt contains at least 4097 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (par"
+    ]
+  }
+}

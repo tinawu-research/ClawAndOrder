@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClawAndOrder — Market Signal Agent</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --panel: #ffffff;
+    --ink: #14181f;
+    --muted: #626c7a;
+    --line: #e3e6ec;
+    --accent: #2f5fe0;
+    --ok: #0f7a4a;
+    --warn: #9a6200;
+    --bad: #b3261e;
+    --brain: #6a3fc0;
+    --tool: #0d6d78;
+    --domain: #b5541a;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1116; --panel: #161b23; --ink: #e8ecf2; --muted: #98a3b3;
+      --line: #262d38; --accent: #7ba0ff; --ok: #3fcf8e; --warn: #e3b341;
+      --bad: #ff6b60; --brain: #b79dff; --tool: #4fd1c5; --domain: #ffa06b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  header {
+    background: var(--panel); border-bottom: 1px solid var(--line);
+    padding: 14px 22px; display: flex; align-items: center; gap: 16px;
+    flex-wrap: wrap; position: sticky; top: 0; z-index: 5;
+  }
+  h1 { font-size: 17px; margin: 0; font-weight: 650; letter-spacing: -0.01em; }
+  h1 span { color: var(--muted); font-weight: 400; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 22px; }
+  .grid { display: grid; gap: 18px; grid-template-columns: 1.55fr 1fr; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 10px; padding: 16px 18px;
+  }
+  .card h2 {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--muted); margin: 0 0 12px; font-weight: 650;
+  }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 12px;
+    padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line);
+    font-weight: 600;
+  }
+  .pill.ok   { color: var(--ok);   border-color: color-mix(in srgb, var(--ok) 40%, transparent); }
+  .pill.warn { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 40%, transparent); }
+  .pill.bad  { color: var(--bad);  border-color: color-mix(in srgb, var(--bad) 40%, transparent); }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  textarea {
+    width: 100%; min-height: 76px; resize: vertical; padding: 11px 12px;
+    border: 1px solid var(--line); border-radius: 8px; background: var(--bg);
+    color: var(--ink); font: inherit;
+  }
+  textarea:focus, select:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+  button {
+    font: inherit; font-weight: 600; padding: 9px 16px; border-radius: 8px;
+    border: 1px solid transparent; background: var(--accent); color: #fff;
+    cursor: pointer;
+  }
+  button.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  select {
+    font: inherit; padding: 8px 10px; border-radius: 8px; background: var(--bg);
+    color: var(--ink); border: 1px solid var(--line); max-width: 100%;
+  }
+  .answer {
+    border-left: 3px solid var(--accent); padding: 12px 14px; margin-top: 4px;
+    background: var(--bg); border-radius: 0 8px 8px 0; white-space: pre-wrap;
+    font-size: 15.5px;
+  }
+  .metrics { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0 0; }
+  .metric {
+    border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px;
+    min-width: 92px;
+  }
+  .metric b { display: block; font-size: 19px; font-variant-numeric: tabular-nums; }
+  .metric span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 12px; }
+  .stage {
+    padding: 5px 10px; border-radius: 6px; border: 1px solid var(--line);
+    font-weight: 600;
+  }
+  .stage.b { color: var(--brain); }
+  .stage.t { color: var(--tool); }
+  .stage.d { color: var(--domain); }
+  .stage.active { border-color: currentColor; box-shadow: 0 0 0 2px color-mix(in srgb, currentColor 18%, transparent); }
+  .arrow { color: var(--muted); }
+  ol.trace { list-style: none; margin: 0; padding: 0; }
+  ol.trace li { border-left: 2px solid var(--tool); padding: 0 0 14px 14px; position: relative; }
+  ol.trace li:last-child { padding-bottom: 0; }
+  ol.trace li::before {
+    content: ""; position: absolute; left: -5px; top: 4px; width: 8px; height: 8px;
+    border-radius: 50%; background: var(--tool);
+  }
+  .tname { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--tool); }
+  pre {
+    font-family: var(--mono); font-size: 12px; margin: 6px 0 0;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 6px;
+    padding: 8px 10px; overflow-x: auto; max-height: 220px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono); }
+  .kv { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 13px; }
+  .kv dt { color: var(--muted); }
+  .kv dd { margin: 0; font-family: var(--mono); font-size: 12.5px; word-break: break-all; }
+  .muted { color: var(--muted); font-size: 13px; }
+  .banner {
+    border-radius: 8px; padding: 10px 13px; font-size: 13.5px; margin-bottom: 16px;
+    border: 1px solid; display: flex; gap: 9px; align-items: flex-start;
+  }
+  .banner.warn { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 45%, transparent);
+                 background: color-mix(in srgb, var(--warn) 8%, transparent); }
+  .banner.bad  { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 45%, transparent);
+                 background: color-mix(in srgb, var(--bad) 8%, transparent); }
+  .chk { font-family: var(--mono); font-size: 12px; }
+  .chk.pass { color: var(--ok); }
+  .chk.fail { color: var(--bad); }
+  .spin { display: inline-block; width: 13px; height: 13px; border: 2px solid var(--line);
+          border-top-color: var(--accent); border-radius: 50%; animation: sp 0.7s linear infinite; }
+  @keyframes sp { to { transform: rotate(360deg); } }
+  .hide { display: none !important; }
+</style>
+</head>
+<body>
+<header>
+  <h1>ClawAndOrder <span>· market signal agent</span></h1>
+  <span id="health" class="pill"><i class="dot"></i><span>checking…</span></span>
+  <span id="mode" class="pill"></span>
+  <span style="flex:1"></span>
+  <span class="muted" id="uptime"></span>
+</header>
+
+<div class="wrap">
+  <div id="banners"></div>
+
+  <div class="grid">
+    <div style="display:flex; flex-direction:column; gap:18px;">
+      <div class="card">
+        <h2>Ask a question</h2>
+        <select id="picker">
+          <option value="">— load a public calibration question —</option>
+        </select>
+        <div style="height:10px"></div>
+        <textarea id="q" placeholder="e.g. What was the longest stretch between two non-zero RBA rate changes?"></textarea>
+        <div class="row">
+          <button id="ask">Ask agent</button>
+          <button id="clear" class="ghost">Clear</button>
+          <span id="busy" class="hide"><span class="spin"></span></span>
+          <span style="flex:1"></span>
+          <span class="flow">
+            <span class="stage b" id="st-b">Qwen plans</span><span class="arrow">→</span>
+            <span class="stage t" id="st-t">tools execute</span><span class="arrow">→</span>
+            <span class="stage d" id="st-d">Nemotron writes</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="card" id="result-card" style="display:none">
+        <h2>Answer</h2>
+        <div class="answer" id="answer"></div>
+        <div class="metrics">
+          <div class="metric"><b id="m-lat">—</b><span>seconds</span></div>
+          <div class="metric"><b id="m-steps">—</b><span>steps</span></div>
+          <div class="metric"><b id="m-tools">—</b><span>tool calls</span></div>
+          <div class="metric"><b id="m-mode">—</b><span>synthesis</span></div>
+        </div>
+        <div id="latency-note" class="muted" style="margin-top:10px"></div>
+      </div>
+
+      <div class="card" id="score-card" style="display:none">
+        <h2>Component self-check <span class="muted" style="text-transform:none;letter-spacing:0">— heuristic, not the official judge</span></h2>
+        <div id="score-body"></div>
+      </div>
+
+      <div class="card" id="trace-card" style="display:none">
+        <h2>Tool trace</h2>
+        <ol class="trace" id="trace"></ol>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:18px;">
+      <div class="card">
+        <h2>Datasets</h2>
+        <table id="ds"><tbody><tr><td class="muted">loading…</td></tr></tbody></table>
+      </div>
+
+      <div class="card">
+        <h2>Configuration</h2>
+        <dl class="kv" id="cfg"></dl>
+      </div>
+
+      <div class="card">
+        <h2>Recent requests</h2>
+        <table><thead><tr><th>Question</th><th style="text-align:right">Sec</th></tr></thead>
+        <tbody id="recent"><tr><td class="muted" colspan="2">none yet</td></tr></tbody></table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let CASES = [];
+
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g,
+  (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+
+function stage(active) {
+  for (const [k, el] of [["b", $("st-b")], ["t", $("st-t")], ["d", $("st-d")]]) {
+    el.classList.toggle("active", active === k);
+  }
+}
+
+async function refreshStatus() {
+  let s;
+  try {
+    s = await (await fetch("/api/status")).json();
+  } catch {
+    $("health").className = "pill bad";
+    $("health").innerHTML = '<i class="dot"></i><span>unreachable</span>';
+    return;
+  }
+
+  const h = $("health");
+  if (s.error)      { h.className = "pill bad";  h.innerHTML = '<i class="dot"></i><span>error</span>'; }
+  else if (!s.ready){ h.className = "pill warn"; h.innerHTML = '<i class="dot"></i><span>loading data…</span>'; }
+  else              { h.className = "pill ok";   h.innerHTML = '<i class="dot"></i><span>/health 200</span>'; }
+
+  const m = $("mode");
+  m.className = "pill " + (s.synthesis_live ? "ok" : "warn");
+  m.textContent = "DOMAIN_PREDICT_MODE=" + (s.config?.domain_predict_mode ?? "?");
+
+  $("uptime").textContent = "up " + Math.round(s.uptime_seconds) + "s";
+
+  const banners = [];
+  if (s.error) {
+    banners.push(`<div class="banner bad"><b>Dataset load failed.</b> ${esc(s.error)}</div>`);
+  }
+  if (!s.synthesis_live) {
+    banners.push(`<div class="banner warn"><span>⚠</span><span><b>Not using the fine-tuned model.</b>
+      Final synthesis is running the deterministic mock. Set
+      <code>DOMAIN_PREDICT_MODE=llm</code> once the adapter is served on :8001 —
+      this is required before official evaluation.</span></div>`);
+  }
+  if (s.load_stats?.afr_count_mismatch) {
+    banners.push(`<div class="banner bad"><b>AFR article count mismatch.</b>
+      Loaded count differs from the organizer's conversion summary, so AFR
+      counts will not match the reference answers.</div>`);
+  }
+  if (s.load_stats?.afr_undated) {
+    banners.push(`<div class="banner warn"><span>ℹ</span><span>${s.load_stats.afr_undated}
+      AFR articles ship with an empty PUBLICATIONDATE. They count toward
+      corpus-wide totals but are excluded from year/month filters.</span></div>`);
+  }
+  $("banners").innerHTML = banners.join("");
+
+  const ds = s.datasets || {};
+  const rows = Object.keys(ds).length
+    ? Object.entries(ds).map(([name, v]) => `<tr>
+        <td><b>${esc(name.toUpperCase())}</b></td>
+        <td class="num">${esc(v.records ?? v.articles ?? v.tickers ?? "")}</td>
+        <td class="muted">${esc(v.start)} → ${esc(v.end)}</td></tr>`).join("")
+    : `<tr><td class="muted">not loaded</td></tr>`;
+  $("ds").innerHTML = "<tbody>" + rows + "</tbody>";
+
+  const c = s.config || {};
+  $("cfg").innerHTML = [
+    ["brain", c.brain_model], ["domain", c.domain_ft_model],
+    ["litellm", c.litellm_url], ["max steps", c.max_agent_steps],
+    ["deadline", (c.query_deadline_seconds ?? "?") + "s"],
+    ["afr index", s.afr_index_ready ? "ready" : "not built"],
+  ].map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
+
+  const rec = s.recent || [];
+  $("recent").innerHTML = rec.length
+    ? rec.map((r) => `<tr><td>${esc(r.question.slice(0, 58))}${r.question.length > 58 ? "…" : ""}</td>
+        <td class="num" style="color:${r.slow ? "var(--bad)" : "inherit"}">${r.latency_seconds}</td></tr>`).join("")
+    : `<tr><td class="muted" colspan="2">none yet</td></tr>`;
+}
+
+async function loadCases() {
+  try {
+    const data = await (await fetch("/api/public-questions")).json();
+    CASES = data.questions || [];
+    $("picker").innerHTML = '<option value="">— load a public calibration question —</option>' +
+      CASES.map((c, i) => `<option value="${i}">${esc(c.id)} · ${esc(c.difficulty)} ·
+        ${esc((c.datasets || []).join("+"))} — ${esc((c.prompt || "").slice(0, 62))}…</option>`).join("");
+  } catch { /* dashboard still usable without the calibration set */ }
+}
+
+$("picker").addEventListener("change", (e) => {
+  const c = CASES[e.target.value];
+  if (c) $("q").value = c.prompt;
+});
+$("clear").addEventListener("click", () => {
+  $("q").value = "";
+  $("picker").value = "";
+  for (const id of ["result-card", "trace-card", "score-card"]) $(id).style.display = "none";
+});
+
+$("ask").addEventListener("click", async () => {
+  const question = $("q").value.trim();
+  if (!question) return;
+  $("ask").disabled = true;
+  $("busy").classList.remove("hide");
+  stage("b");
+  const t0 = performance.now();
+  let out;
+  try {
+    const res = await fetch("/query", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question }),
+    });
+    out = await res.json();
+    if (!res.ok) throw new Error(out.detail || ("HTTP " + res.status));
+  } catch (err) {
+    $("result-card").style.display = "";
+    $("answer").textContent = "Request failed: " + err.message;
+    $("ask").disabled = false; $("busy").classList.add("hide"); stage(null);
+    return;
+  }
+  const secs = (performance.now() - t0) / 1000;
+  stage("d");
+
+  $("result-card").style.display = "";
+  $("answer").textContent = out.answer || "(empty answer)";
+  const d = out.diagnostics || {};
+  $("m-lat").textContent = secs.toFixed(1);
+  $("m-lat").style.color = secs > 60 ? "var(--bad)" : secs > 40 ? "var(--warn)" : "inherit";
+  $("m-steps").textContent = out.steps ?? "—";
+  $("m-tools").textContent = (out.tool_trace || []).length;
+  $("m-mode").textContent = d.synthesis_mode || "—";
+  $("m-mode").style.fontSize = "14px";
+
+  const notes = [];
+  if (secs > 60) notes.push("⚠ Over 60s — the official scorer deducts 20% of earned points.");
+  else if (secs > 40) notes.push("Approaching the 60s penalty threshold.");
+  if (d.tool_failures) notes.push(`${d.tool_failures} tool call(s) failed and were excluded from evidence.`);
+  if (d.notes?.length) notes.push(...d.notes);
+  $("latency-note").textContent = notes.join(" ");
+
+  const trace = out.tool_trace || [];
+  $("trace-card").style.display = trace.length ? "" : "none";
+  $("trace").innerHTML = trace.map((t, i) => `<li>
+    <div><span class="tname">${esc(t.tool)}</span>
+      <span class="muted">step ${i + 1}</span></div>
+    <pre>${esc(JSON.stringify(t.args, null, 2))}</pre>
+    <pre>${esc(t.result)}</pre></li>`).join("");
+
+  // If this came from the calibration set, screen the answer per component.
+  const idx = $("picker").value;
+  const kase = idx === "" ? null : CASES[idx];
+  if (kase && kase.prompt === question && kase.components?.length) {
+    try {
+      const sc = await (await fetch("/api/score", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          answer: out.answer || "",
+          expected_facts: kase.components.map((c) => c.expected_fact),
+        }),
+      })).json();
+      $("score-card").style.display = "";
+      $("score-body").innerHTML = `
+        <p class="muted" style="margin:0 0 10px">
+          ${sc.likely_passed}/${sc.total} components look satisfied.
+          Reference: <i>${esc(kase.reference_answer || "")}</i></p>
+        ${sc.results.map((r, i) => `<div style="margin-bottom:8px">
+          <span class="chk ${r.likely_pass ? "pass" : "fail"}">
+            ${r.likely_pass ? "✓" : "✗"} ${esc(kase.components[i].component_id)}
+            (${kase.components[i].points} pts)</span>
+          <div class="muted" style="margin-left:18px">${esc(r.expected_fact)}</div>
+          ${r.numbers_missing.length ? `<div class="chk fail" style="margin-left:18px">
+            missing values: ${esc(r.numbers_missing.join(", "))}</div>` : ""}
+        </div>`).join("")}`;
+    } catch { /* screening is optional */ }
+  } else {
+    $("score-card").style.display = "none";
+  }
+
+  $("ask").disabled = false;
+  $("busy").classList.add("hide");
+  setTimeout(() => stage(null), 900);
+});
+
+refreshStatus();
+loadCases();
+setInterval(refreshStatus, 4000);
+</script>
+</body>
+</html>

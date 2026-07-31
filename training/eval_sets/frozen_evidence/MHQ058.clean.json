@@ -1,0 +1,37 @@
+{
+  "qid": "MHQ058",
+  "prompt": "Retrieve the AFR article \"Travel stocks take off on vaccine rollout\" published 23 Feb 2021 and use the RBA cash-rate target in force on that date. Classify the article's financial-market sentiment as positive, negative, or mixed; state the likely direction for ASX travel shares.",
+  "difficulty": "easy",
+  "datasets": [
+    "RBA",
+    "AFR"
+  ],
+  "dataset_scope": "cross",
+  "tool_trace": [
+    {
+      "tool": "retrieve",
+      "args": {
+        "headline": "Travel stocks take off on vaccine rollout",
+        "date": "2021-02-23"
+      },
+      "result": "{\"tool\": \"retrieve\", \"query\": {\"headline\": \"Travel stocks take off on vaccine rollout\", \"date\": \"2021-02-23\", \"pattern\": null}, \"matches\": 1, \"returned\": 1, \"articles\": [{\"headline\": \"Travel stocks take off on vaccine rollout\", \"publication_date\": \"2021-02-23\", \"text\": \"travel stocks take off on vaccine rollout\\n\\n\\ninvestors are betting that the vaccine rollout has paved the way for a resumption of travel, putting pressure on states and territories to commit to keeping borders open to stoke confidence.\\n\\nthree of the five best performers among the s&p/asx 200 yesterday were travel companies. webjet rose 8.9 per cent, corporate travel management gained 8.2 per cent and flight centre rose 7.1 per cent.\\n\\nkaren jorritsma, head of equities at rbc capital markets in australia, said the jumps were attributable to the rollout, which investors saw as a sign of a return to normality. \\\"i think it's sort of a hope trade,\\\" she said. news p4\\n\\ncompany results bluescope, ampol, energyaustralia, tyro, bingo starts p13\", \"truncated\": false}]}"
+    },
+    {
+      "tool": "query_data",
+      "args": {
+        "dataset": "rba",
+        "metric": "lookup_rate",
+        "date_from": "2021-02-23"
+      },
+      "result": "{\"metric\": \"lookup_rate\", \"query_date\": \"2021-02-23\", \"cash_rate_target\": 0.1, \"effective_date\": \"2021-02-03\", \"change_points_on_that_date\": 0.0, \"dataset\": \"rba\"}"
+    }
+  ],
+  "capture": {
+    "latency_seconds": 34.18,
+    "planning_seconds": 34.183,
+    "brain_calls": 2,
+    "tool_calls": 2,
+    "tool_failures": 0,
+    "notes": []
+  }
+}

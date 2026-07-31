@@ -1,0 +1,22 @@
+{
+  "qid": "MHQ084",
+  "prompt": "For 2019, report the RBA cut count, cumulative change and year-end target; the AFR rate/RBA-pattern count; and the non-Tabcorp ASX basket's simple average annual return.",
+  "difficulty": "medium",
+  "datasets": [
+    "RBA",
+    "ASX",
+    "AFR"
+  ],
+  "dataset_scope": "cross",
+  "tool_trace": [],
+  "capture": {
+    "latency_seconds": 25.03,
+    "planning_seconds": 25.026,
+    "brain_calls": 0,
+    "tool_calls": 0,
+    "tool_failures": 0,
+    "notes": [
+      "brain unavailable: brain unreachable at http://localhost:4000/v1: "
+    ]
+  }
+}

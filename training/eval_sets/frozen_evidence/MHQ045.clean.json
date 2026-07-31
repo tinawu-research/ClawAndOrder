@@ -1,0 +1,31 @@
+{
+  "qid": "MHQ045",
+  "prompt": "Excluding Tabcorp, which ticker had the best and worst 2018 return?",
+  "difficulty": "medium",
+  "datasets": [
+    "ASX"
+  ],
+  "dataset_scope": "single",
+  "tool_trace": [
+    {
+      "tool": "query_data",
+      "args": {
+        "dataset": "asx",
+        "metric": "rank_annual_returns",
+        "year": 2018,
+        "exclude_tickers": [
+          "TAH.AX"
+        ]
+      },
+      "result": "{\"metric\": \"rank_annual_returns\", \"year\": 2018, \"tickers_used\": [\"AGL.AX\", \"AMP.AX\", \"ANZ.AX\", \"AZJ.AX\", \"BHP.AX\", \"CBA.AX\", \"CMW.AX\", \"GPT.AX\", \"IAG.AX\", \"NAB.AX\", \"QAN.AX\", \"QBE.AX\", \"RIO.AX\", \"SGP.AX\", \"SUN.AX\", \"TCL.AX\", \"TPG.AX\"], \"ranked\": [{\"ticker\": \"BHP.AX\", \"return_pct\": 22.1713, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 1}, {\"ticker\": \"QAN.AX\", \"return_pct\": 17.883, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 2}, {\"ticker\": \"GPT.AX\", \"return_pct\": 9.4642, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 3}, {\"ticker\": \"RIO.AX\", \"return_pct\": 7.936, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 4}, {\"ticker\": \"CMW.AX\", \"return_pct\": 6.131, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 5}, {\"ticker\": \"IAG.AX\", \"return_pct\": 1.9619, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 6}, {\"ticker\": \"TCL.AX\", \"return_pct\": -0.0332, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 7}, {\"ticker\": \"TPG.AX\", \"return_pct\": -0.7389, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 8}, {\"ticker\": \"SUN.AX\", \"return_pct\": -3.5292, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 9}, {\"ticker\": \"QBE.AX\", \"return_pct\": -3.615, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 10}, {\"ticker\": \"CBA.AX\", \"return_pct\": -4.4212, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 11}, {\"ticker\": \"AZJ.AX\", \"return_pct\": -7.9351, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 12}, {\"ticker\": \"ANZ.AX\", \"return_pct\": -9.2358, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 13}, {\"ticker\": \"AGL.AX\", \"return_pct\": -11.3773, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 14}, {\"ticker\": \"NAB.AX\", \"return_pct\": -12.3139, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 15}, {\"ticker\": \"SGP.AX\", \"return_pct\": -15.2986, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 16}, {\"ticker\": \"AMP.AX\", \"return_pct\": -50.0356, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 17}], \"best\": {\"ticker\": \"BHP.AX\", \"return_pct\": 22.1713, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 1}, \"worst\": {\"ticker\": \"AMP.AX\", \"return_pct\": -50.0356, \"first_date\": \"2018-01-02\", \"last_date\": \"2018-12-31\", \"rank\": 17}, \"basket_average_return_pct\": -3.1168, \"dataset\": \"asx\"}"
+    }
+  ],
+  "capture": {
+    "latency_seconds": 12.99,
+    "planning_seconds": 12.992,
+    "brain_calls": 2,
+    "tool_calls": 1,
+    "tool_failures": 0,
+    "notes": []
+  }
+}

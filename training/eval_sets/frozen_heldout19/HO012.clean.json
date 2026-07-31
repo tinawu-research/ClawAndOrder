@@ -1,0 +1,43 @@
+{
+ "qid": "HO012",
+ "prompt": "For 2017, report the RBA rate activity and year-end target, the non-Tabcorp ASX basket's average annual return and the best-performing non-Tabcorp ticker.",
+ "difficulty": "hard",
+ "datasets": [
+  "RBA",
+  "ASX",
+  "AFR"
+ ],
+ "dataset_scope": "multi",
+ "tool_trace": [
+  {
+   "tool": "query_data",
+   "args": {
+    "dataset": "rba",
+    "metric": "period_summary",
+    "date_from": "2017-01-01",
+    "date_to": "2017-12-31"
+   },
+   "result": "{\"metric\": \"period_summary\", \"window\": [\"2017-01-01\", \"2017-12-31\"], \"records_in_window\": 11, \"changes\": 0, \"increases\": 0, \"decreases\": 0, \"increases_by_year\": {}, \"decreases_by_year\": {}, \"cumulative_change_points\": 0.0, \"target_before_first_change\": 1.5, \"target_at_window_end\": 1.5, \"first_change_date\": null, \"last_change_date\": null, \"changes_detail\": []}",
+   "compact": "window=[2017-01-01, 2017-12-31] records_in_window=11 changes=0 increases=0 decreases=0 increases_by_year={} decreases_by_year={} cumulative_change_points=0 target_before_first_change=1.5 target_at_window_end=1.5 first_change_date=null last_change_date=null changes_detail=[]",
+   "ok": true
+  },
+  {
+   "tool": "query_data",
+   "args": {
+    "dataset": "asx",
+    "metric": "rank_annual_returns",
+    "year": 2017,
+    "exclude_tickers": [
+     "TAH.AX"
+    ]
+   },
+   "result": "{\"metric\": \"rank_annual_returns\", \"year\": 2017, \"tickers_used\": [\"AGL.AX\", \"AMP.AX\", \"ANZ.AX\", \"AZJ.AX\", \"BHP.AX\", \"CBA.AX\", \"CMW.AX\", \"GPT.AX\", \"IAG.AX\", \"NAB.AX\", \"QAN.AX\", \"QBE.AX\", \"RIO.AX\", \"SGP.AX\", \"SUN.AX\", \"TCL.AX\", \"TPG.AX\"], \"ranked\": [{\"ticker\": \"QAN.AX\", \"return_pct\": 53.8549, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 1}, {\"ticker\": \"RIO.AX\", \"return_pct\": 30.018, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 2}, {\"ticker\": \"IAG.AX\", \"return_pct\": 25.1808, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 3}, {\"ticker\": \"TCL.AX\", \"return_pct\": 24.7268, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 4}, {\"ticker\": \"BHP.AX\", \"return_pct\": 21.5658, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 5}, {\"ticker\": \"AGL.AX\", \"return_pct\": 12.4614, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 6}, {\"ticker\": \"CMW.AX\", \"return_pct\": 10.5465, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 7}, {\"ticker\": \"AMP.AX\", \"return_pct\": 6.8606, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 8}, {\"ticker\": \"SUN.AX\", \"return_pct\": 6.5399, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 9}, {\"ticker\": \"GPT.AX\", \"return_pct\": 5.7876, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 10}, {\"ticker\": \"SGP.AX\", \"return_pct\": 2.6134, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 11}, {\"ticker\": \"CBA.AX\", \"return_pct\": 2.0132, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 12}, {\"ticker\": \"NAB.AX\", \"return_pct\": 1.351, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 13}, {\"ticker\": \"AZJ.AX\", \"return_pct\": 0.3796, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 14}, {\"ticker\": \"TPG.AX\", \"return_pct\": -0.749, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 15}, {\"ticker\": \"ANZ.AX\", \"return_pct\": -2.0371, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 16}, {\"ticker\": \"QBE.AX\", \"return_pct\": -10.8379, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 17}], \"best\": {\"ticker\": \"QAN.AX\", \"return_pct\": 53.8549, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 1}, \"worst\": {\"ticker\": \"QBE.AX\", \"return_pct\": -10.8379, \"first_date\": \"2017-01-03\", \"last_date\": \"2017-12-29\", \"rank\": 17}, \"basket_average_return_pct\": 11.1927}",
+   "compact": "year=2017 tickers_used=[AGL.AX, AMP.AX, ANZ.AX, AZJ.AX, BHP.AX, CBA.AX, CMW.AX, GPT.AX, IAG.AX, NAB.AX, QAN.AX, QBE.AX, RIO.AX, SGP.AX, SUN.AX, TCL.AX, TPG.AX] best={ticker:QAN.AX return_pct:53.8549 first_date:2017-01-03 last_date:2017-12-29 rank:1} worst={ticker:QBE.AX return_pct:-10.8379 first_date:2017-01-03 last_date:2017-12-29 rank:17} basket_average_return_pct=11.1927\nranked first_date=2017-01-03 last_date=2017-12-29 [ticker return_pct rank] n=17\n  QAN.AX | 53.8549 | 1\n  RIO.AX | 30.018 | 2\n  IAG.AX | 25.1808 | 3\n  TCL.AX | 24.7268 | 4\n  BHP.AX | 21.5658 | 5\n  AGL.AX | 12.4614 | 6\n  CMW.AX | 10.5465 | 7\n  AMP.AX | 6.8606 | 8\n  SUN.AX | 6.5399 | 9\n  GPT.AX | 5.7876 | 10\n  SGP.AX | 2.6134 | 11\n  CBA.AX | 2.0132 | 12\n  NAB.AX | 1.351 | 13\n  AZJ.AX | 0.3796 | 14\n  TPG.AX | -0.749 | 15\n  ANZ.AX | -2.0371 | 16\n  QBE.AX | -10.8379 | 17",
+   "ok": true
+  }
+ ],
+ "capture": {
+  "source": "generated",
+  "category": "composite"
+ }
+}

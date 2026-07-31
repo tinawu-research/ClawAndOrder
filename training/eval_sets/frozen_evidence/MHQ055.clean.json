@@ -1,0 +1,31 @@
+{
+  "qid": "MHQ055",
+  "prompt": "Rank the three worst non-Tabcorp full-sample maximum drawdowns and identify each peak and trough date.",
+  "difficulty": "hard",
+  "datasets": [
+    "ASX"
+  ],
+  "dataset_scope": "single",
+  "tool_trace": [
+    {
+      "tool": "query_data",
+      "args": {
+        "dataset": "asx",
+        "metric": "max_drawdown",
+        "exclude_tickers": [
+          "TAH.AX"
+        ],
+        "top_n": 3
+      },
+      "result": "{\"metric\": \"max_drawdown\", \"tickers_used\": [\"AGL.AX\", \"AMP.AX\", \"ANZ.AX\", \"AZJ.AX\", \"BHP.AX\", \"CBA.AX\", \"CMW.AX\", \"GPT.AX\", \"IAG.AX\", \"NAB.AX\", \"QAN.AX\", \"QBE.AX\", \"RIO.AX\", \"SGP.AX\", \"SUN.AX\", \"TCL.AX\", \"TPG.AX\"], \"ranked_worst_first\": [{\"ticker\": \"AMP.AX\", \"max_drawdown_pct\": -82.4531, \"peak_date\": \"2015-03-20\", \"trough_date\": \"2021-12-17\", \"peak_close\": 4.61097, \"trough_close\": 0.809083, \"rank\": 1}, {\"ticker\": \"AGL.AX\", \"max_drawdown_pct\": -76.2368, \"peak_date\": \"2017-04-10\", \"trough_date\": \"2021-11-16\", \"peak_close\": 17.515434, \"trough_close\": 4.162235, \"rank\": 2}, {\"ticker\": \"QAN.AX\", \"max_drawdown_pct\": -71.0811, \"peak_date\": \"2019-12-19\", \"trough_date\": \"2020-03-19\", \"peak_close\": 6.867825, \"trough_close\": 1.986101, \"rank\": 3}], \"worst\": {\"ticker\": \"AMP.AX\", \"max_drawdown_pct\": -82.4531, \"peak_date\": \"2015-03-20\", \"trough_date\": \"2021-12-17\", \"peak_close\": 4.61097, \"trough_close\": 0.809083, \"rank\": 1}, \"dataset\": \"asx\"}"
+    }
+  ],
+  "capture": {
+    "latency_seconds": 24.55,
+    "planning_seconds": 24.551,
+    "brain_calls": 2,
+    "tool_calls": 1,
+    "tool_failures": 0,
+    "notes": []
+  }
+}

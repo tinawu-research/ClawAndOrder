@@ -1,0 +1,16 @@
+loading datasets ...
+92 AFR articles have no PUBLICATIONDATE; they count toward corpus-wide totals but are excluded from year/month filters
+selecting up to 420 candidate articles ...
+  390 candidates
+labelling (12-way, 3 votes each) ...
+  kept 244/390 (63% unanimous on coarse class)
+
+label distribution:
+  positive          120
+  mixed_positive      5
+  mixed              13
+  mixed_negative      6
+  negative          100
+
+wrote 244 examples -> training/data/sentiment_examples.jsonl
+wrote 244 labels   -> training/data/sentiment_labels.jsonl

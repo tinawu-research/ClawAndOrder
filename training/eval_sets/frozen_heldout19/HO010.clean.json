@@ -1,0 +1,42 @@
+{
+ "qid": "HO010",
+ "prompt": "Using a case-insensitive once-per-record whole-word housing search, which year and which month have the highest AFR counts?",
+ "difficulty": "medium",
+ "datasets": [
+  "AFR"
+ ],
+ "dataset_scope": "single",
+ "tool_trace": [
+  {
+   "tool": "query_data",
+   "args": {
+    "dataset": "afr",
+    "metric": "count_by_year",
+    "terms": [
+     "housing"
+    ]
+   },
+   "result": "{\"metric\": \"count_by_year\", \"pattern\": \"\\\\bhousing\\\\b\", \"window\": null, \"by_year\": {\"2015\": 1979, \"2016\": 2481, \"2017\": 2023, \"2018\": 1679, \"2019\": 1970, \"2020\": 1308, \"2021\": 1539}, \"total\": 12979, \"peak_year\": 2016, \"peak_year_count\": 2481}",
+   "compact": "pattern=\\bhousing\\b window=null by_year={2015:1979 2016:2481 2017:2023 2018:1679 2019:1970 2020:1308 2021:1539} total=12979 peak_year=2016 peak_year_count=2481",
+   "ok": true
+  },
+  {
+   "tool": "query_data",
+   "args": {
+    "dataset": "afr",
+    "metric": "count_by_month",
+    "terms": [
+     "housing"
+    ],
+    "year": 2016
+   },
+   "result": "{\"metric\": \"count_by_month\", \"pattern\": \"\\\\bhousing\\\\b\", \"year\": 2016, \"by_month\": {\"2016-01\": 123, \"2016-02\": 201, \"2016-03\": 170, \"2016-04\": 144, \"2016-05\": 162, \"2016-06\": 157, \"2016-07\": 133, \"2016-08\": 262, \"2016-09\": 302, \"2016-10\": 345, \"2016-11\": 312, \"2016-12\": 170}, \"total\": 2481, \"peak_month\": \"2016-10\", \"peak_month_count\": 345}",
+   "compact": "pattern=\\bhousing\\b year=2016 by_month={2016-01:123 2016-02:201 2016-03:170 2016-04:144 2016-05:162 2016-06:157 2016-07:133 2016-08:262 2016-09:302 2016-10:345 2016-11:312 2016-12:170} total=2481 peak_month=2016-10 peak_month_count=345",
+   "ok": true
+  }
+ ],
+ "capture": {
+  "source": "generated",
+  "category": "afr_counts"
+ }
+}

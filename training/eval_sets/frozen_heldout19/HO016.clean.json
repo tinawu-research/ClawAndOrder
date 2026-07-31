@@ -1,0 +1,28 @@
+{
+ "qid": "HO016",
+ "prompt": "Using a case-insensitive once-per-record whole-word housing search of the AFR corpus, which year has the highest count?",
+ "difficulty": "medium",
+ "datasets": [
+  "AFR"
+ ],
+ "dataset_scope": "single",
+ "tool_trace": [
+  {
+   "tool": "query_data",
+   "args": {
+    "dataset": "afr",
+    "metric": "count_by_year",
+    "terms": [
+     "housing"
+    ]
+   },
+   "result": "{\"metric\": \"count_by_year\", \"pattern\": \"\\\\bhousing\\\\b\", \"window\": null, \"by_year\": {\"2015\": 1979, \"2016\": 2481, \"2017\": 2023, \"2018\": 1679, \"2019\": 1970, \"2020\": 1308, \"2021\": 1539}, \"total\": 12979, \"peak_year\": 2016, \"peak_year_count\": 2481}",
+   "compact": "pattern=\\bhousing\\b window=null by_year={2015:1979 2016:2481 2017:2023 2018:1679 2019:1970 2020:1308 2021:1539} total=12979 peak_year=2016 peak_year_count=2481",
+   "ok": true
+  }
+ ],
+ "capture": {
+  "source": "generated",
+  "category": "afr_counts"
+ }
+}

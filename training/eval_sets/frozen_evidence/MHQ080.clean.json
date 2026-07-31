@@ -1,0 +1,53 @@
+{
+  "qid": "MHQ080",
+  "prompt": "Retrieve the AFR article \"Energy stocks shine as vaccines fuel oil rally\" published 28 Nov 2020 and use the RBA cash-rate target in force on that date. Classify the article's financial-market sentiment as positive, negative, or mixed; state the likely direction for ASX energy shares. Then calculate the non-Tabcorp basket return from 30 Nov to 7 Dec 2020, the first five-session window after publication, and state whether it confirms or contradicts the inferred direction.",
+  "difficulty": "medium",
+  "datasets": [
+    "RBA",
+    "ASX",
+    "AFR"
+  ],
+  "dataset_scope": "cross",
+  "tool_trace": [
+    {
+      "tool": "retrieve",
+      "args": {
+        "headline": "Energy stocks shine as vaccines fuel oil rally",
+        "date": "2020-11-28"
+      },
+      "result": "{\"tool\": \"retrieve\", \"query\": {\"headline\": \"Energy stocks shine as vaccines fuel oil rally\", \"date\": \"2020-11-28\", \"pattern\": null}, \"matches\": 1, \"returned\": 1, \"articles\": [{\"headline\": \"Energy stocks shine as vaccines fuel oil rally\", \"publication_date\": \"2020-11-28\", \"text\": \"energy stocks shine as vaccines fuel oil rally\\npetroleum\\n\\nnext week's meeting of the world's largest oil producers to consider extending supply cuts will be key to whether australian energy stocks can build on their 30 per cent rally this month.\\n\\nthe gathering of the organisation of petroleum exporting countries (opec) in vienna comes as oil prices have been lifted by positive progress on a vaccine, boosting hopes that international travel could restart in 2021.\\n\\nover the last four weeks, the price of brent crude has risen 27.4 per cent to $us47.72 ($64.67) a barrel by late friday and us crude has climbed 25.2 per cent to $us44.83, the highest levels since march.\\n\\nthe commodity market tailwinds have pushed the s&p/asx 200 energy index 29.8 per cent above its close at the end of october as the re-open trade carried equities sharply higher across the board. among the local oil and gas producers, since the start of november, beach energy shares surged 49.6 per cent to $1.77, santos shares rose 32.1 per cent to $6.25 and oil search shares climbed 42 per cent to close at $3.65 on friday.\\n\\nhowever, oil prices eased on friday for the first time in a week after uk biotechnology company ast\", \"truncated\": true}]}"
+    },
+    {
+      "tool": "query_data",
+      "args": {
+        "dataset": "rba",
+        "metric": "lookup_rate",
+        "date_from": "2020-11-28"
+      },
+      "result": "{\"metric\": \"lookup_rate\", \"query_date\": \"2020-11-28\", \"cash_rate_target\": 0.1, \"effective_date\": \"2020-11-04\", \"change_points_on_that_date\": -0.15, \"dataset\": \"rba\"}"
+    },
+    {
+      "tool": "query_data",
+      "args": {
+        "dataset": "asx",
+        "metric": "window_return",
+        "date_from": "2020-11-30",
+        "date_to": "2020-12-07",
+        "exclude_tickers": [
+          "TAH.AX"
+        ]
+      },
+      "result": "{\"metric\": \"window_return\", \"window\": [\"2020-11-30\", \"2020-12-07\"], \"tickers_used\": [\"AGL.AX\", \"AMP.AX\", \"ANZ.AX\", \"AZJ.AX\", \"BHP.AX\", \"CBA.AX\", \"CMW.AX\", \"GPT.AX\", \"IAG.AX\", \"NAB.AX\", \"QAN.AX\", \"QBE.AX\", \"RIO.AX\", \"SGP.AX\", \"SUN.AX\", \"TCL.AX\", \"TPG.AX\"], \"constituents\": 17, \"results\": [{\"ticker\": \"AGL.AX\", \"return_pct\": -0.963, \"start_close\": 10.06861, \"end_close\": 9.971653, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"AMP.AX\", \"return_pct\": 1.7544, \"start_close\": 1.528764, \"end_close\": 1.555584, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"ANZ.AX\", \"return_pct\": 3.0919, \"start_close\": 16.514711, \"end_close\": 17.025326, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"AZJ.AX\", \"return_pct\": 0.4706, \"start_close\": 3.143294, \"end_close\": 3.158087, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"BHP.AX\", \"return_pct\": 11.3475, \"start_close\": 23.055994, \"end_close\": 25.672276, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"CBA.AX\", \"return_pct\": 2.1121, \"start_close\": 64.778488, \"end_close\": 66.146652, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"CMW.AX\", \"return_pct\": 5.2632, \"start_close\": 0.545191, \"end_close\": 0.573885, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"GPT.AX\", \"return_pct\": 0.6356, \"start_close\": 3.434893, \"end_close\": 3.456724, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"IAG.AX\", \"return_pct\": 0.9709, \"start_close\": 4.288225, \"end_close\": 4.329858, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"NAB.AX\", \"return_pct\": 1.5727, \"start_close\": 17.557369, \"end_close\": 17.833496, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"QAN.AX\", \"return_pct\": 2.0446, \"start_close\": 4.993094, \"end_close\": 5.095183, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"QBE.AX\", \"return_pct\": -0.4, \"start_close\": 8.287263, \"end_close\": 8.254113, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"RIO.AX\", \"return_pct\": 14.3787, \"start_close\": 69.529015, \"end_close\": 79.526382, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"SGP.AX\", \"return_pct\": -1.5385, \"start_close\": 3.223312, \"end_close\": 3.173722, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"SUN.AX\", \"return_pct\": 1.0902, \"start_close\": 9.172701, \"end_close\": 9.2727, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"TCL.AX\", \"return_pct\": -1.0699, \"start_close\": 10.961372, \"end_close\": 10.844096, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}, {\"ticker\": \"TPG.AX\", \"return_pct\": -0.3911, \"start_close\": 6.347246, \"end_close\": 6.32242, \"used_start_date\": \"2020-11-30\", \"used_end_date\": \"2020-12-07\"}], \"basket_average_return_pct\": 2.3747, \"direction\": \"up\", \"dataset\": \"asx\"}"
+    }
+  ],
+  "capture": {
+    "latency_seconds": 17.63,
+    "planning_seconds": 17.63,
+    "brain_calls": 1,
+    "tool_calls": 3,
+    "tool_failures": 0,
+    "notes": [
+      "brain unavailable: brain returned HTTP 400: {\"error\":{\"message\":\"litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 0 output tokens and your prompt contains at least 4097 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (par"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+# Runtime — the agent service itself.
+#
+# Deliberately small. The deterministic tool layer is pure standard library
+# (csv, json, re, array, bisect, statistics), so there is no pandas/numpy in the
+# request path and nothing heavy to pin against the cluster's preinstalled
+# stack. Both models are reached over the LiteLLM proxy's OpenAI-compatible HTTP
+# API, so no vendor SDK is required either.
+fastapi~=0.136
+uvicorn[standard]~=0.38
+httpx~=0.28
+pydantic~=2.9
+
+# Verification only — not needed to serve. The suite is almost entirely async
+# (the agent loop, the brain retry ladder), so the asyncio plugin is required:
+# without it pytest reports 24 failures of the form "async def functions are not
+# natively supported" rather than skipping them.
+pytest~=8.3
+pytest-asyncio~=0.24

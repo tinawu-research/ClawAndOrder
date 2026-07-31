@@ -1,0 +1,39 @@
+{
+ "qid": "PR001",
+ "prompt": "For 2017, report the once-per-record whole-word superannuation AFR count.",
+ "difficulty": "medium",
+ "datasets": [
+  "AFR"
+ ],
+ "dataset_scope": "single",
+ "tool_trace": [
+  {
+   "tool": "query_data",
+   "args": {
+    "dataset": "afr",
+    "metric": "count",
+    "terms": [
+     "superannuation"
+    ],
+    "year": 2017
+   },
+   "result": "{\"metric\": \"count\", \"pattern\": \"\\\\bsuperannuation\\\\b\", \"matching_records\": 1326, \"corpus_articles\": 219538, \"share_pct\": 0.604, \"filters\": {\"year\": 2017, \"month\": null, \"date_from\": null, \"date_to\": null}, \"match_rules\": \"case-insensitive; HEADLINE+SUBHEAD+INTRO+TEXT combined; once per record\"}",
+   "compact": "pattern=\\bsuperannuation\\b matching_records=1326 corpus_articles=219538 share_pct=0.604 filters={year:2017 month:null date_from:null date_to:null}",
+   "ok": true
+  },
+  {
+   "tool": "query_data",
+   "args": {
+    "dataset": "rba",
+    "metric": "coverage"
+   },
+   "result": "{\"metric\": \"coverage\", \"records\": 175, \"first_effective_date\": \"2010-02-03\", \"last_effective_date\": \"2026-06-17\", \"first_target\": 3.75, \"last_target\": 4.35}",
+   "compact": "records=175 first_effective_date=2010-02-03 last_effective_date=2026-06-17 first_target=3.75 last_target=4.35",
+   "ok": true
+  }
+ ],
+ "capture": {
+  "source": "generated",
+  "category": "afr_counts"
+ }
+}

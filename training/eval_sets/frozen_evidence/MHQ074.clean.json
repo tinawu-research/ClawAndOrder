@@ -1,0 +1,71 @@
+{
+  "qid": "MHQ074",
+  "prompt": "Across the three 2019 RBA cuts, what was the non-Tabcorp basket's one-week return after each effective date?",
+  "difficulty": "hard",
+  "datasets": [
+    "RBA",
+    "ASX"
+  ],
+  "dataset_scope": "cross",
+  "tool_trace": [
+    {
+      "tool": "query_data",
+      "args": {
+        "dataset": "rba",
+        "metric": "list_changes",
+        "date_from": "2019-01-01",
+        "date_to": "2019-12-31"
+      },
+      "result": "{\"metric\": \"list_changes\", \"window\": [\"2019-01-01\", \"2019-12-31\"], \"count\": 3, \"changes\": [{\"effective_date\": \"2019-06-05\", \"change_points\": -0.25, \"new_target\": 1.25, \"direction\": \"decrease\"}, {\"effective_date\": \"2019-07-03\", \"change_points\": -0.25, \"new_target\": 1.0, \"direction\": \"decrease\"}, {\"effective_date\": \"2019-10-02\", \"change_points\": -0.25, \"new_target\": 0.75, \"direction\": \"decrease\"}], \"dataset\": \"rba\"}"
+    },
+    {
+      "tool": "query_data",
+      "args": {
+        "dataset": "asx",
+        "metric": "window_return",
+        "date_from": "2019-06-05",
+        "date_to": "2019-06-12",
+        "exclude_tickers": [
+          "TAH.AX"
+        ]
+      },
+      "result": "{\"metric\": \"window_return\", \"window\": [\"2019-06-05\", \"2019-06-12\"], \"tickers_used\": [\"AGL.AX\", \"AMP.AX\", \"ANZ.AX\", \"AZJ.AX\", \"BHP.AX\", \"CBA.AX\", \"CMW.AX\", \"GPT.AX\", \"IAG.AX\", \"NAB.AX\", \"QAN.AX\", \"QBE.AX\", \"RIO.AX\", \"SGP.AX\", \"SUN.AX\", \"TCL.AX\", \"TPG.AX\"], \"constituents\": 17, \"results\": [{\"ticker\": \"AGL.AX\", \"return_pct\": -3.5521, \"start_close\": 13.810916, \"end_close\": 13.320343, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"AMP.AX\", \"return_pct\": 3.3019, \"start_close\": 1.771027, \"end_close\": 1.829505, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"ANZ.AX\", \"return_pct\": 0.8925, \"start_close\": 19.190802, \"end_close\": 19.362087, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"AZJ.AX\", \"return_pct\": 5.1081, \"start_close\": 3.488252, \"end_close\": 3.666434, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"BHP.AX\", \"return_pct\": 5.8871, \"start_close\": 20.741327, \"end_close\": 21.962381, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"CBA.AX\", \"return_pct\": 0.6046, \"start_close\": 60.891937, \"end_close\": 61.260094, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"CMW.AX\", \"return_pct\": 3.8793, \"start_close\": 0.662798, \"end_close\": 0.68851, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"GPT.AX\", \"return_pct\": 4.6552, \"start_close\": 3.946376, \"end_close\": 4.130086, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"IAG.AX\", \"return_pct\": 3.8978, \"start_close\": 5.94795, \"end_close\": 6.179791, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"NAB.AX\", \"return_pct\": 1.3889, \"start_close\": 19.225603, \"end_close\": 19.492626, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"QAN.AX\", \"return_pct\": 4.7882, \"start_close\": 4.932274, \"end_close\": 5.168442, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"QBE.AX\", \"return_pct\": 5.18, \"start_close\": 9.02302, \"end_close\": 9.490411, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"RIO.AX\", \"return_pct\": 2.9143, \"start_close\": 62.009441, \"end_close\": 63.816586, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"SGP.AX\", \"return_pct\": 1.5946, \"start_close\": 2.839429, \"end_close\": 2.884705, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"SUN.AX\", \"return_pct\": 3.718, \"start_close\": 11.012774, \"end_close\": 11.422234, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"TCL.AX\", \"return_pct\": 1.6062, \"start_close\": 10.63948, \"end_close\": 10.810368, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}, {\"ticker\": \"TPG.AX\", \"return_pct\": 3.1796, \"start_close\": 4.739639, \"end_close\": 4.890343, \"used_start_date\": \"2019-06-05\", \"used_end_date\": \"2019-06-12\"}], \"basket_average_return_pct\": 2.885, \"direction\": \"up\", \"dataset\": \"asx\"}"
+    },
+    {
+      "tool": "query_data",
+      "args": {
+        "dataset": "asx",
+        "metric": "window_return",
+        "date_from": "2019-07-03",
+        "date_to": "2019-07-10",
+        "exclude_tickers": [
+          "TAH.AX"
+        ]
+      },
+      "result": "{\"metric\": \"window_return\", \"window\": [\"2019-07-03\", \"2019-07-10\"], \"tickers_used\": [\"AGL.AX\", \"AMP.AX\", \"ANZ.AX\", \"AZJ.AX\", \"BHP.AX\", \"CBA.AX\", \"CMW.AX\", \"GPT.AX\", \"IAG.AX\", \"NAB.AX\", \"QAN.AX\", \"QBE.AX\", \"RIO.AX\", \"SGP.AX\", \"SUN.AX\", \"TCL.AX\", \"TPG.AX\"], \"constituents\": 17, \"results\": [{\"ticker\": \"AGL.AX\", \"return_pct\": -1.8234, \"start_close\": 14.199285, \"end_close\": 13.940371, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"AMP.AX\", \"return_pct\": -1.3825, \"start_close\": 1.812797, \"end_close\": 1.787735, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"ANZ.AX\", \"return_pct\": -0.9356, \"start_close\": 19.04007, \"end_close\": 18.861935, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"AZJ.AX\", \"return_pct\": 0.9124, \"start_close\": 3.755525, \"end_close\": 3.78979, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"BHP.AX\", \"return_pct\": -2.6616, \"start_close\": 23.249733, \"end_close\": 22.63092, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"CBA.AX\", \"return_pct\": 0.3582, \"start_close\": 62.088455, \"end_close\": 62.310879, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"CMW.AX\", \"return_pct\": 1.6878, \"start_close\": 0.687004, \"end_close\": 0.698599, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"GPT.AX\", \"return_pct\": -0.6359, \"start_close\": 4.369852, \"end_close\": 4.342063, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"IAG.AX\", \"return_pct\": 0.3529, \"start_close\": 6.795373, \"end_close\": 6.819355, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"NAB.AX\", \"return_pct\": 0.9016, \"start_close\": 19.21117, \"end_close\": 19.384375, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"QAN.AX\", \"return_pct\": 6.5814, \"start_close\": 4.968608, \"end_close\": 5.29561, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"QBE.AX\", \"return_pct\": 0.5912, \"start_close\": 9.379506, \"end_close\": 9.434958, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"RIO.AX\", \"return_pct\": -3.1574, \"start_close\": 66.707993, \"end_close\": 64.601753, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"SGP.AX\", \"return_pct\": 5.5299, \"start_close\": 2.899372, \"end_close\": 3.059706, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"SUN.AX\", \"return_pct\": -2.3392, \"start_close\": 11.669619, \"end_close\": 11.396644, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"TCL.AX\", \"return_pct\": 2.1248, \"start_close\": 11.413222, \"end_close\": 11.655733, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}, {\"ticker\": \"TPG.AX\", \"return_pct\": -2.0958, \"start_close\": 5.033512, \"end_close\": 4.928019, \"used_start_date\": \"2019-07-03\", \"used_end_date\": \"2019-07-10\"}], \"basket_average_return_pct\": 0.2358, \"direction\": \"up\", \"dataset\": \"asx\"}"
+    },
+    {
+      "tool": "query_data",
+      "args": {
+        "dataset": "asx",
+        "metric": "window_return",
+        "date_from": "2019-10-02",
+        "date_to": "2019-10-09",
+        "exclude_tickers": [
+          "TAH.AX"
+        ]
+      },
+      "result": "{\"metric\": \"window_return\", \"window\": [\"2019-10-02\", \"2019-10-09\"], \"tickers_used\": [\"AGL.AX\", \"AMP.AX\", \"ANZ.AX\", \"AZJ.AX\", \"BHP.AX\", \"CBA.AX\", \"CMW.AX\", \"GPT.AX\", \"IAG.AX\", \"NAB.AX\", \"QAN.AX\", \"QBE.AX\", \"RIO.AX\", \"SGP.AX\", \"SUN.AX\", \"TCL.AX\", \"TPG.AX\"], \"constituents\": 17, \"results\": [{\"ticker\": \"AGL.AX\", \"return_pct\": 0.1566, \"start_close\": 13.50381, \"end_close\": 13.524955, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"AMP.AX\", \"return_pct\": -9.6045, \"start_close\": 1.478641, \"end_close\": 1.336624, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"ANZ.AX\", \"return_pct\": -3.4225, \"start_close\": 19.218208, \"end_close\": 18.560472, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"AZJ.AX\", \"return_pct\": -2.5084, \"start_close\": 4.185258, \"end_close\": 4.080277, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"BHP.AX\", \"return_pct\": -3.2231, \"start_close\": 20.787062, \"end_close\": 20.117067, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"CBA.AX\", \"return_pct\": -1.7839, \"start_close\": 62.88102, \"end_close\": 61.759296, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"CMW.AX\", \"return_pct\": 0.7936, \"start_close\": 0.741432, \"end_close\": 0.747316, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"GPT.AX\", \"return_pct\": 0.1621, \"start_close\": 4.286485, \"end_close\": 4.293432, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"IAG.AX\", \"return_pct\": -2.3077, \"start_close\": 6.398993, \"end_close\": 6.251323, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"NAB.AX\", \"return_pct\": -3.3081, \"start_close\": 20.943209, \"end_close\": 20.250393, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"QAN.AX\", \"return_pct\": -1.25, \"start_close\": 5.93974, \"end_close\": 5.865493, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"QBE.AX\", \"return_pct\": -3.5088, \"start_close\": 10.137937, \"end_close\": 9.78222, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"RIO.AX\", \"return_pct\": -3.6667, \"start_close\": 58.782696, \"end_close\": 56.627319, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"SGP.AX\", \"return_pct\": -0.8772, \"start_close\": 3.046345, \"end_close\": 3.019622, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"SUN.AX\", \"return_pct\": -4.3972, \"start_close\": 12.357527, \"end_close\": 11.814145, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"TCL.AX\", \"return_pct\": 1.4885, \"start_close\": 11.201021, \"end_close\": 11.367751, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}, {\"ticker\": \"TPG.AX\", \"return_pct\": 0.4348, \"start_close\": 5.199285, \"end_close\": 5.221892, \"used_start_date\": \"2019-10-02\", \"used_end_date\": \"2019-10-09\"}], \"basket_average_return_pct\": -2.166, \"direction\": \"down\", \"dataset\": \"asx\"}"
+    }
+  ],
+  "capture": {
+    "latency_seconds": 26.89,
+    "planning_seconds": 26.893,
+    "brain_calls": 2,
+    "tool_calls": 4,
+    "tool_failures": 0,
+    "notes": [
+      "brain unavailable: brain returned HTTP 400: {\"error\":{\"message\":\"litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 0 output tokens and your prompt contains at least 4097 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (par"
+    ]
+  }
+}

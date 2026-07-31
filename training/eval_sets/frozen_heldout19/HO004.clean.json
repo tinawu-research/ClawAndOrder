@@ -1,0 +1,29 @@
+{
+ "qid": "HO004",
+ "prompt": "For 2017, report the once-per-record whole-word housing AFR count.",
+ "difficulty": "medium",
+ "datasets": [
+  "AFR"
+ ],
+ "dataset_scope": "single",
+ "tool_trace": [
+  {
+   "tool": "query_data",
+   "args": {
+    "dataset": "afr",
+    "metric": "count",
+    "terms": [
+     "housing"
+    ],
+    "year": 2017
+   },
+   "result": "{\"metric\": \"count\", \"pattern\": \"\\\\bhousing\\\\b\", \"matching_records\": 2023, \"corpus_articles\": 219538, \"share_pct\": 0.9215, \"filters\": {\"year\": 2017, \"month\": null, \"date_from\": null, \"date_to\": null}, \"match_rules\": \"case-insensitive; HEADLINE+SUBHEAD+INTRO+TEXT combined; once per record\"}",
+   "compact": "pattern=\\bhousing\\b matching_records=2023 corpus_articles=219538 share_pct=0.9215 filters={year:2017 month:null date_from:null date_to:null}",
+   "ok": true
+  }
+ ],
+ "capture": {
+  "source": "generated",
+  "category": "afr_counts"
+ }
+}

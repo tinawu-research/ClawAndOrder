@@ -1,0 +1,237 @@
+{
+  "base_model_id": "nemotron-8b-finance",
+  "questions": [
+    "MHQ001",
+    "MHQ035",
+    "MHQ040",
+    "MHQ045",
+    "MHQ049"
+  ],
+  "arms": {
+    "ck20": {
+      "verdict": "APPLIED",
+      "differs_from_base": 5,
+      "identical_to_base": 0,
+      "served_models": [
+        "ck20"
+      ],
+      "rows": [
+        {
+          "qid": "MHQ001",
+          "base_sha": "27124df42299ba1b",
+          "arm_sha": "cac0971e9f993476",
+          "identical": false,
+          "served_model": "ck20"
+        },
+        {
+          "qid": "MHQ035",
+          "base_sha": "4a4fb3553cc3879a",
+          "arm_sha": "c2405db673801897",
+          "identical": false,
+          "served_model": "ck20"
+        },
+        {
+          "qid": "MHQ040",
+          "base_sha": "5a68f10fc63fa190",
+          "arm_sha": "9cfaa158c169a9d4",
+          "identical": false,
+          "served_model": "ck20"
+        },
+        {
+          "qid": "MHQ045",
+          "base_sha": "7f720919d11b5a57",
+          "arm_sha": "fdacb2470ec97d2f",
+          "identical": false,
+          "served_model": "ck20"
+        },
+        {
+          "qid": "MHQ049",
+          "base_sha": "9bf7eaad0528f17f",
+          "arm_sha": "eac403ef20dd5b7c",
+          "identical": false,
+          "served_model": "ck20"
+        }
+      ]
+    },
+    "ck40": {
+      "verdict": "APPLIED",
+      "differs_from_base": 5,
+      "identical_to_base": 0,
+      "served_models": [
+        "ck40"
+      ],
+      "rows": [
+        {
+          "qid": "MHQ001",
+          "base_sha": "27124df42299ba1b",
+          "arm_sha": "d370ad3367127dd6",
+          "identical": false,
+          "served_model": "ck40"
+        },
+        {
+          "qid": "MHQ035",
+          "base_sha": "4a4fb3553cc3879a",
+          "arm_sha": "b945127cf9699661",
+          "identical": false,
+          "served_model": "ck40"
+        },
+        {
+          "qid": "MHQ040",
+          "base_sha": "5a68f10fc63fa190",
+          "arm_sha": "185ffe72485473c0",
+          "identical": false,
+          "served_model": "ck40"
+        },
+        {
+          "qid": "MHQ045",
+          "base_sha": "7f720919d11b5a57",
+          "arm_sha": "f089138ae65cca08",
+          "identical": false,
+          "served_model": "ck40"
+        },
+        {
+          "qid": "MHQ049",
+          "base_sha": "9bf7eaad0528f17f",
+          "arm_sha": "34a8c7bd7d1d04b3",
+          "identical": false,
+          "served_model": "ck40"
+        }
+      ]
+    },
+    "ck60": {
+      "verdict": "APPLIED",
+      "differs_from_base": 5,
+      "identical_to_base": 0,
+      "served_models": [
+        "ck60"
+      ],
+      "rows": [
+        {
+          "qid": "MHQ001",
+          "base_sha": "27124df42299ba1b",
+          "arm_sha": "d370ad3367127dd6",
+          "identical": false,
+          "served_model": "ck60"
+        },
+        {
+          "qid": "MHQ035",
+          "base_sha": "4a4fb3553cc3879a",
+          "arm_sha": "e4373dfeb60848bd",
+          "identical": false,
+          "served_model": "ck60"
+        },
+        {
+          "qid": "MHQ040",
+          "base_sha": "5a68f10fc63fa190",
+          "arm_sha": "df9ee53cc8c76077",
+          "identical": false,
+          "served_model": "ck60"
+        },
+        {
+          "qid": "MHQ045",
+          "base_sha": "7f720919d11b5a57",
+          "arm_sha": "58a31277f544c39e",
+          "identical": false,
+          "served_model": "ck60"
+        },
+        {
+          "qid": "MHQ049",
+          "base_sha": "9bf7eaad0528f17f",
+          "arm_sha": "34a8c7bd7d1d04b3",
+          "identical": false,
+          "served_model": "ck60"
+        }
+      ]
+    },
+    "ck80": {
+      "verdict": "APPLIED",
+      "differs_from_base": 5,
+      "identical_to_base": 0,
+      "served_models": [
+        "ck80"
+      ],
+      "rows": [
+        {
+          "qid": "MHQ001",
+          "base_sha": "27124df42299ba1b",
+          "arm_sha": "d370ad3367127dd6",
+          "identical": false,
+          "served_model": "ck80"
+        },
+        {
+          "qid": "MHQ035",
+          "base_sha": "4a4fb3553cc3879a",
+          "arm_sha": "16997587b9caba62",
+          "identical": false,
+          "served_model": "ck80"
+        },
+        {
+          "qid": "MHQ040",
+          "base_sha": "5a68f10fc63fa190",
+          "arm_sha": "5f13845b71bda3be",
+          "identical": false,
+          "served_model": "ck80"
+        },
+        {
+          "qid": "MHQ045",
+          "base_sha": "7f720919d11b5a57",
+          "arm_sha": "58a31277f544c39e",
+          "identical": false,
+          "served_model": "ck80"
+        },
+        {
+          "qid": "MHQ049",
+          "base_sha": "9bf7eaad0528f17f",
+          "arm_sha": "34a8c7bd7d1d04b3",
+          "identical": false,
+          "served_model": "ck80"
+        }
+      ]
+    },
+    "ck100": {
+      "verdict": "APPLIED",
+      "differs_from_base": 5,
+      "identical_to_base": 0,
+      "served_models": [
+        "ck100"
+      ],
+      "rows": [
+        {
+          "qid": "MHQ001",
+          "base_sha": "27124df42299ba1b",
+          "arm_sha": "d370ad3367127dd6",
+          "identical": false,
+          "served_model": "ck100"
+        },
+        {
+          "qid": "MHQ035",
+          "base_sha": "4a4fb3553cc3879a",
+          "arm_sha": "16997587b9caba62",
+          "identical": false,
+          "served_model": "ck100"
+        },
+        {
+          "qid": "MHQ040",
+          "base_sha": "5a68f10fc63fa190",
+          "arm_sha": "09e182897134b88d",
+          "identical": false,
+          "served_model": "ck100"
+        },
+        {
+          "qid": "MHQ045",
+          "base_sha": "7f720919d11b5a57",
+          "arm_sha": "58a31277f544c39e",
+          "identical": false,
+          "served_model": "ck100"
+        },
+        {
+          "qid": "MHQ049",
+          "base_sha": "9bf7eaad0528f17f",
+          "arm_sha": "34a8c7bd7d1d04b3",
+          "identical": false,
+          "served_model": "ck100"
+        }
+      ]
+    }
+  }
+}

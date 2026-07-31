@@ -1,0 +1,34 @@
+[project]
+name = "clawandorder-agent"
+version = "1.0.0"
+description = "Evidence-grounded market signal agent over RBA, ASX and AFR data"
+requires-python = ">=3.11"
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+# Flat module layout, matching the organizer handout's `agent/config.py`
+# reference. Listed explicitly so a build does not mistake `frontend` for a
+# Python package.
+[tool.setuptools]
+py-modules = [
+    "config",
+    "datastore",
+    "brain",
+    "compact",
+    "synthesis",
+    "orchestrator",
+    "server",
+]
+packages = ["tools"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = [
+    "slow: loads the full 219k-article AFR corpus and builds the index (~25s)",
+]
+
+[tool.pyright]
+pythonVersion = "3.11"

@@ -1,0 +1,33 @@
+{
+  "budget": 1024,
+  "seed": 17,
+  "train_rows": 790,
+  "val_rows": 144,
+  "dropped_over_budget": 35,
+  "token_p50": 592,
+  "token_max": 1021,
+  "mix": {
+    "sentiment": 192,
+    "afr_counts": 122,
+    "rba_counts": 103,
+    "asx_returns": 72,
+    "rba_asx_event": 68,
+    "coverage": 60,
+    "composite": 51,
+    "asx_volume": 49,
+    "refusal": 40,
+    "asx_drawdown": 33
+  },
+  "prefix_160": {
+    "sentiment": 16,
+    "afr_counts": 16,
+    "rba_counts": 16,
+    "asx_returns": 16,
+    "rba_asx_event": 16,
+    "coverage": 16,
+    "composite": 16,
+    "asx_volume": 16,
+    "refusal": 16,
+    "asx_drawdown": 16
+  }
+}

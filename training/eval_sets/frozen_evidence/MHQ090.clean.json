@@ -1,0 +1,26 @@
+{
+  "qid": "MHQ090",
+  "prompt": "Can the three supplied datasets support a fully observed analysis of how AFR news and ASX prices reacted to the 2022-2023 RBA tightening cycle?",
+  "difficulty": "hard",
+  "datasets": [
+    "RBA",
+    "ASX",
+    "AFR"
+  ],
+  "dataset_scope": "cross",
+  "tool_trace": [
+    {
+      "tool": "dataset_coverage",
+      "args": {},
+      "result": "{\"tool\": \"dataset_coverage\", \"datasets\": {\"rba\": {\"records\": 175, \"start\": \"2010-02-03\", \"end\": \"2026-06-17\"}, \"asx\": {\"tickers\": 18, \"rows_per_ticker\": 1774, \"start\": \"2015-01-02\", \"end\": \"2021-12-30\"}, \"afr\": {\"articles\": 219538, \"start\": \"2015-01-02\", \"end\": \"2021-12-29\"}}, \"common_overlap\": {\"start\": \"2015-01-02\", \"end\": \"2021-12-29\", \"valid\": true}, \"note\": \"Cross-dataset claims are only observable inside common_overlap. Outside it, say so explicitly rather than inferring values.\"}"
+    }
+  ],
+  "capture": {
+    "latency_seconds": 23.85,
+    "planning_seconds": 23.853,
+    "brain_calls": 2,
+    "tool_calls": 1,
+    "tool_failures": 0,
+    "notes": []
+  }
+}

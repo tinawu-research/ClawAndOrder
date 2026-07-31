@@ -1,0 +1,38 @@
+{
+ "qid": "PR013",
+ "prompt": "Using a case-insensitive once-per-record whole-word housing search of the AFR corpus, which year has the highest count and what is the overall total?",
+ "difficulty": "medium",
+ "datasets": [
+  "AFR"
+ ],
+ "dataset_scope": "single",
+ "tool_trace": [
+  {
+   "tool": "query_data",
+   "args": {
+    "dataset": "afr",
+    "metric": "coverage"
+   },
+   "result": "{\"metric\": \"coverage\", \"articles\": 219538, \"dated_articles\": 219446, \"undated_articles\": 92, \"start\": \"2015-01-02\", \"end\": \"2021-12-29\", \"index_ready\": true}",
+   "compact": "articles=219538 dated_articles=219446 undated_articles=92 start=2015-01-02 end=2021-12-29",
+   "ok": true
+  },
+  {
+   "tool": "query_data",
+   "args": {
+    "dataset": "afr",
+    "metric": "count_by_year",
+    "terms": [
+     "housing"
+    ]
+   },
+   "result": "{\"metric\": \"count_by_year\", \"pattern\": \"\\\\bhousing\\\\b\", \"window\": null, \"by_year\": {\"2015\": 1979, \"2016\": 2481, \"2017\": 2023, \"2018\": 1679, \"2019\": 1970, \"2020\": 1308, \"2021\": 1539}, \"total\": 12979, \"peak_year\": 2016, \"peak_year_count\": 2481}",
+   "compact": "pattern=\\bhousing\\b window=null by_year={2015:1979 2016:2481 2017:2023 2018:1679 2019:1970 2020:1308 2021:1539} total=12979 peak_year=2016 peak_year_count=2481",
+   "ok": true
+  }
+ ],
+ "capture": {
+  "source": "generated",
+  "category": "afr_counts"
+ }
+}

@@ -1,0 +1,16 @@
+# Dependencies for training/trainer.py
+#
+# Training itself runs inside the NeMo container (nvcr.io/nvidia/nemo:25.09),
+# which already supplies torch, transformers, peft and the NeMo stack. This file
+# covers only the host-side driver script: config, orchestration, and plotting
+# training metrics. Do not add torch/transformers here — that would shadow the
+# container's CUDA-matched builds.
+#
+#   pip install -r training/requirements.txt
+#
+# Version floors are the first releases with Python 3.13 wheels (host is 3.13.13).
+
+PyYAML>=6.0.2        # AutoModel/NeMo recipe YAML
+requests>=2.32.0     # LiteLLM :4000, vLLM :8000 / :8001 health and completions
+pandas>=2.2.3        # loss/metric tables, base-vs-fine-tuned comparison
+matplotlib>=3.9.2    # training curves for training/ evidence

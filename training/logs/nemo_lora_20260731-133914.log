@@ -1,0 +1,317 @@
+
+====================
+== NeMo Framework ==
+====================
+
+NVIDIA Release  (build 236656227)
+Container image Copyright (c) 2025, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+GOVERNING TERMS: The software and materials are governed by the NVIDIA Software License Agreement
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-software-license-agreement/)
+and the Product-Specific Terms for NVIDIA AI Products
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/product-specific-terms-for-ai-products/).
+WARNING: Detected NVIDIA GB10 GPU, which may not yet be supported in this version of the container
+
+Skipping import of cpp extensions due to incompatible torch version 2.8.0a0+5228986c39.nv25.06 for torchao version 0.14.1             Please see https://github.com/pytorch/ao/issues/2919 for more info
+cfg-path: /workspace/training/configs/lora_nemotron_r32.yaml
+> initializing torch distributed with 1 workers.
+2026-07-31 03:39:20 | INFO | nemo_automodel.components.loggers.log_utils | Setting logging level to 20
+2026-07-31 03:39:20 | INFO | root | Experiment_details:
+2026-07-31 03:39:20 | INFO | root | Timestamp: '2026-07-31T03:39:20'
+2026-07-31 03:39:20 | INFO | root | User: root
+2026-07-31 03:39:20 | INFO | root | Host: aitopatom-5bde
+2026-07-31 03:39:20 | INFO | root | World size: 1
+2026-07-31 03:39:20 | INFO | root | Backend: nccl
+2026-07-31 03:39:20 | INFO | root | Recipe: TrainFinetuneRecipeForNextTokenPrediction
+2026-07-31 03:39:20 | INFO | root | Model name: /workspace/models/Llama-3.1-Nemotron-Nano-8B-v1
+2026-07-31 03:39:20 | INFO | root | Recipe config:
+2026-07-31 03:39:20 | INFO | root |   step_scheduler:
+2026-07-31 03:39:20 | INFO | root |     global_batch_size: 8
+2026-07-31 03:39:20 | INFO | root |     local_batch_size: 1
+2026-07-31 03:39:20 | INFO | root |     ckpt_every_steps: 20
+2026-07-31 03:39:20 | INFO | root |     val_every_steps: 20
+2026-07-31 03:39:20 | INFO | root |     max_steps: 100
+2026-07-31 03:39:20 | INFO | root |   dist_env:
+2026-07-31 03:39:20 | INFO | root |     backend: nccl
+2026-07-31 03:39:20 | INFO | root |     timeout_minutes: 5
+2026-07-31 03:39:20 | INFO | root |   rng:
+2026-07-31 03:39:20 | INFO | root |     _target_: <class 'nemo_automodel.components.training.rng.StatefulRNG'>
+2026-07-31 03:39:20 | INFO | root |     seed: 1111
+2026-07-31 03:39:20 | INFO | root |     ranked: True
+2026-07-31 03:39:20 | INFO | root |   model:
+2026-07-31 03:39:20 | INFO | root |     _target_: <bound method _BaseNeMoAutoModelClass.from_pretrained of <class 'nemo_automodel.components._transformers.auto_model.NeMoAutoModelForCausalLM'>>
+2026-07-31 03:39:20 | INFO | root |     pretrained_model_name_or_path: /workspace/models/Llama-3.1-Nemotron-Nano-8B-v1
+2026-07-31 03:39:20 | INFO | root |     trust_remote_code: True
+2026-07-31 03:39:20 | INFO | root |   peft:
+2026-07-31 03:39:20 | INFO | root |     _target_: <class 'nemo_automodel.components._peft.lora.PeftConfig'>
+2026-07-31 03:39:20 | INFO | root |     match_all_linear: True
+2026-07-31 03:39:20 | INFO | root |     dim: 32
+2026-07-31 03:39:20 | INFO | root |     alpha: 32
+2026-07-31 03:39:20 | INFO | root |     dropout: 0.1
+2026-07-31 03:39:20 | INFO | root |   distributed:
+2026-07-31 03:39:20 | INFO | root |     _target_: <class 'nemo_automodel.components.distributed.fsdp2.FSDP2Manager'>
+2026-07-31 03:39:20 | INFO | root |     dp_size: None
+2026-07-31 03:39:20 | INFO | root |     dp_replicate_size: 1
+2026-07-31 03:39:20 | INFO | root |     tp_size: 1
+2026-07-31 03:39:20 | INFO | root |     cp_size: 1
+2026-07-31 03:39:20 | INFO | root |     sequence_parallel: False
+2026-07-31 03:39:20 | INFO | root |   loss_fn:
+2026-07-31 03:39:20 | INFO | root |     _target_: <class 'nemo_automodel.components.loss.masked_ce.MaskedCrossEntropy'>
+2026-07-31 03:39:20 | INFO | root |   checkpoint:
+2026-07-31 03:39:20 | INFO | root |     enabled: True
+2026-07-31 03:39:20 | INFO | root |     checkpoint_dir: /workspace/checkpoints/nemotron_synthesis_r32
+2026-07-31 03:39:20 | INFO | root |     model_save_format: safetensors
+2026-07-31 03:39:20 | INFO | root |     save_consolidated: True
+2026-07-31 03:39:20 | INFO | root |   dataset:
+2026-07-31 03:39:20 | INFO | root |     _target_: <class 'nemo_automodel.components.datasets.llm.column_mapped_text_instruction_dataset.ColumnMappedTextInstructionDataset'>
+2026-07-31 03:39:20 | INFO | root |     path_or_dataset_id: /workspace/training/data/train.io.jsonl
+2026-07-31 03:39:20 | INFO | root |     split: train
+2026-07-31 03:39:20 | INFO | root |     column_mapping:
+2026-07-31 03:39:20 | INFO | root |       context: system
+2026-07-31 03:39:20 | INFO | root |       question: input
+2026-07-31 03:39:20 | INFO | root |       answer: output
+2026-07-31 03:39:20 | INFO | root |     seq_length: 1024
+2026-07-31 03:39:20 | INFO | root |     answer_only_loss_mask: True
+2026-07-31 03:39:20 | INFO | root |     start_of_turn_token: <|start_header_id|>
+2026-07-31 03:39:20 | INFO | root |   packed_sequence:
+2026-07-31 03:39:20 | INFO | root |     packed_sequence_size: 0
+2026-07-31 03:39:20 | INFO | root |   dataloader:
+2026-07-31 03:39:20 | INFO | root |     _target_: <class 'torchdata.stateful_dataloader.stateful_dataloader.StatefulDataLoader'>
+2026-07-31 03:39:20 | INFO | root |     collate_fn: <function default_collater at 0xe236831ef6a0>
+2026-07-31 03:39:20 | INFO | root |     shuffle: False
+2026-07-31 03:39:20 | INFO | root |   validation_dataset:
+2026-07-31 03:39:20 | INFO | root |     _target_: <class 'nemo_automodel.components.datasets.llm.column_mapped_text_instruction_dataset.ColumnMappedTextInstructionDataset'>
+2026-07-31 03:39:20 | INFO | root |     path_or_dataset_id: /workspace/training/data/val.io.jsonl
+2026-07-31 03:39:20 | INFO | root |     split: train
+2026-07-31 03:39:20 | INFO | root |     column_mapping:
+2026-07-31 03:39:20 | INFO | root |       context: system
+2026-07-31 03:39:20 | INFO | root |       question: input
+2026-07-31 03:39:20 | INFO | root |       answer: output
+2026-07-31 03:39:20 | INFO | root |     seq_length: 1024
+2026-07-31 03:39:20 | INFO | root |     answer_only_loss_mask: True
+2026-07-31 03:39:20 | INFO | root |     start_of_turn_token: <|start_header_id|>
+2026-07-31 03:39:20 | INFO | root |   validation_dataloader:
+2026-07-31 03:39:20 | INFO | root |     _target_: <class 'torchdata.stateful_dataloader.stateful_dataloader.StatefulDataLoader'>
+2026-07-31 03:39:20 | INFO | root |     collate_fn: <function default_collater at 0xe236831ef6a0>
+2026-07-31 03:39:20 | INFO | root |     shuffle: False
+2026-07-31 03:39:20 | INFO | root |   optimizer:
+2026-07-31 03:39:20 | INFO | root |     _target_: <class 'torch.optim.adamw.AdamW'>
+2026-07-31 03:39:20 | INFO | root |     betas: [0.9, 0.999]
+2026-07-31 03:39:20 | INFO | root |     eps: 1e-08
+2026-07-31 03:39:20 | INFO | root |     lr: 5e-05
+2026-07-31 03:39:20 | INFO | root |     weight_decay: 0.0
+2026-07-31 03:39:20 | INFO | root |   lr_scheduler:
+2026-07-31 03:39:20 | INFO | root |     lr_warmup_steps: 50
+2026-07-31 03:39:20 | INFO | root |     lr_decay_steps: 98
+2026-07-31 03:39:20 | INFO | root |     lr_decay_style: cosine
+2026-07-31 03:39:20 | INFO | root |     init_lr: 5e-06
+2026-07-31 03:39:20 | INFO | root |     max_lr: 5e-05
+2026-07-31 03:39:20 | INFO | root |     min_lr: 5e-07
+2026-07-31 03:39:20 | INFO | root | Library versions:
+2026-07-31 03:39:20 | INFO | root | - nemo_automodel: 0.1.1 (/opt/Automodel/nemo_automodel/__init__.py)
+2026-07-31 03:39:20 | INFO | root | - transformers: 4.53.3 (/opt/venv/lib/python3.12/site-packages/transformers/__init__.py)
+2026-07-31 03:39:20 | INFO | root | - torch: 2.8.0a0+5228986c39.nv25.06 CUDA 12.9
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 476.48it/s]
+2026-07-31 03:39:21 | INFO | root | Patched model with SDPA method= [<SDPBackend.CUDNN_ATTENTION: 3>, <SDPBackend.FLASH_ATTENTION: 1>, <SDPBackend.EFFICIENT_ATTENTION: 2>, <SDPBackend.MATH: 0>]
+2026-07-31 03:39:29 | INFO | root | Model summary:
+2026-07-31 03:39:29 | INFO | root | --------------------------------
+2026-07-31 03:39:29 | INFO | root | Trainable parameters: 83,886,080
+2026-07-31 03:39:29 | INFO | root | Total parameters: 8,114,147,328
+2026-07-31 03:39:29 | INFO | root | Trainable parameters percentage: 1.03%
+2026-07-31 03:39:29 | INFO | root | Param L2 norm: 3855.0701
+2026-07-31 03:39:29 | INFO | root | --------------------------------
+2026-07-31 03:39:29 | INFO | nemo_automodel.recipes.llm.train_ft | World size is 1, skipping parallelization.
+2026-07-31 03:39:30 | INFO | root | Using model config to instantiate tokenizer
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 790 examples [00:00, 158245.39 examples/s]
+2026-07-31 03:39:30 | INFO | root | Using model config to instantiate tokenizer
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 144 examples [00:00, 81884.46 examples/s]
+2026-07-31 03:39:31 | INFO | nemo_automodel.recipes.llm.train_ft | Building LR scheduler with total_steps=100, warmup_steps=50, decay_style=cosine
+2026-07-31 03:39:31 | INFO | nemo_automodel.components.optim.scheduler | learning rate decay style: cosine
+2026-07-31 03:39:31 | INFO | root | Model Part 0:
+2026-07-31 03:39:31 | INFO | root | LlamaForCausalLM(
+2026-07-31 03:39:31 | INFO | root |   (model): LlamaModel(
+2026-07-31 03:39:31 | INFO | root |     (embed_tokens): Embedding(128256, 4096)
+2026-07-31 03:39:31 | INFO | root |     (layers): ModuleList(
+2026-07-31 03:39:31 | INFO | root |       (0-31): 32 x LlamaDecoderLayer(
+2026-07-31 03:39:31 | INFO | root |         (self_attn): LlamaAttention(
+2026-07-31 03:39:31 | INFO | root |           (q_proj): PatchedLinearLoRA(
+2026-07-31 03:39:31 | INFO | root |             in_features=4096, out_features=4096, bias=False
+2026-07-31 03:39:31 | INFO | root |             (lora_A): Linear(in_features=4096, out_features=32, bias=False)
+2026-07-31 03:39:31 | INFO | root |             (lora_B): Linear(in_features=32, out_features=4096, bias=False)
+2026-07-31 03:39:31 | INFO | root |           )
+2026-07-31 03:39:31 | INFO | root |           (k_proj): PatchedLinearLoRA(
+2026-07-31 03:39:31 | INFO | root |             in_features=4096, out_features=1024, bias=False
+2026-07-31 03:39:31 | INFO | root |             (lora_A): Linear(in_features=4096, out_features=32, bias=False)
+2026-07-31 03:39:31 | INFO | root |             (lora_B): Linear(in_features=32, out_features=1024, bias=False)
+2026-07-31 03:39:31 | INFO | root |           )
+2026-07-31 03:39:31 | INFO | root |           (v_proj): PatchedLinearLoRA(
+2026-07-31 03:39:31 | INFO | root |             in_features=4096, out_features=1024, bias=False
+2026-07-31 03:39:31 | INFO | root |             (lora_A): Linear(in_features=4096, out_features=32, bias=False)
+2026-07-31 03:39:31 | INFO | root |             (lora_B): Linear(in_features=32, out_features=1024, bias=False)
+2026-07-31 03:39:31 | INFO | root |           )
+2026-07-31 03:39:31 | INFO | root |           (o_proj): PatchedLinearLoRA(
+2026-07-31 03:39:31 | INFO | root |             in_features=4096, out_features=4096, bias=False
+2026-07-31 03:39:31 | INFO | root |             (lora_A): Linear(in_features=4096, out_features=32, bias=False)
+2026-07-31 03:39:31 | INFO | root |             (lora_B): Linear(in_features=32, out_features=4096, bias=False)
+2026-07-31 03:39:31 | INFO | root |           )
+2026-07-31 03:39:31 | INFO | root |         )
+2026-07-31 03:39:31 | INFO | root |         (mlp): LlamaMLP(
+2026-07-31 03:39:31 | INFO | root |           (gate_proj): PatchedLinearLoRA(
+2026-07-31 03:39:31 | INFO | root |             in_features=4096, out_features=14336, bias=False
+2026-07-31 03:39:31 | INFO | root |             (lora_A): Linear(in_features=4096, out_features=32, bias=False)
+2026-07-31 03:39:31 | INFO | root |             (lora_B): Linear(in_features=32, out_features=14336, bias=False)
+2026-07-31 03:39:31 | INFO | root |           )
+2026-07-31 03:39:31 | INFO | root |           (up_proj): PatchedLinearLoRA(
+2026-07-31 03:39:31 | INFO | root |             in_features=4096, out_features=14336, bias=False
+2026-07-31 03:39:31 | INFO | root |             (lora_A): Linear(in_features=4096, out_features=32, bias=False)
+2026-07-31 03:39:31 | INFO | root |             (lora_B): Linear(in_features=32, out_features=14336, bias=False)
+2026-07-31 03:39:31 | INFO | root |           )
+2026-07-31 03:39:31 | INFO | root |           (down_proj): PatchedLinearLoRA(
+2026-07-31 03:39:31 | INFO | root |             in_features=14336, out_features=4096, bias=False
+2026-07-31 03:39:31 | INFO | root | ...
+2026-07-31 03:39:31 | INFO | root | Optimizer:
+2026-07-31 03:39:31 | INFO | root | AdamW (
+2026-07-31 03:39:31 | INFO | root | Parameter Group 0
+2026-07-31 03:39:31 | INFO | root |     amsgrad: False
+2026-07-31 03:39:31 | INFO | root |     betas: [0.9, 0.999]
+2026-07-31 03:39:31 | INFO | root |     capturable: False
+2026-07-31 03:39:31 | INFO | root |     decoupled_weight_decay: True
+2026-07-31 03:39:31 | INFO | root |     differentiable: False
+2026-07-31 03:39:31 | INFO | root |     eps: 1e-08
+2026-07-31 03:39:31 | INFO | root |     foreach: None
+2026-07-31 03:39:31 | INFO | root |     fused: None
+2026-07-31 03:39:31 | INFO | root |     lr: 5e-06
+2026-07-31 03:39:31 | INFO | root |     maximize: False
+2026-07-31 03:39:31 | INFO | root |     weight_decay: 0.0
+2026-07-31 03:39:31 | INFO | root | )
+2026-07-31 03:39:31 | INFO | root | LR scheduler:
+2026-07-31 03:39:31 | INFO | root | OptimizerParamScheduler(
+2026-07-31 03:39:31 | INFO | root |     optimizer: AdamW
+2026-07-31 03:39:31 | INFO | root |     learning_rate:
+2026-07-31 03:39:31 | INFO | root |         init_lr: 5e-06
+2026-07-31 03:39:31 | INFO | root |         max_lr: 5e-05
+2026-07-31 03:39:31 | INFO | root |         min_lr: 5e-07
+2026-07-31 03:39:31 | INFO | root |         warmup_steps: 50
+2026-07-31 03:39:31 | INFO | root |         decay_steps: 98
+2026-07-31 03:39:31 | INFO | root |         decay_style: cosine
+2026-07-31 03:39:31 | INFO | root |     weight_decay:
+2026-07-31 03:39:31 | INFO | root |         start_wd: 0.0
+2026-07-31 03:39:31 | INFO | root |         end_wd: 0.0
+2026-07-31 03:39:31 | INFO | root |         incr_steps: 100
+2026-07-31 03:39:31 | INFO | root |         incr_style: constant
+2026-07-31 03:39:31 | INFO | root |     current_step: 0
+2026-07-31 03:39:31 | INFO | root | )
+2026-07-31 03:39:31 | INFO | root | Step scheduler:
+2026-07-31 03:39:31 | INFO | root | - Gradient accumulation steps: 8
+2026-07-31 03:39:31 | INFO | root | - Checkpoint every steps: 20
+2026-07-31 03:39:31 | INFO | root | - Current Epoch: 0
+2026-07-31 03:39:31 | INFO | root | - Number of epochs: 10
+2026-07-31 03:39:31 | INFO | root | - Validation every steps: 20
+2026-07-31 03:39:31 | INFO | root | - Max train steps: 100
+2026-07-31 03:39:41 | INFO | root | step 0 | epoch 0 | loss 5.1104 | grad_norm 286.0000 | lr 5.90e-06 | mem 23.90 GiB | tps 201.69(201.69/gpu) | num_label_tokens 941
+2026-07-31 03:39:50 | INFO | root | step 1 | epoch 0 | loss 2.7821 | grad_norm 112.5000 | lr 6.80e-06 | mem 24.49 GiB | tps 322.58(322.58/gpu) | num_label_tokens 1513
+2026-07-31 03:39:58 | INFO | root | step 2 | epoch 0 | loss 2.1575 | grad_norm 67.5000 | lr 7.70e-06 | mem 24.49 GiB | tps 370.07(370.07/gpu) | num_label_tokens 1914
+2026-07-31 03:40:07 | INFO | root | step 3 | epoch 0 | loss 2.0430 | grad_norm 69.0000 | lr 8.60e-06 | mem 24.49 GiB | tps 352.16(352.16/gpu) | num_label_tokens 1769
+2026-07-31 03:40:15 | INFO | root | step 4 | epoch 0 | loss 1.4675 | grad_norm 66.5000 | lr 9.50e-06 | mem 24.57 GiB | tps 459.83(459.83/gpu) | num_label_tokens 2694
+2026-07-31 03:40:24 | INFO | root | step 5 | epoch 0 | loss 1.4945 | grad_norm 50.2500 | lr 1.04e-05 | mem 24.63 GiB | tps 468.26(468.26/gpu) | num_label_tokens 2776
+2026-07-31 03:40:32 | INFO | root | step 6 | epoch 0 | loss 1.3063 | grad_norm 40.2500 | lr 1.13e-05 | mem 24.63 GiB | tps 435.09(435.09/gpu) | num_label_tokens 2491
+2026-07-31 03:40:40 | INFO | root | step 7 | epoch 0 | loss 1.0046 | grad_norm 76.0000 | lr 1.22e-05 | mem 24.49 GiB | tps 431.61(431.61/gpu) | num_label_tokens 2457
+2026-07-31 03:40:49 | INFO | root | step 8 | epoch 0 | loss 0.9738 | grad_norm 37.0000 | lr 1.31e-05 | mem 24.49 GiB | tps 457.75(457.75/gpu) | num_label_tokens 2703
+2026-07-31 03:40:57 | INFO | root | step 9 | epoch 0 | loss 0.7530 | grad_norm 43.2500 | lr 1.40e-05 | mem 24.63 GiB | tps 483.53(483.53/gpu) | num_label_tokens 2922
+2026-07-31 03:41:06 | INFO | root | step 10 | epoch 0 | loss 0.7814 | grad_norm 32.5000 | lr 1.49e-05 | mem 24.63 GiB | tps 488.85(488.85/gpu) | num_label_tokens 2972
+2026-07-31 03:41:14 | INFO | root | step 11 | epoch 0 | loss 0.7162 | grad_norm 29.1250 | lr 1.58e-05 | mem 24.63 GiB | tps 447.47(447.47/gpu) | num_label_tokens 2607
+2026-07-31 03:41:23 | INFO | root | step 12 | epoch 0 | loss 0.7124 | grad_norm 37.7500 | lr 1.67e-05 | mem 24.49 GiB | tps 449.05(449.05/gpu) | num_label_tokens 2622
+2026-07-31 03:41:31 | INFO | root | step 13 | epoch 0 | loss 0.5989 | grad_norm 30.3750 | lr 1.76e-05 | mem 24.49 GiB | tps 477.19(477.19/gpu) | num_label_tokens 2861
+2026-07-31 03:41:40 | INFO | root | step 14 | epoch 0 | loss 0.4866 | grad_norm 28.8750 | lr 1.85e-05 | mem 24.63 GiB | tps 504.06(504.06/gpu) | num_label_tokens 3098
+2026-07-31 03:41:48 | INFO | root | step 15 | epoch 0 | loss 0.6676 | grad_norm 25.7500 | lr 1.94e-05 | mem 24.63 GiB | tps 515.23(515.23/gpu) | num_label_tokens 3207
+2026-07-31 03:41:57 | INFO | root | step 16 | epoch 0 | loss 0.6460 | grad_norm 38.7500 | lr 2.03e-05 | mem 24.63 GiB | tps 462.89(462.89/gpu) | num_label_tokens 2740
+2026-07-31 03:42:06 | INFO | root | step 17 | epoch 0 | loss 0.4796 | grad_norm 35.7500 | lr 2.12e-05 | mem 24.49 GiB | tps 492.56(492.56/gpu) | num_label_tokens 3017
+2026-07-31 03:42:14 | INFO | root | step 18 | epoch 0 | loss 0.5109 | grad_norm 22.1250 | lr 2.21e-05 | mem 24.52 GiB | tps 514.13(514.13/gpu) | num_label_tokens 3189
+2026-07-31 03:42:23 | INFO | root | step 19 | epoch 0 | loss 0.4542 | grad_norm 23.7500 | lr 2.30e-05 | mem 24.63 GiB | tps 539.76(539.76/gpu) | num_label_tokens 3402
+Saving checkpoint to /workspace/checkpoints/nemotron_synthesis_r32/epoch_0_step_19
+2026-07-31 03:43:34 | INFO | root | [val] step 19 | epoch 0 | loss 0.9233 | lr 2.30e-05 | num_label_tokens 61652
+2026-07-31 03:43:42 | INFO | root | step 20 | epoch 0 | loss 0.5326 | grad_norm 19.5000 | lr 2.39e-05 | mem 24.63 GiB | tps 55.73(55.73/gpu) | num_label_tokens 3244
+2026-07-31 03:43:51 | INFO | root | step 21 | epoch 0 | loss 0.5285 | grad_norm 21.1250 | lr 2.48e-05 | mem 24.63 GiB | tps 479.87(479.87/gpu) | num_label_tokens 2890
+2026-07-31 03:43:59 | INFO | root | step 22 | epoch 0 | loss 0.3828 | grad_norm 26.6250 | lr 2.57e-05 | mem 24.49 GiB | tps 511.32(511.32/gpu) | num_label_tokens 3163
+2026-07-31 03:44:08 | INFO | root | step 23 | epoch 0 | loss 0.4377 | grad_norm 23.1250 | lr 2.66e-05 | mem 24.52 GiB | tps 528.58(528.58/gpu) | num_label_tokens 3309
+2026-07-31 03:44:16 | INFO | root | step 24 | epoch 0 | loss 0.3908 | grad_norm 24.0000 | lr 2.75e-05 | mem 24.63 GiB | tps 557.89(557.89/gpu) | num_label_tokens 3577
+2026-07-31 03:44:25 | INFO | root | step 25 | epoch 0 | loss 0.4601 | grad_norm 27.6250 | lr 2.84e-05 | mem 24.63 GiB | tps 527.02(527.02/gpu) | num_label_tokens 3295
+2026-07-31 03:44:33 | INFO | root | step 26 | epoch 0 | loss 0.5935 | grad_norm 26.5000 | lr 2.93e-05 | mem 24.63 GiB | tps 502.81(502.81/gpu) | num_label_tokens 3077
+2026-07-31 03:44:42 | INFO | root | step 27 | epoch 0 | loss 0.3559 | grad_norm 19.0000 | lr 3.02e-05 | mem 24.49 GiB | tps 537.58(537.58/gpu) | num_label_tokens 3398
+2026-07-31 03:44:50 | INFO | root | step 28 | epoch 0 | loss 0.4569 | grad_norm 20.1250 | lr 3.11e-05 | mem 24.52 GiB | tps 556.03(556.03/gpu) | num_label_tokens 3549
+2026-07-31 03:44:59 | INFO | root | step 29 | epoch 0 | loss 0.3063 | grad_norm 12.9375 | lr 3.20e-05 | mem 24.64 GiB | tps 588.20(588.20/gpu) | num_label_tokens 3829
+2026-07-31 03:45:07 | INFO | root | step 30 | epoch 0 | loss 0.5410 | grad_norm 25.8750 | lr 3.29e-05 | mem 24.64 GiB | tps 542.24(542.24/gpu) | num_label_tokens 3437
+2026-07-31 03:45:16 | INFO | root | step 31 | epoch 0 | loss 0.4016 | grad_norm 36.2500 | lr 3.38e-05 | mem 24.64 GiB | tps 518.16(518.16/gpu) | num_label_tokens 3218
+2026-07-31 03:45:24 | INFO | root | step 32 | epoch 0 | loss 0.2703 | grad_norm 17.2500 | lr 3.47e-05 | mem 24.49 GiB | tps 555.46(555.46/gpu) | num_label_tokens 3550
+2026-07-31 03:45:33 | INFO | root | step 33 | epoch 0 | loss 0.5551 | grad_norm 81.0000 | lr 3.56e-05 | mem 24.53 GiB | tps 576.78(576.78/gpu) | num_label_tokens 3735
+2026-07-31 03:45:42 | INFO | root | step 34 | epoch 0 | loss 0.3895 | grad_norm 53.2500 | lr 3.65e-05 | mem 24.64 GiB | tps 612.33(612.33/gpu) | num_label_tokens 4049
+2026-07-31 03:45:50 | INFO | root | step 35 | epoch 0 | loss 0.5143 | grad_norm 71.0000 | lr 3.74e-05 | mem 24.64 GiB | tps 552.94(552.94/gpu) | num_label_tokens 3522
+2026-07-31 03:45:59 | INFO | root | step 36 | epoch 0 | loss 0.4994 | grad_norm 39.0000 | lr 3.83e-05 | mem 24.64 GiB | tps 535.44(535.44/gpu) | num_label_tokens 3379
+2026-07-31 03:46:07 | INFO | root | step 37 | epoch 0 | loss 0.3524 | grad_norm 29.8750 | lr 3.92e-05 | mem 24.52 GiB | tps 578.19(578.19/gpu) | num_label_tokens 3742
+2026-07-31 03:46:16 | INFO | root | step 38 | epoch 0 | loss 0.3810 | grad_norm 28.6250 | lr 4.01e-05 | mem 24.55 GiB | tps 598.06(598.06/gpu) | num_label_tokens 3922
+2026-07-31 03:46:24 | INFO | root | step 39 | epoch 0 | loss 0.2289 | grad_norm 24.3750 | lr 4.10e-05 | mem 24.64 GiB | tps 638.50(638.50/gpu) | num_label_tokens 4265
+Saving checkpoint to /workspace/checkpoints/nemotron_synthesis_r32/epoch_0_step_39
+2026-07-31 03:47:35 | INFO | root | [val] step 39 | epoch 0 | loss 0.8698 | lr 4.10e-05 | num_label_tokens 61652
+2026-07-31 03:47:43 | INFO | root | step 40 | epoch 0 | loss 0.4965 | grad_norm 49.7500 | lr 4.19e-05 | mem 24.64 GiB | tps 60.54(60.54/gpu) | num_label_tokens 3597
+2026-07-31 03:47:52 | INFO | root | step 41 | epoch 0 | loss 0.4366 | grad_norm 232.0000 | lr 4.28e-05 | mem 24.64 GiB | tps 577.08(577.08/gpu) | num_label_tokens 3740
+2026-07-31 03:48:00 | INFO | root | step 42 | epoch 0 | loss 0.4019 | grad_norm 29.1250 | lr 4.37e-05 | mem 24.64 GiB | tps 614.01(614.01/gpu) | num_label_tokens 4057
+2026-07-31 03:48:09 | INFO | root | step 43 | epoch 0 | loss 0.3572 | grad_norm 26.6250 | lr 4.46e-05 | mem 24.57 GiB | tps 544.40(544.40/gpu) | num_label_tokens 3451
+2026-07-31 03:48:17 | INFO | root | step 44 | epoch 0 | loss 0.4340 | grad_norm 152.0000 | lr 4.55e-05 | mem 24.58 GiB | tps 582.88(582.88/gpu) | num_label_tokens 3774
+2026-07-31 03:48:26 | INFO | root | step 45 | epoch 0 | loss 0.4018 | grad_norm 126.0000 | lr 4.64e-05 | mem 24.64 GiB | tps 619.36(619.36/gpu) | num_label_tokens 4108
+2026-07-31 03:48:35 | INFO | root | step 46 | epoch 0 | loss 0.4231 | grad_norm 75.0000 | lr 4.73e-05 | mem 24.64 GiB | tps 640.12(640.12/gpu) | num_label_tokens 4290
+2026-07-31 03:48:43 | INFO | root | step 47 | epoch 0 | loss 0.8124 | grad_norm 824.0000 | lr 4.82e-05 | mem 24.64 GiB | tps 613.29(613.29/gpu) | num_label_tokens 4039
+2026-07-31 03:48:52 | INFO | root | step 48 | epoch 0 | loss 0.6804 | grad_norm 604.0000 | lr 4.91e-05 | mem 24.64 GiB | tps 576.84(576.84/gpu) | num_label_tokens 3736
+2026-07-31 03:49:00 | INFO | root | step 49 | epoch 0 | loss 0.8553 | grad_norm 1384.0000 | lr 5.00e-05 | mem 24.64 GiB | tps 601.94(601.94/gpu) | num_label_tokens 3949
+2026-07-31 03:49:09 | INFO | root | step 50 | epoch 0 | loss 0.7520 | grad_norm 496.0000 | lr 4.99e-05 | mem 24.64 GiB | tps 583.75(583.75/gpu) | num_label_tokens 3806
+2026-07-31 03:49:17 | INFO | root | step 51 | epoch 0 | loss 2.8788 | grad_norm 2048.0000 | lr 4.98e-05 | mem 24.64 GiB | tps 586.72(586.72/gpu) | num_label_tokens 3810
+2026-07-31 03:49:26 | INFO | root | step 52 | epoch 0 | loss 1.1319 | grad_norm 1640.0000 | lr 4.95e-05 | mem 24.64 GiB | tps 591.18(591.18/gpu) | num_label_tokens 3867
+2026-07-31 03:49:34 | INFO | root | step 53 | epoch 0 | loss 0.9980 | grad_norm 636.0000 | lr 4.92e-05 | mem 24.64 GiB | tps 592.17(592.17/gpu) | num_label_tokens 3874
+2026-07-31 03:49:43 | INFO | root | step 54 | epoch 0 | loss 2.0337 | grad_norm 3888.0000 | lr 4.87e-05 | mem 24.64 GiB | tps 593.19(593.19/gpu) | num_label_tokens 3881
+2026-07-31 03:49:52 | INFO | root | step 55 | epoch 0 | loss 3.4266 | grad_norm 5632.0000 | lr 4.81e-05 | mem 24.64 GiB | tps 600.75(600.75/gpu) | num_label_tokens 3939
+2026-07-31 03:50:00 | INFO | root | step 56 | epoch 0 | loss 9.5157 | grad_norm 840.0000 | lr 4.74e-05 | mem 24.64 GiB | tps 601.80(601.80/gpu) | num_label_tokens 3945
+2026-07-31 03:50:09 | INFO | root | step 57 | epoch 0 | loss 8.5516 | grad_norm 528.0000 | lr 4.67e-05 | mem 24.64 GiB | tps 604.15(604.15/gpu) | num_label_tokens 3958
+2026-07-31 03:50:17 | INFO | root | step 58 | epoch 0 | loss 11.2257 | grad_norm 4000.0000 | lr 4.58e-05 | mem 24.64 GiB | tps 605.72(605.72/gpu) | num_label_tokens 3970
+2026-07-31 03:50:26 | INFO | root | step 59 | epoch 0 | loss 7.9144 | grad_norm 4096.0000 | lr 4.49e-05 | mem 24.64 GiB | tps 578.04(578.04/gpu) | num_label_tokens 3743
+Saving checkpoint to /workspace/checkpoints/nemotron_synthesis_r32/epoch_0_step_59
+2026-07-31 03:51:36 | INFO | root | [val] step 59 | epoch 0 | loss 16.3678 | lr 4.49e-05 | num_label_tokens 61652
+2026-07-31 03:51:45 | INFO | root | step 60 | epoch 0 | loss 17.1116 | grad_norm 2080.0000 | lr 4.39e-05 | mem 24.64 GiB | tps 51.67(51.67/gpu) | num_label_tokens 2895
+2026-07-31 03:51:53 | INFO | root | step 61 | epoch 0 | loss 8.4518 | grad_norm 8768.0000 | lr 4.28e-05 | mem 24.64 GiB | tps 595.80(595.80/gpu) | num_label_tokens 3893
+2026-07-31 03:52:02 | INFO | root | step 62 | epoch 0 | loss 8.2248 | grad_norm 276.0000 | lr 4.16e-05 | mem 24.64 GiB | tps 509.55(509.55/gpu) | num_label_tokens 3148
+2026-07-31 03:52:10 | INFO | root | step 63 | epoch 0 | loss 15.5249 | grad_norm 21248.0000 | lr 4.03e-05 | mem 24.64 GiB | tps 487.54(487.54/gpu) | num_label_tokens 2947
+2026-07-31 03:52:19 | INFO | root | step 64 | epoch 0 | loss 9.4986 | grad_norm 36352.0000 | lr 3.90e-05 | mem 24.64 GiB | tps 604.59(604.59/gpu) | num_label_tokens 3970
+2026-07-31 03:52:27 | INFO | root | step 65 | epoch 0 | loss 14.3267 | grad_norm 7040.0000 | lr 3.76e-05 | mem 24.64 GiB | tps 538.36(538.36/gpu) | num_label_tokens 3403
+2026-07-31 03:52:36 | INFO | root | step 66 | epoch 0 | loss 9.6108 | grad_norm 14016.0000 | lr 3.62e-05 | mem 24.64 GiB | tps 501.19(501.19/gpu) | num_label_tokens 3068
+2026-07-31 03:52:44 | INFO | root | step 67 | epoch 0 | loss 12.4585 | grad_norm 2496.0000 | lr 3.47e-05 | mem 24.64 GiB | tps 621.99(621.99/gpu) | num_label_tokens 4141
+2026-07-31 03:52:53 | INFO | root | step 68 | epoch 0 | loss 9.4208 | grad_norm 2400.0000 | lr 3.32e-05 | mem 24.64 GiB | tps 530.01(530.01/gpu) | num_label_tokens 3326
+2026-07-31 03:53:01 | INFO | root | step 69 | epoch 0 | loss 11.8716 | grad_norm 20480.0000 | lr 3.17e-05 | mem 24.64 GiB | tps 579.21(579.21/gpu) | num_label_tokens 3758
+2026-07-31 03:53:10 | INFO | root | step 70 | epoch 0 | loss 11.9195 | grad_norm 1464.0000 | lr 3.01e-05 | mem 24.64 GiB | tps 617.01(617.01/gpu) | num_label_tokens 4082
+2026-07-31 03:53:19 | INFO | root | step 71 | epoch 0 | loss 17.6715 | grad_norm 3520.0000 | lr 2.85e-05 | mem 24.64 GiB | tps 522.67(522.67/gpu) | num_label_tokens 3257
+2026-07-31 03:53:27 | INFO | root | step 72 | epoch 0 | loss 9.4887 | grad_norm 462.0000 | lr 2.69e-05 | mem 24.52 GiB | tps 500.02(500.02/gpu) | num_label_tokens 3051
+2026-07-31 03:53:36 | INFO | root | step 73 | epoch 0 | loss 9.2941 | grad_norm 716.0000 | lr 2.53e-05 | mem 24.52 GiB | tps 505.36(505.36/gpu) | num_label_tokens 3118
+2026-07-31 03:53:44 | INFO | root | step 74 | epoch 0 | loss 9.3196 | grad_norm 544.0000 | lr 2.36e-05 | mem 24.40 GiB | tps 431.31(431.31/gpu) | num_label_tokens 2481
+2026-07-31 03:53:53 | INFO | root | step 75 | epoch 0 | loss 8.8238 | grad_norm 410.0000 | lr 2.20e-05 | mem 24.40 GiB | tps 452.55(452.55/gpu) | num_label_tokens 2662
+2026-07-31 03:54:01 | INFO | root | step 76 | epoch 0 | loss 8.4625 | grad_norm 276.0000 | lr 2.04e-05 | mem 24.40 GiB | tps 426.94(426.94/gpu) | num_label_tokens 2434
+2026-07-31 03:54:10 | INFO | root | step 77 | epoch 0 | loss 8.4857 | grad_norm 270.0000 | lr 1.88e-05 | mem 24.40 GiB | tps 442.34(442.34/gpu) | num_label_tokens 2560
+2026-07-31 03:54:18 | INFO | root | step 78 | epoch 0 | loss 8.1686 | grad_norm 440.0000 | lr 1.73e-05 | mem 24.40 GiB | tps 466.01(466.01/gpu) | num_label_tokens 2779
+2026-07-31 03:54:27 | INFO | root | step 79 | epoch 0 | loss 7.6888 | grad_norm 198.0000 | lr 1.58e-05 | mem 24.40 GiB | tps 450.84(450.84/gpu) | num_label_tokens 2646
+Saving checkpoint to /workspace/checkpoints/nemotron_synthesis_r32/epoch_0_step_79
+2026-07-31 03:55:37 | INFO | root | [val] step 79 | epoch 0 | loss 7.9988 | lr 1.58e-05 | num_label_tokens 61652
+2026-07-31 03:55:46 | INFO | root | step 80 | epoch 0 | loss 7.9366 | grad_norm 276.0000 | lr 1.43e-05 | mem 24.40 GiB | tps 50.00(50.00/gpu) | num_label_tokens 2770
+2026-07-31 03:55:54 | INFO | root | step 81 | epoch 0 | loss 7.4662 | grad_norm 143.0000 | lr 1.29e-05 | mem 24.40 GiB | tps 503.24(503.24/gpu) | num_label_tokens 3087
+2026-07-31 03:56:03 | INFO | root | step 82 | epoch 0 | loss 6.9871 | grad_norm 140.0000 | lr 1.15e-05 | mem 24.44 GiB | tps 489.94(489.94/gpu) | num_label_tokens 2978
+2026-07-31 03:56:11 | INFO | root | step 83 | epoch 0 | loss 7.4269 | grad_norm 215.0000 | lr 1.02e-05 | mem 24.44 GiB | tps 492.41(492.41/gpu) | num_label_tokens 3003
+2026-07-31 03:56:20 | INFO | root | step 84 | epoch 0 | loss 6.8745 | grad_norm 187.0000 | lr 8.93e-06 | mem 24.49 GiB | tps 533.96(533.96/gpu) | num_label_tokens 3366

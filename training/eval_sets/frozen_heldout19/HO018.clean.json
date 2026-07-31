@@ -1,0 +1,28 @@
+{
+ "qid": "HO018",
+ "prompt": "Using a case-insensitive once-per-record whole-word superannuation search of the AFR corpus, which year has the highest count and what is the overall total?",
+ "difficulty": "medium",
+ "datasets": [
+  "AFR"
+ ],
+ "dataset_scope": "single",
+ "tool_trace": [
+  {
+   "tool": "query_data",
+   "args": {
+    "dataset": "afr",
+    "metric": "count_by_year",
+    "terms": [
+     "superannuation"
+    ]
+   },
+   "result": "{\"metric\": \"count_by_year\", \"pattern\": \"\\\\bsuperannuation\\\\b\", \"window\": null, \"by_year\": {\"2015\": 1874, \"2016\": 2308, \"2017\": 1326, \"2018\": 1408, \"2019\": 1700, \"2020\": 1487, \"2021\": 1410}, \"total\": 11513, \"peak_year\": 2016, \"peak_year_count\": 2308}",
+   "compact": "pattern=\\bsuperannuation\\b window=null by_year={2015:1874 2016:2308 2017:1326 2018:1408 2019:1700 2020:1487 2021:1410} total=11513 peak_year=2016 peak_year_count=2308",
+   "ok": true
+  }
+ ],
+ "capture": {
+  "source": "generated",
+  "category": "afr_counts"
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "qid": "PR007",
+ "prompt": "Using a case-insensitive once-per-record whole-word superannuation search, which year and which month have the highest AFR counts?",
+ "difficulty": "medium",
+ "datasets": [
+  "AFR"
+ ],
+ "dataset_scope": "single",
+ "tool_trace": [
+  {
+   "tool": "query_data",
+   "args": {
+    "dataset": "afr",
+    "metric": "count_by_year",
+    "terms": [
+     "superannuation"
+    ]
+   },
+   "result": "{\"metric\": \"count_by_year\", \"pattern\": \"\\\\bsuperannuation\\\\b\", \"window\": null, \"by_year\": {\"2015\": 1874, \"2016\": 2308, \"2017\": 1326, \"2018\": 1408, \"2019\": 1700, \"2020\": 1487, \"2021\": 1410}, \"total\": 11513, \"peak_year\": 2016, \"peak_year_count\": 2308}",
+   "compact": "pattern=\\bsuperannuation\\b window=null by_year={2015:1874 2016:2308 2017:1326 2018:1408 2019:1700 2020:1487 2021:1410} total=11513 peak_year=2016 peak_year_count=2308",
+   "ok": true
+  },
+  {
+   "tool": "query_data",
+   "args": {
+    "dataset": "afr",
+    "metric": "count_by_month",
+    "terms": [
+     "superannuation"
+    ],
+    "year": 2016
+   },
+   "result": "{\"metric\": \"count_by_month\", \"pattern\": \"\\\\bsuperannuation\\\\b\", \"year\": 2016, \"by_month\": {\"2016-01\": 88, \"2016-02\": 184, \"2016-03\": 164, \"2016-04\": 167, \"2016-05\": 218, \"2016-06\": 119, \"2016-07\": 172, \"2016-08\": 226, \"2016-09\": 330, \"2016-10\": 229, \"2016-11\": 246, \"2016-12\": 165}, \"total\": 2308, \"peak_month\": \"2016-09\", \"peak_month_count\": 330}",
+   "compact": "pattern=\\bsuperannuation\\b year=2016 by_month={2016-01:88 2016-02:184 2016-03:164 2016-04:167 2016-05:218 2016-06:119 2016-07:172 2016-08:226 2016-09:330 2016-10:229 2016-11:246 2016-12:165} total=2308 peak_month=2016-09 peak_month_count=330",
+   "ok": true
+  }
+ ],
+ "capture": {
+  "source": "generated",
+  "category": "afr_counts"
+ }
+}

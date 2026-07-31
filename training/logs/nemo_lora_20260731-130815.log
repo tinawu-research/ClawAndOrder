@@ -1,0 +1,70 @@
+
+====================
+== NeMo Framework ==
+====================
+
+NVIDIA Release  (build 236656227)
+Container image Copyright (c) 2025, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+GOVERNING TERMS: The software and materials are governed by the NVIDIA Software License Agreement
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-software-license-agreement/)
+and the Product-Specific Terms for NVIDIA AI Products
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/product-specific-terms-for-ai-products/).
+WARNING: Detected NVIDIA GB10 GPU, which may not yet be supported in this version of the container
+
+Skipping import of cpp extensions due to incompatible torch version 2.8.0a0+5228986c39.nv25.06 for torchao version 0.14.1             Please see https://github.com/pytorch/ao/issues/2919 for more info
+cfg-path: /workspace/training/configs/lora_nemotron_r32.yaml
+> initializing torch distributed with 1 workers.
+[E731 03:28:18.756319376 socket.cpp:1019] [c10d] The client socket has timed out after 1200000ms while trying to connect to (localhost, 57117).
+[W731 03:28:18.773923632 TCPStore.cpp:332] [c10d] TCP client failed to connect/validate to host localhost:57117 - retrying (try=0, timeout=1200000ms, delay=43579ms): The client socket has timed out after 1200000ms while trying to connect to (localhost, 57117).
+Exception raised from throwTimeoutError at /opt/pytorch/pytorch/torch/csrc/distributed/c10d/socket.cpp:1021 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0xbc (0xe9e38777d47c in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x5ac9230 (0xe9e3dbaf9230 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cpu.so)
+frame #2: <unknown function> + 0x5b15ddc (0xe9e3dbb45ddc in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cpu.so)
+frame #3: <unknown function> + 0x5b19904 (0xe9e3dbb49904 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cpu.so)
+frame #4: <unknown function> + 0x5b19bd4 (0xe9e3dbb49bd4 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cpu.so)
+frame #5: <unknown function> + 0x5b1a04c (0xe9e3dbb4a04c in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cpu.so)
+frame #6: <unknown function> + 0x5acc55c (0xe9e3dbafc55c in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cpu.so)
+frame #7: c10d::TCPStore::TCPStore(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, c10d::TCPStoreOptions const&) + 0x358 (0xe9e3dbb00688 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0xf4b284 (0xe9e3deafb284 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_python.so)
+frame #9: <unknown function> + 0xfcd1d0 (0xe9e3deb7d1d0 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_python.so)
+frame #10: <unknown function> + 0x5973c0 (0xe9e3de1473c0 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_python.so)
+frame #11: /opt/venv/bin/python() [0x5036b4]
+frame #12: _PyObject_MakeTpCall + 0x130 (0x4c2d50 in /opt/venv/bin/python)
+frame #13: /opt/venv/bin/python() [0x4c6fb0]
+frame #14: _PyObject_Call + 0x104 (0x4c5594 in /opt/venv/bin/python)
+frame #15: /opt/venv/bin/python() [0x522708]
+frame #16: /opt/venv/bin/python() [0x51dca4]
+frame #17: <unknown function> + 0x60314c (0xe9e3de1b314c in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_python.so)
+frame #18: _PyObject_MakeTpCall + 0x130 (0x4c2d50 in /opt/venv/bin/python)
+frame #19: _PyEval_EvalFrameDefault + 0x8a0 (0x563eb4 in /opt/venv/bin/python)
+frame #20: /opt/venv/bin/python() [0x4d0b10]
+frame #21: /opt/venv/bin/python() [0x560574]
+frame #22: /opt/venv/bin/python() [0x5037c0]
+frame #23: PyObject_Vectorcall + 0x4c (0x4c384c in /opt/venv/bin/python)
+frame #24: _PyEval_EvalFrameDefault + 0x8a0 (0x563eb4 in /opt/venv/bin/python)
+frame #25: PyEval_EvalCode + 0x130 (0x562204 in /opt/venv/bin/python)
+frame #26: /opt/venv/bin/python() [0x59c3c4]
+frame #27: /opt/venv/bin/python() [0x680e94]
+frame #28: _PyRun_SimpleFileObject + 0x194 (0x680a68 in /opt/venv/bin/python)
+frame #29: _PyRun_AnyFileObject + 0x54 (0x680834 in /opt/venv/bin/python)
+frame #30: Py_RunMain + 0x2dc (0x68b83c in /opt/venv/bin/python)
+frame #31: Py_BytesMain + 0x28 (0x68b3f8 in /opt/venv/bin/python)
+frame #32: <unknown function> + 0x284c4 (0xe9e3dfea84c4 in /lib/aarch64-linux-gnu/libc.so.6)
+frame #33: __libc_start_main + 0x98 (0xe9e3dfea8598 in /lib/aarch64-linux-gnu/libc.so.6)
+frame #34: _start + 0x30 (0x5f6df0 in /opt/venv/bin/python)
+

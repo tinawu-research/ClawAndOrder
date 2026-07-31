@@ -1,6 +1,3 @@
-# Organiser-supplied datasets — provided in the Atom environment, not part of the submission
-data set/
-
 # Python
 __pycache__/
 *.py[cod]
@@ -10,3 +7,12 @@ venv/
 
 # Local env / secrets
 .env
+
+# Editor / tooling state
+.claude/
+
+# Build caches. These are reproducible from the generators and are large;
+# the corpus itself (train/val jsonl) is committed as training evidence.
+training/data/*.sqlite
+training/results/judge_cache.sqlite
+automodel_recipes/

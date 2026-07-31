@@ -1,0 +1,23 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+credentials.json
+.private/
+
+# VCS / caches
+.git/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Not needed at runtime
+tests/
+eval/reports/

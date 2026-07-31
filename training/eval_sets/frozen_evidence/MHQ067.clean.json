@@ -1,0 +1,39 @@
+{
+  "qid": "MHQ067",
+  "prompt": "Retrieve the AFR article \"Why investors don't believe the RBA on interest rates\" published 25 Nov 2021 and use the RBA cash-rate target in force on that date. Classify the article's financial-market sentiment as positive, negative, or mixed; state the likely direction for the broad ASX, especially rate-sensitive shares.",
+  "difficulty": "hard",
+  "datasets": [
+    "RBA",
+    "AFR"
+  ],
+  "dataset_scope": "cross",
+  "tool_trace": [
+    {
+      "tool": "retrieve",
+      "args": {
+        "headline": "Why investors don't believe the RBA on interest rates",
+        "date": "2021-11-25"
+      },
+      "result": "{\"tool\": \"retrieve\", \"query\": {\"headline\": \"Why investors don't believe the RBA on interest rates\", \"date\": \"2021-11-25\", \"pattern\": null}, \"matches\": 1, \"returned\": 1, \"articles\": [{\"headline\": \"Why investors don't believe the RBA on interest rates\", \"publication_date\": \"2021-11-25\", \"text\": \"why investors don't believe the rba on interest rates\\n\\n\\nmonetary policy nursing multibillion-dollar losses after being wrong-footed on bond yields, investors no longer trust the rba's interest rate guidance.\\n\\nthe reserve bank of australia insists that interest rates are likely to be anchored near zero until around 2024, but money markets are pricing in about four cash rate increases totalling 1 per cent next year.\\n\\nthere has rarely, if ever, in australia's financial history been such a disconnect between the rba and bond markets.\\n\\nwhy the dichotomy?\\n\\na differing view on the outlook for inflation and wages is only part of the reason. another factor is that sections of the investment community have lost confidence in the rba's word.\\n\\nthe rba's messy exit from yield curve targeting this month inflicted huge losses on some institutional investors who had backed the central bank's easy money policies.\\n\\nglobal hedge funds, sovereign wealth funds, pension funds and life insurers had bet that the rba would keep its pledge to pin the april 2024 bond yield at 0.1 per cent, or at least limit their losses if the policy was changed.\\n\\nbut stronger than expected inflation arrived and bond yields \", \"truncated\": true}]}"
+    },
+    {
+      "tool": "query_data",
+      "args": {
+        "dataset": "rba",
+        "metric": "lookup_rate",
+        "date_from": "2021-11-25"
+      },
+      "result": "{\"metric\": \"lookup_rate\", \"query_date\": \"2021-11-25\", \"cash_rate_target\": 0.1, \"effective_date\": \"2021-11-03\", \"change_points_on_that_date\": 0.0, \"dataset\": \"rba\"}"
+    }
+  ],
+  "capture": {
+    "latency_seconds": 35.27,
+    "planning_seconds": 35.272,
+    "brain_calls": 1,
+    "tool_calls": 2,
+    "tool_failures": 0,
+    "notes": [
+      "brain unavailable: brain unreachable at http://localhost:4000/v1: "
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "qid": "MHQ001",
+  "prompt": "From the first RBA record to the last, how many cash-rate decisions changed the rate, and how many were increases versus decreases?",
+  "difficulty": "easy",
+  "datasets": [
+    "RBA"
+  ],
+  "dataset_scope": "single",
+  "tool_trace": [
+    {
+      "tool": "query_data",
+      "args": {
+        "dataset": "rba",
+        "metric": "count_changes",
+        "date_from": "2010-02-03",
+        "date_to": "2026-06-17"
+      },
+      "result": "{\"metric\": \"count_changes\", \"window\": [\"2010-02-03\", \"2026-06-17\"], \"total_records\": 175, \"changes\": 41, \"increases\": 20, \"decreases\": 21, \"cumulative_change_points\": 0.6, \"increases_by_year\": {\"2010\": 4, \"2022\": 8, \"2023\": 5, \"2026\": 3}, \"decreases_by_year\": {\"2011\": 2, \"2012\": 4, \"2013\": 2, \"2015\": 2, \"2016\": 2, \"2019\": 3, \"2020\": 3, \"2025\": 3}, \"dataset\": \"rba\"}"
+    }
+  ],
+  "capture": {
+    "latency_seconds": 19.12,
+    "planning_seconds": 19.115,
+    "brain_calls": 2,
+    "tool_calls": 1,
+    "tool_failures": 0,
+    "notes": []
+  }
+}

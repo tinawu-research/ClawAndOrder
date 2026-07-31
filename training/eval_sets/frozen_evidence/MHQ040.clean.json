@@ -1,0 +1,24 @@
+{
+  "qid": "MHQ040",
+  "prompt": "What are the dimensions and common date range of the ASX dataset?",
+  "difficulty": "easy",
+  "datasets": [
+    "ASX"
+  ],
+  "dataset_scope": "single",
+  "tool_trace": [
+    {
+      "tool": "dataset_coverage",
+      "args": {},
+      "result": "{\"tool\": \"dataset_coverage\", \"datasets\": {\"rba\": {\"records\": 175, \"start\": \"2010-02-03\", \"end\": \"2026-06-17\"}, \"asx\": {\"tickers\": 18, \"rows_per_ticker\": 1774, \"start\": \"2015-01-02\", \"end\": \"2021-12-30\"}, \"afr\": {\"articles\": 219538, \"start\": \"2015-01-02\", \"end\": \"2021-12-29\"}}, \"common_overlap\": {\"start\": \"2015-01-02\", \"end\": \"2021-12-29\", \"valid\": true}, \"note\": \"Cross-dataset claims are only observable inside common_overlap. Outside it, say so explicitly rather than inferring values.\"}"
+    }
+  ],
+  "capture": {
+    "latency_seconds": 16.44,
+    "planning_seconds": 16.444,
+    "brain_calls": 2,
+    "tool_calls": 1,
+    "tool_failures": 0,
+    "notes": []
+  }
+}

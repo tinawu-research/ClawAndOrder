@@ -1,0 +1,21 @@
+{
+  "qid": "MHQ072",
+  "prompt": "After the 5 Jun 2019 RBA cut, report the new target and the 5-12 Jun returns for the non-Tabcorp basket, CBA.AX, NAB.AX, ANZ.AX, BHP.AX, and RIO.AX.",
+  "difficulty": "medium",
+  "datasets": [
+    "RBA",
+    "ASX"
+  ],
+  "dataset_scope": "cross",
+  "tool_trace": [],
+  "capture": {
+    "latency_seconds": 25.02,
+    "planning_seconds": 25.016,
+    "brain_calls": 0,
+    "tool_calls": 0,
+    "tool_failures": 0,
+    "notes": [
+      "brain unavailable: brain unreachable at http://localhost:4000/v1: "
+    ]
+  }
+}

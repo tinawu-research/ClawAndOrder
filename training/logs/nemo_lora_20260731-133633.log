@@ -1,0 +1,209 @@
+
+====================
+== NeMo Framework ==
+====================
+
+NVIDIA Release  (build 236656227)
+Container image Copyright (c) 2025, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+GOVERNING TERMS: The software and materials are governed by the NVIDIA Software License Agreement
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-software-license-agreement/)
+and the Product-Specific Terms for NVIDIA AI Products
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/product-specific-terms-for-ai-products/).
+WARNING: Detected NVIDIA GB10 GPU, which may not yet be supported in this version of the container
+
+Skipping import of cpp extensions due to incompatible torch version 2.8.0a0+5228986c39.nv25.06 for torchao version 0.14.1             Please see https://github.com/pytorch/ao/issues/2919 for more info
+cfg-path: /workspace/training/configs/lora_nemotron_r32.yaml
+> initializing torch distributed with 1 workers.
+2026-07-31 03:36:39 | INFO | nemo_automodel.components.loggers.log_utils | Setting logging level to 20
+2026-07-31 03:36:39 | INFO | root | Experiment_details:
+2026-07-31 03:36:39 | INFO | root | Timestamp: '2026-07-31T03:36:39'
+2026-07-31 03:36:39 | INFO | root | User: root
+2026-07-31 03:36:39 | INFO | root | Host: aitopatom-5bde
+2026-07-31 03:36:39 | INFO | root | World size: 1
+2026-07-31 03:36:39 | INFO | root | Backend: nccl
+2026-07-31 03:36:39 | INFO | root | Recipe: TrainFinetuneRecipeForNextTokenPrediction
+2026-07-31 03:36:39 | INFO | root | Model name: /workspace/models/Llama-3.1-Nemotron-Nano-8B-v1
+2026-07-31 03:36:39 | INFO | root | Recipe config:
+2026-07-31 03:36:39 | INFO | root |   step_scheduler:
+2026-07-31 03:36:39 | INFO | root |     global_batch_size: 8
+2026-07-31 03:36:39 | INFO | root |     local_batch_size: 1
+2026-07-31 03:36:39 | INFO | root |     ckpt_every_steps: 20
+2026-07-31 03:36:39 | INFO | root |     val_every_steps: 20
+2026-07-31 03:36:39 | INFO | root |     max_steps: 100
+2026-07-31 03:36:39 | INFO | root |   dist_env:
+2026-07-31 03:36:39 | INFO | root |     backend: nccl
+2026-07-31 03:36:39 | INFO | root |     timeout_minutes: 5
+2026-07-31 03:36:39 | INFO | root |   rng:
+2026-07-31 03:36:39 | INFO | root |     _target_: <class 'nemo_automodel.components.training.rng.StatefulRNG'>
+2026-07-31 03:36:39 | INFO | root |     seed: 1111
+2026-07-31 03:36:39 | INFO | root |     ranked: True
+2026-07-31 03:36:39 | INFO | root |   model:
+2026-07-31 03:36:39 | INFO | root |     _target_: <bound method _BaseNeMoAutoModelClass.from_pretrained of <class 'nemo_automodel.components._transformers.auto_model.NeMoAutoModelForCausalLM'>>
+2026-07-31 03:36:39 | INFO | root |     pretrained_model_name_or_path: /workspace/models/Llama-3.1-Nemotron-Nano-8B-v1
+2026-07-31 03:36:39 | INFO | root |     trust_remote_code: True
+2026-07-31 03:36:39 | INFO | root |   peft:
+2026-07-31 03:36:39 | INFO | root |     _target_: <class 'nemo_automodel.components._peft.lora.PeftConfig'>
+2026-07-31 03:36:39 | INFO | root |     match_all_linear: True
+2026-07-31 03:36:39 | INFO | root |     dim: 32
+2026-07-31 03:36:39 | INFO | root |     alpha: 32
+2026-07-31 03:36:39 | INFO | root |     dropout: 0.1
+2026-07-31 03:36:39 | INFO | root |   distributed:
+2026-07-31 03:36:39 | INFO | root |     _target_: <class 'nemo_automodel.components.distributed.fsdp2.FSDP2Manager'>
+2026-07-31 03:36:39 | INFO | root |     dp_size: None
+2026-07-31 03:36:39 | INFO | root |     dp_replicate_size: 1
+2026-07-31 03:36:39 | INFO | root |     tp_size: 1
+2026-07-31 03:36:39 | INFO | root |     cp_size: 1
+2026-07-31 03:36:39 | INFO | root |     sequence_parallel: False
+2026-07-31 03:36:39 | INFO | root |   loss_fn:
+2026-07-31 03:36:39 | INFO | root |     _target_: <class 'nemo_automodel.components.loss.masked_ce.MaskedCrossEntropy'>
+2026-07-31 03:36:39 | INFO | root |   checkpoint:
+2026-07-31 03:36:39 | INFO | root |     enabled: True
+2026-07-31 03:36:39 | INFO | root |     checkpoint_dir: /workspace/checkpoints/nemotron_synthesis_r32
+2026-07-31 03:36:39 | INFO | root |     model_save_format: safetensors
+2026-07-31 03:36:39 | INFO | root |     save_consolidated: True
+2026-07-31 03:36:39 | INFO | root |   dataset:
+2026-07-31 03:36:39 | INFO | root |     _target_: <class 'nemo_automodel.components.datasets.llm.column_mapped_text_instruction_dataset.ColumnMappedTextInstructionDataset'>
+2026-07-31 03:36:39 | INFO | root |     path_or_dataset_id: /workspace/training/data/train.io.jsonl
+2026-07-31 03:36:39 | INFO | root |     split: train
+2026-07-31 03:36:39 | INFO | root |     column_mapping:
+2026-07-31 03:36:39 | INFO | root |       context: system
+2026-07-31 03:36:39 | INFO | root |       question: input
+2026-07-31 03:36:39 | INFO | root |       answer: output
+2026-07-31 03:36:39 | INFO | root |     seq_length: 1024
+2026-07-31 03:36:39 | INFO | root |     answer_only_loss_mask: True
+2026-07-31 03:36:39 | INFO | root |     start_of_turn_token: <|start_header_id|>
+2026-07-31 03:36:39 | INFO | root |   packed_sequence:
+2026-07-31 03:36:39 | INFO | root |     packed_sequence_size: 0
+2026-07-31 03:36:39 | INFO | root |   dataloader:
+2026-07-31 03:36:39 | INFO | root |     _target_: <class 'torchdata.stateful_dataloader.stateful_dataloader.StatefulDataLoader'>
+2026-07-31 03:36:39 | INFO | root |     collate_fn: <function default_collater at 0xfb7f13b9f6a0>
+2026-07-31 03:36:39 | INFO | root |     shuffle: False
+2026-07-31 03:36:39 | INFO | root |   validation_dataset:
+2026-07-31 03:36:39 | INFO | root |     _target_: <class 'nemo_automodel.components.datasets.llm.column_mapped_text_instruction_dataset.ColumnMappedTextInstructionDataset'>
+2026-07-31 03:36:39 | INFO | root |     path_or_dataset_id: /workspace/training/data/val.io.jsonl
+2026-07-31 03:36:39 | INFO | root |     split: train
+2026-07-31 03:36:39 | INFO | root |     column_mapping:
+2026-07-31 03:36:39 | INFO | root |       context: system
+2026-07-31 03:36:39 | INFO | root |       question: input
+2026-07-31 03:36:39 | INFO | root |       answer: output
+2026-07-31 03:36:39 | INFO | root |     seq_length: 1024
+2026-07-31 03:36:39 | INFO | root |     answer_only_loss_mask: True
+2026-07-31 03:36:39 | INFO | root |     start_of_turn_token: <|start_header_id|>
+2026-07-31 03:36:39 | INFO | root |   validation_dataloader:
+2026-07-31 03:36:39 | INFO | root |     _target_: <class 'torchdata.stateful_dataloader.stateful_dataloader.StatefulDataLoader'>
+2026-07-31 03:36:39 | INFO | root |     collate_fn: <function default_collater at 0xfb7f13b9f6a0>
+2026-07-31 03:36:39 | INFO | root |     shuffle: False
+2026-07-31 03:36:39 | INFO | root |   optimizer:
+2026-07-31 03:36:39 | INFO | root |     _target_: <class 'torch.optim.adamw.AdamW'>
+2026-07-31 03:36:39 | INFO | root |     betas: [0.9, 0.999]
+2026-07-31 03:36:39 | INFO | root |     eps: 1e-08
+2026-07-31 03:36:39 | INFO | root |     lr: 5e-05
+2026-07-31 03:36:39 | INFO | root |     weight_decay: 0.0
+2026-07-31 03:36:39 | INFO | root | Library versions:
+2026-07-31 03:36:39 | INFO | root | - nemo_automodel: 0.1.1 (/opt/Automodel/nemo_automodel/__init__.py)
+2026-07-31 03:36:39 | INFO | root | - transformers: 4.53.3 (/opt/venv/lib/python3.12/site-packages/transformers/__init__.py)
+2026-07-31 03:36:39 | INFO | root | - torch: 2.8.0a0+5228986c39.nv25.06 CUDA 12.9
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 420.89it/s]
+2026-07-31 03:36:40 | INFO | root | Patched model with SDPA method= [<SDPBackend.CUDNN_ATTENTION: 3>, <SDPBackend.FLASH_ATTENTION: 1>, <SDPBackend.EFFICIENT_ATTENTION: 2>, <SDPBackend.MATH: 0>]
+2026-07-31 03:36:48 | INFO | root | Model summary:
+2026-07-31 03:36:48 | INFO | root | --------------------------------
+2026-07-31 03:36:48 | INFO | root | Trainable parameters: 83,886,080
+2026-07-31 03:36:48 | INFO | root | Total parameters: 8,114,147,328
+2026-07-31 03:36:48 | INFO | root | Trainable parameters percentage: 1.03%
+2026-07-31 03:36:48 | INFO | root | Param L2 norm: 3855.0701
+2026-07-31 03:36:48 | INFO | root | --------------------------------
+2026-07-31 03:36:48 | INFO | nemo_automodel.recipes.llm.train_ft | World size is 1, skipping parallelization.
+2026-07-31 03:36:50 | INFO | root | Using model config to instantiate tokenizer
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 790 examples [00:00, 63694.21 examples/s]
+2026-07-31 03:36:51 | INFO | root | Using model config to instantiate tokenizer
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 144 examples [00:00, 61883.17 examples/s]
+2026-07-31 03:36:51 | INFO | root | Model Part 0:
+2026-07-31 03:36:51 | INFO | root | LlamaForCausalLM(
+2026-07-31 03:36:51 | INFO | root |   (model): LlamaModel(
+2026-07-31 03:36:51 | INFO | root |     (embed_tokens): Embedding(128256, 4096)
+2026-07-31 03:36:51 | INFO | root |     (layers): ModuleList(
+2026-07-31 03:36:51 | INFO | root |       (0-31): 32 x LlamaDecoderLayer(
+2026-07-31 03:36:51 | INFO | root |         (self_attn): LlamaAttention(
+2026-07-31 03:36:51 | INFO | root |           (q_proj): PatchedLinearLoRA(
+2026-07-31 03:36:51 | INFO | root |             in_features=4096, out_features=4096, bias=False
+2026-07-31 03:36:51 | INFO | root |             (lora_A): Linear(in_features=4096, out_features=32, bias=False)
+2026-07-31 03:36:51 | INFO | root |             (lora_B): Linear(in_features=32, out_features=4096, bias=False)
+2026-07-31 03:36:51 | INFO | root |           )
+2026-07-31 03:36:51 | INFO | root |           (k_proj): PatchedLinearLoRA(
+2026-07-31 03:36:51 | INFO | root |             in_features=4096, out_features=1024, bias=False
+2026-07-31 03:36:51 | INFO | root |             (lora_A): Linear(in_features=4096, out_features=32, bias=False)
+2026-07-31 03:36:51 | INFO | root |             (lora_B): Linear(in_features=32, out_features=1024, bias=False)
+2026-07-31 03:36:51 | INFO | root |           )
+2026-07-31 03:36:51 | INFO | root |           (v_proj): PatchedLinearLoRA(
+2026-07-31 03:36:51 | INFO | root |             in_features=4096, out_features=1024, bias=False
+2026-07-31 03:36:51 | INFO | root |             (lora_A): Linear(in_features=4096, out_features=32, bias=False)
+2026-07-31 03:36:51 | INFO | root |             (lora_B): Linear(in_features=32, out_features=1024, bias=False)
+2026-07-31 03:36:51 | INFO | root |           )
+2026-07-31 03:36:51 | INFO | root |           (o_proj): PatchedLinearLoRA(
+2026-07-31 03:36:51 | INFO | root |             in_features=4096, out_features=4096, bias=False
+2026-07-31 03:36:51 | INFO | root |             (lora_A): Linear(in_features=4096, out_features=32, bias=False)
+2026-07-31 03:36:51 | INFO | root |             (lora_B): Linear(in_features=32, out_features=4096, bias=False)
+2026-07-31 03:36:51 | INFO | root |           )
+2026-07-31 03:36:51 | INFO | root |         )
+2026-07-31 03:36:51 | INFO | root |         (mlp): LlamaMLP(
+2026-07-31 03:36:51 | INFO | root |           (gate_proj): PatchedLinearLoRA(
+2026-07-31 03:36:51 | INFO | root |             in_features=4096, out_features=14336, bias=False
+2026-07-31 03:36:51 | INFO | root |             (lora_A): Linear(in_features=4096, out_features=32, bias=False)
+2026-07-31 03:36:51 | INFO | root |             (lora_B): Linear(in_features=32, out_features=14336, bias=False)
+2026-07-31 03:36:51 | INFO | root |           )
+2026-07-31 03:36:51 | INFO | root |           (up_proj): PatchedLinearLoRA(
+2026-07-31 03:36:51 | INFO | root |             in_features=4096, out_features=14336, bias=False
+2026-07-31 03:36:51 | INFO | root |             (lora_A): Linear(in_features=4096, out_features=32, bias=False)
+2026-07-31 03:36:51 | INFO | root |             (lora_B): Linear(in_features=32, out_features=14336, bias=False)
+2026-07-31 03:36:51 | INFO | root |           )
+2026-07-31 03:36:51 | INFO | root |           (down_proj): PatchedLinearLoRA(
+2026-07-31 03:36:51 | INFO | root |             in_features=14336, out_features=4096, bias=False
+2026-07-31 03:36:51 | INFO | root | ...
+2026-07-31 03:36:51 | INFO | root | Optimizer:
+2026-07-31 03:36:51 | INFO | root | AdamW (
+2026-07-31 03:36:51 | INFO | root | Parameter Group 0
+2026-07-31 03:36:51 | INFO | root |     amsgrad: False
+2026-07-31 03:36:51 | INFO | root |     betas: [0.9, 0.999]
+2026-07-31 03:36:51 | INFO | root |     capturable: False
+2026-07-31 03:36:51 | INFO | root |     decoupled_weight_decay: True
+2026-07-31 03:36:51 | INFO | root |     differentiable: False
+2026-07-31 03:36:51 | INFO | root |     eps: 1e-08
+2026-07-31 03:36:51 | INFO | root |     foreach: None
+2026-07-31 03:36:51 | INFO | root |     fused: None
+2026-07-31 03:36:51 | INFO | root |     lr: 5e-05
+2026-07-31 03:36:51 | INFO | root |     maximize: False
+2026-07-31 03:36:51 | INFO | root |     weight_decay: 0.0
+2026-07-31 03:36:51 | INFO | root | )
+2026-07-31 03:36:51 | INFO | root | LR scheduler: <unavailable>
+2026-07-31 03:36:51 | INFO | root | Step scheduler:
+2026-07-31 03:36:51 | INFO | root | - Gradient accumulation steps: 8
+2026-07-31 03:36:51 | INFO | root | - Checkpoint every steps: 20
+2026-07-31 03:36:51 | INFO | root | - Current Epoch: 0
+2026-07-31 03:36:51 | INFO | root | - Number of epochs: 10
+2026-07-31 03:36:51 | INFO | root | - Validation every steps: 20
+2026-07-31 03:36:51 | INFO | root | - Max train steps: 100
+2026-07-31 03:37:02 | INFO | root | step 0 | epoch 0 | loss 5.1104 | grad_norm 286.0000 | lr 5.00e-05 | mem 23.90 GiB | tps 194.59(194.59/gpu) | num_label_tokens 941
+2026-07-31 03:37:11 | INFO | root | step 1 | epoch 0 | loss 2.6148 | grad_norm 115.0000 | lr 5.00e-05 | mem 24.49 GiB | tps 321.68(321.68/gpu) | num_label_tokens 1513
+2026-07-31 03:37:19 | INFO | root | step 2 | epoch 0 | loss 1.9463 | grad_norm 334.0000 | lr 5.00e-05 | mem 24.49 GiB | tps 368.79(368.79/gpu) | num_label_tokens 1914
+2026-07-31 03:37:27 | INFO | root | step 3 | epoch 0 | loss 2.6863 | grad_norm 470.0000 | lr 5.00e-05 | mem 24.49 GiB | tps 351.39(351.39/gpu) | num_label_tokens 1769
+2026-07-31 03:37:36 | INFO | root | step 4 | epoch 0 | loss 10.5366 | grad_norm 18176.0000 | lr 5.00e-05 | mem 24.57 GiB | tps 460.03(460.03/gpu) | num_label_tokens 2694
+2026-07-31 03:37:44 | INFO | root | step 5 | epoch 0 | loss 12.7212 | grad_norm 2384.0000 | lr 5.00e-05 | mem 24.63 GiB | tps 469.66(469.66/gpu) | num_label_tokens 2776
+2026-07-31 03:37:53 | INFO | root | step 6 | epoch 0 | loss 19.0064 | grad_norm 4352.0000 | lr 5.00e-05 | mem 24.63 GiB | tps 436.23(436.23/gpu) | num_label_tokens 2491
+2026-07-31 03:38:01 | INFO | root | step 7 | epoch 0 | loss 18.0394 | grad_norm 3440.0000 | lr 5.00e-05 | mem 24.49 GiB | tps 432.69(432.69/gpu) | num_label_tokens 2457
+2026-07-31 03:38:10 | INFO | root | step 8 | epoch 0 | loss 21.9436 | grad_norm 2464.0000 | lr 5.00e-05 | mem 24.49 GiB | tps 458.49(458.49/gpu) | num_label_tokens 2703
+2026-07-31 03:38:18 | INFO | root | step 9 | epoch 0 | loss 12.0604 | grad_norm 964.0000 | lr 5.00e-05 | mem 24.63 GiB | tps 485.75(485.75/gpu) | num_label_tokens 2922

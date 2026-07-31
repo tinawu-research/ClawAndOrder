@@ -1,0 +1,12 @@
+# Organiser-supplied datasets — provided in the Atom environment, not part of the submission
+data set/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Local env / secrets
+.env
